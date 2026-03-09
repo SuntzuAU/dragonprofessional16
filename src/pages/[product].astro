@@ -1,6 +1,7 @@
 ---
 import site from "../site.config.json";
 import manifest from "../data/image-manifest.json";
+import ACForm from "../components/ACForm.astro";
 
 export function getStaticPaths() {
   return site.products.map((p) => ({
@@ -55,8 +56,6 @@ function imgSrc(key) {
         .feature-check { color: ${c.accent}; }
         .price-display { color: ${c.accent}; }
         .licence-badge { background: ${c.accent}; color: #fff; }
-        ._submit { background: ${c.accent}; color: #fff; }
-        ._submit:hover { background: ${c.accentHover}; }
         .card p { color: ${c.muted}; }
         .sh p { color: ${c.muted}; }
         .breadcrumb a { color: ${c.accent}; }
@@ -80,7 +79,7 @@ function imgSrc(key) {
       .dropdown-toggle{cursor:pointer;display:flex;align-items:center;gap:4px;white-space:nowrap}
       .dropdown-toggle svg{transition:transform .15s}
       .dropdown:hover .dropdown-toggle svg{transform:rotate(180deg)}
-      .dropdown-menu{display:none;position:absolute;top:calc(100% + 8px);left:0;background:#fff;border:1px solid #e2e8f0;border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.1);min-width:220px;padding:6px 0;z-index:200}
+      .dropdown-menu{display:none;position:absolute;top:100%;left:0;background:#fff;border:1px solid #e2e8f0;border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.1);min-width:220px;padding:8px 0 6px;z-index:200}
       .dropdown:hover .dropdown-menu{display:block}
       .dropdown-menu a{display:block;padding:10px 16px;font-size:14px;font-weight:500;color:#334155;transition:background .1s}
       .dropdown-menu a:hover{background:#fef2f2;color:#CC0000}
@@ -112,6 +111,8 @@ function imgSrc(key) {
       .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
       .c6{grid-column:span 6}
       .c4{grid-column:span 4}
+      .c5{grid-column:span 5}
+      .c7{grid-column:span 7}
       .c12{grid-column:span 12}
       .card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:24px}
       .feature-list{list-style:none;padding:0;margin:0}
@@ -125,9 +126,6 @@ function imgSrc(key) {
       .other-version-link{padding:8px 16px;border-radius:8px;border:1px solid #e2e8f0;font-size:13px;font-weight:600;color:#334155;transition:all .15s}
       .other-version-link:hover{border-color:#CC0000;color:#CC0000}
       .formbox{background:#fff;border-radius:16px;padding:28px}
-      ._form_element{margin-bottom:12px}
-      ._form_element input,._form_element textarea{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;color:#0f172a;font-size:14px;font-family:system-ui,-apple-system,sans-serif;padding:10px 12px;width:100%}
-      ._submit{border:none;border-radius:8px;font-weight:700;font-size:15px;padding:12px 20px;width:100%;margin-top:8px;cursor:pointer;transition:background .15s}
       footer{background:#111;color:#64748b;padding:28px 0;font-size:14px}
       .footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
       .footer-links{display:flex;gap:20px}
@@ -137,7 +135,7 @@ function imgSrc(key) {
       @media(max-width:900px){
         .product-hero-inner{grid-template-columns:1fr}
         .product-hero h1{font-size:28px}
-        .c6,.c4{grid-column:span 12}
+        .c6,.c4,.c5,.c7{grid-column:span 12}
         .sh h2{font-size:24px}
       }
       @media(max-width:600px){
@@ -224,7 +222,7 @@ function imgSrc(key) {
                   <div style="font-size:12px;color:#64748b">Install limit</div>
                 </div>
                 <div style="text-align:center;padding:14px;background:#f5f5f5;border-radius:10px">
-                  <div style="font-size:18px;font-weight:800;color:#1a1a1a">{product.licenceType}</div>
+                  <div style="font-size:18px;font-weight:800;color:#1a1a1a">{product.licenceType ?? product.badge}</div>
                   <div style="font-size:12px;color:#64748b">Licence type</div>
                 </div>
               </div>
@@ -291,28 +289,7 @@ function imgSrc(key) {
               <a href={product.vraUrl} class="btn btn-primary btn-lg" target="_blank" rel="noopener" style="margin-right:12px">{product.ctaText} &rarr;</a>
             </div>
             <div class="c5">
-              <div class="formbox">
-                <div style="font-weight:800;font-size:18px;color:#0f172a">Get local advice</div>
-                <div style="color:#475569;font-size:14px;margin-bottom:12px">Voice Recognition Australia - authorised Dragon reseller</div>
-                <form method="POST" action="https://voicerecognition.activehosted.com/proc.php" id={`_form_${site.form.id}_`} class="_form _inline-form" novalidate>
-                  <input type="hidden" name="u" value={site.form.hiddenU} />
-                  <input type="hidden" name="f" value={site.form.hiddenF} />
-                  <input type="hidden" name="s" />
-                  <input type="hidden" name="c" value="0" />
-                  <input type="hidden" name="m" value="0" />
-                  <input type="hidden" name="act" value="sub" />
-                  <input type="hidden" name="v" value="2" />
-                  <input type="hidden" name="or" value={site.form.hiddenOr} />
-                  <div class="_form-content">
-                    <div class="_form_element"><input type="text" name="firstname" placeholder="Your Name" required /></div>
-                    <div class="_form_element"><input type="text" name="email" placeholder="Your Email" required /></div>
-                    <div class="_form_element"><input type="text" name="phone" placeholder="Phone" /></div>
-                    <div class="_form_element"><textarea name="field[18]" placeholder={`Enquiry about ${product.title}`}></textarea></div>
-                    <button class="_submit" type="submit">{site.form.submitText}</button>
-                  </div>
-                  <div class="_form-thank-you" style="display:none"></div>
-                </form>
-              </div>
+              <ACForm />
             </div>
           </div>
         </div>
