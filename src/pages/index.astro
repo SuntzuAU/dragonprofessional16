@@ -1,6 +1,7 @@
 ---
 import manifest from "../data/image-manifest.json";
 import site from "../site.config.json";
+import ACForm from "../components/ACForm.astro";
 
 const year = new Date().getFullYear();
 const R2_BASE = import.meta.env.PUBLIC_R2_BASE || "";
@@ -57,12 +58,7 @@ const benefitIcons = [
         .card p { color: ${c.muted}; }
         .benefit-card p { color: ${c.muted}; }
         .hero p { color: ${c.muted}; }
-        .pricing-card.highlight { border-color: ${c.accent}; box-shadow: 0 8px 32px rgba(204,0,0,.12); }
-        .pricing-badge { background: ${c.accent}; color: #fff; }
-        .pricing-price { color: ${c.accent}; }
         .step-num { background: ${c.accent}; color: #fff; }
-        ._submit { background: ${c.accent}; color: #fff; }
-        ._submit:hover { background: ${c.accentHover}; }
         .hero-pill { background: #fde8e8; border-color: #fca5a5; color: #7f1d1d; }
         .sh p { color: ${c.muted}; }
         .nav-links a:hover, .dropdown-toggle:hover { color: ${c.accent}; }
@@ -86,7 +82,6 @@ const benefitIcons = [
       header{position:sticky;top:0;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid #e2e8f0;z-index:100}
       .nav{display:flex;align-items:center;justify-content:space-between;padding:10px 0;gap:16px}
       .logo img{height:40px;width:auto}
-      .logo-text{font-weight:800;font-size:18px;color:#1a1a1a;letter-spacing:-0.03em}
       .nav-links{display:flex;gap:18px;font-size:14px;font-weight:500;color:#334155;align-items:center}
       .nav-links a{white-space:nowrap}
       .dropdown{position:relative}
@@ -140,10 +135,7 @@ const benefitIcons = [
       .compare-btn{margin-top:auto;display:block;text-align:center;padding:10px 16px;border-radius:8px;font-weight:700;font-size:14px;background:#f1f5f9;color:#1a1a1a;transition:background .15s}
       .compare-card:hover .compare-btn,.compare-card.featured .compare-btn{background:#CC0000;color:#fff}
       .step-num{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;font-weight:800;font-size:16px;margin-bottom:14px}
-      .formbox{background:#fff;border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:16px}
-      ._form_element{margin-bottom:12px}
-      ._form_element input,._form_element textarea{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;color:#0f172a;font-size:14px;font-family:system-ui,-apple-system,sans-serif;padding:10px 12px;width:100%}
-      ._submit{border:none;border-radius:8px;font-weight:700;font-size:15px;padding:12px 20px;width:100%;margin-top:8px;cursor:pointer;transition:background .15s}
+      .formbox{background:#fff;border-radius:16px;padding:28px}
       footer{background:#111;color:#64748b;padding:28px 0;font-size:14px}
       .footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
       .footer-links{display:flex;gap:20px}
@@ -367,29 +359,7 @@ const benefitIcons = [
               </ul>
             </div>
             <div class="c5">
-              <div class="formbox">
-                <div style="font-weight:800;font-size:20px;color:#0f172a">Get in touch</div>
-                <div style="color:#475569;font-size:15px;margin-bottom:4px">Local Australian support. Fast response.</div>
-                <form method="POST" action="https://voicerecognition.activehosted.com/proc.php" id={`_form_${site.form.id}_`} class="_form _inline-form" novalidate>
-                  <input type="hidden" name="u" value={site.form.hiddenU} />
-                  <input type="hidden" name="f" value={site.form.hiddenF} />
-                  <input type="hidden" name="s" />
-                  <input type="hidden" name="c" value="0" />
-                  <input type="hidden" name="m" value="0" />
-                  <input type="hidden" name="act" value="sub" />
-                  <input type="hidden" name="v" value="2" />
-                  <input type="hidden" name="or" value={site.form.hiddenOr} />
-                  <div class="_form-content">
-                    <div class="_form_element"><input type="text" name="firstname" placeholder="Your Name" required /></div>
-                    <div class="_form_element"><input type="text" name="email" placeholder="Your Email" required /></div>
-                    <div class="_form_element"><input type="text" name="phone" placeholder="Your Phone Number" /></div>
-                    <div class="_form_element"><input type="text" name="field[35]" placeholder="Organisation" /></div>
-                    <div class="_form_element"><textarea name="field[18]" placeholder="Briefly describe your needs or enquiry"></textarea></div>
-                    <button class="_submit" type="submit">{site.form.submitText}</button>
-                  </div>
-                  <div class="_form-thank-you" style="display:none"></div>
-                </form>
-              </div>
+              <ACForm />
             </div>
           </div>
         </div>
