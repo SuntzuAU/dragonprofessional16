@@ -52,13 +52,13 @@
     "r2Key": "dragonprofessional16/2026/03/09/dragon-professional-16-software-download.png",
     "filename": "dragon-professional-16-software-download.png",
     "contentType": "image/png",
-    "altText": "Dragon Professional 16 software download - professional using speech recognition on laptop in relaxed setting",
+    "altText": "Dragon Professional 16 software - professional dictating on laptop in relaxed setting",
     "manual": true
   },
   "product-perpetual-feature": {
     "key": "product-perpetual-feature",
-    "r2Key": "dragonprofessional16/2026/03/09/dragon-professional-16.png",
-    "filename": "dragon-professional-16.png",
+    "r2Key": "dragonprofessional16/2026/03/09/dragon-professional-16-software.png",
+    "filename": "dragon-professional-16-software.png",
     "contentType": "image/png",
     "altText": "Dragon Professional 16 perpetual licence - offline dictation on Windows PC",
     "manual": true
@@ -99,8 +99,8 @@
   },
   "product-student-hero": {
     "key": "product-student-hero",
-    "r2Key": "dragonprofessional16/2026/03/09/dragon-professional-16.png",
-    "filename": "dragon-professional-16.png",
+    "r2Key": "dragonprofessional16/2026/03/09/dragon-professional-16-software.png",
+    "filename": "dragon-professional-16-software.png",
     "contentType": "image/png",
     "altText": "Dragon Professional 16 student edition - speech recognition for Australian students",
     "manual": true
