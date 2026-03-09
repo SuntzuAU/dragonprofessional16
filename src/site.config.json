@@ -1,0 +1,369 @@
+{
+  "siteName": "Dragon Professional 16 Australia",
+  "domain": "https://dragonprofessional16.com.au",
+  "googleAnalyticsId": "",
+  "colours": {
+    "primary": "#1a1a1a",
+    "background": "#ffffff",
+    "neutral": "#f5f5f5",
+    "accent": "#CC0000",
+    "accentHover": "#aa0000",
+    "text": "#0f172a",
+    "muted": "#6b7280"
+  },
+  "branding": {
+    "metaTitle": "Dragon Professional 16 Australia | Buy, Upgrade, Student and Enterprise Pricing",
+    "metaDesc": "Official Australian source for Dragon Professional 16. Compare perpetual, upgrade, subscription, student and enterprise licensing. Local support from Voice Recognition Australia.",
+    "industry": "Professional and Enterprise",
+    "region": "Australia",
+    "headline": "Dragon Professional 16 - Australia's Leading Speech Recognition",
+    "subheadline": "Dictate faster than you type. Automate repetitive workflows by voice. Works offline after activation. Trusted by legal, medical, and government professionals across Australia.",
+    "statsMessage": "40 years of proven performance - 15 million users worldwide",
+    "benefitsHeading": "Why professionals choose Dragon Professional 16",
+    "benefitsSubheading": "Serious speech recognition for serious work - locally installed, highly accurate, deeply customisable.",
+    "compareHeading": "Which Dragon Professional 16 suits you?",
+    "compareSubheading": "Five licensing options to match every professional need and budget. Click any version to see full details.",
+    "howItWorksSubheading": "Simple to buy, easy to deploy, fast to learn.",
+    "ctaHeading": "Not sure which version is right for you?",
+    "ctaBody": "Our team has been deploying Dragon Professional in Australian enterprises, government agencies, legal practices, and healthcare environments for 25 years. Tell us about your situation and we will recommend the right option.",
+    "ctaBullets": [
+      "How many users and what type of work",
+      "Whether you are upgrading from a previous version",
+      "Whether you need enterprise management tools",
+      "Your procurement or volume requirements"
+    ],
+    "aboutHeading": "Voice Recognition Australia - Dragon's longest-serving Australian partner",
+    "aboutBody": "Voice Recognition Australia has been the go-to resource for Dragon Professional in Australia since the product launched locally. We provide genuine local support, onboarding, and deployment guidance - not just a licence key. Our team has deployed Dragon across government departments, legal chambers, medical practices, and large enterprise environments.",
+    "footerDisclaimer": "Dragon, Dragon Professional, and related marks are the property of Nuance Communications (Microsoft). Voice Recognition Australia is an authorised Australian reseller. Pricing accurate at time of publication - verify current pricing at voicerecognition.com.au before purchase. All prices AUD including GST."
+  },
+  "navItems": [
+    { "label": "Why Dragon", "url": "#benefits" },
+    { "label": "Compare", "url": "#compare" },
+    { "label": "FAQ", "url": "#faq" },
+    { "label": "Resources", "url": "/resources" },
+    { "label": "Contact", "url": "#final-cta" }
+  ],
+  "navDropdown": {
+    "label": "Products",
+    "items": [
+      { "label": "Dragon Professional 16", "url": "/dragon-professional-16" },
+      { "label": "Upgrade from v15", "url": "/dragon-professional-16-upgrade" },
+      { "label": "Annual Subscription", "url": "/dragon-professional-16-subscription" },
+      { "label": "Student / Education", "url": "/dragon-professional-16-student" },
+      { "label": "Enterprise (Group)", "url": "/dragon-professional-group" }
+    ]
+  },
+  "primaryCTA": { "text": "Get in Touch", "url": "#final-cta" },
+  "secondaryCTA": { "text": "Compare Versions", "url": "#compare" },
+  "form": {
+    "id": "PLACEHOLDER",
+    "submitText": "Send Enquiry",
+    "hiddenU": "PLACEHOLDER",
+    "hiddenF": "PLACEHOLDER",
+    "hiddenOr": "PLACEHOLDER"
+  },
+  "stats": [
+    { "value": "40 years", "label": "Trusted in market" },
+    { "value": "15M+", "label": "Users worldwide" },
+    { "value": "from $495", "label": "Upgrade price AUD" },
+    { "value": "15 days", "label": "Free trial" }
+  ],
+  "products": [
+    {
+      "slug": "dragon-professional-16",
+      "badge": "Perpetual Licence",
+      "navLabel": "Dragon Professional 16",
+      "title": "Dragon Professional 16",
+      "metaTitle": "Buy Dragon Professional 16 | $994 AUD | Perpetual Licence | VRA Australia",
+      "metaDesc": "Dragon Professional 16 perpetual licence for Windows. Buy once, own forever. Dictate, transcribe and automate workflows. Local Australian support from Voice Recognition Australia.",
+      "headline": "Dragon Professional 16 - Own It Forever",
+      "subheadline": "The full-featured professional speech recognition suite for Windows. Pay once, own it permanently. Dictate into any application, transcribe single-speaker recordings, and automate repetitive tasks with custom voice commands.",
+      "price": "$994",
+      "priceNote": "AUD inc GST - one-time perpetual",
+      "licenceNote": "Licensed per user. Activate on up to 2 PCs.",
+      "installLimit": "Up to 2 PCs",
+      "bestFor": "Professionals who want to own forever",
+      "vraUrl": "https://www.voicerecognition.com.au/collections/dragon-professional",
+      "ctaText": "Buy Dragon Professional 16",
+      "highlight": false,
+      "features": [
+        "Real-time dictation into Word, Outlook, and hundreds of Windows applications",
+        "Transcribe single-speaker audio recordings (MP3, WAV, WMA, DSS, DS2)",
+        "Custom vocabulary - add industry terms, names, and shortcuts",
+        "AutoText - speak a short phrase to insert a full paragraph",
+        "Voice macros to automate multi-step Windows workflows",
+        "Works offline after installation and activation",
+        "Hands-free PC control, navigation, and mouse control",
+        "Windows 10 and Windows 11 (32-bit and 64-bit) compatible",
+        "Compatible with Microsoft 365, Google Docs, and more"
+      ],
+      "faqs": [
+        {
+          "q": "Does Dragon Professional 16 require an internet connection to use?",
+          "a": "No. After installation and activation, Dragon Professional 16 operates without an internet connection. An internet connection is required only for the initial download and product activation."
+        },
+        {
+          "q": "How many PCs can I install Dragon Professional 16 on?",
+          "a": "Dragon Professional 16 is licensed per user and can be activated on up to 2 Windows PCs under a single licence."
+        },
+        {
+          "q": "Can Dragon Professional 16 transcribe meeting recordings?",
+          "a": "Dragon Professional 16 can transcribe audio files containing a single speaker. It is not designed for multi-speaker conversations, interviews, or meetings. Supported formats include MP3, WAV, WMA, DS2, and DSS."
+        },
+        {
+          "q": "Is this a subscription or a one-time purchase?",
+          "a": "This is a perpetual licence - a one-time purchase. You pay once and own the software permanently with no annual renewal fees."
+        }
+      ]
+    },
+    {
+      "slug": "dragon-professional-16-upgrade",
+      "badge": "Upgrade Pricing",
+      "navLabel": "Upgrade from v15",
+      "title": "Dragon Professional 16 Upgrade",
+      "metaTitle": "Dragon Professional 16 Upgrade from v15 | $495 AUD | VRA Australia",
+      "metaDesc": "Upgrade from Dragon Professional 15 to Dragon Professional 16. $495 AUD inc GST. Windows 11 compatibility, improved accuracy, updated Office support. Australian reseller.",
+      "headline": "Dragon Professional 16 - Upgrade from Version 15",
+      "subheadline": "Already using Dragon Professional 15? Upgrade to v16 for Windows 11 compatibility, improved Microsoft 365 support, and the latest accuracy improvements. Save over $499 compared to buying new.",
+      "price": "$495",
+      "priceNote": "AUD inc GST - upgrade from v15 only",
+      "licenceNote": "Requires Dragon Professional Individual or Group v15 licence key.",
+      "installLimit": "Up to 2 PCs",
+      "bestFor": "Existing Dragon v15 users",
+      "vraUrl": "https://www.voicerecognition.com.au/collections/dragon-professional/products/dragon-professional-16-upgrade",
+      "ctaText": "Buy the Upgrade",
+      "highlight": false,
+      "features": [
+        "Full Dragon Professional 16 licence - all features included",
+        "Save $499 compared to full perpetual purchase price",
+        "Windows 11 and Windows 10 full compatibility",
+        "Updated Microsoft 365, Office 2021, and Teams support",
+        "Improved multi-monitor support",
+        "Your existing custom vocabulary and profiles carry over",
+        "Requires Dragon Professional Individual or Group v15 licence key",
+        "Upgrade valid from v15 only - not older versions or other editions"
+      ],
+      "faqs": [
+        {
+          "q": "Which versions of Dragon can use this upgrade?",
+          "a": "This upgrade is for Dragon Professional Individual or Dragon Professional Group version 15 only. It cannot be applied to Dragon version 14 or older, or to Dragon Home or Legal editions."
+        },
+        {
+          "q": "What do I need to complete the upgrade?",
+          "a": "You need your Dragon Professional v15 licence key available during installation. The upgrade installer checks eligibility automatically during setup."
+        },
+        {
+          "q": "Will my custom vocabulary and settings carry over?",
+          "a": "Yes. Dragon Professional 16 can import your existing user profiles, custom words, and AutoText from version 15 during the upgrade process."
+        },
+        {
+          "q": "What are the main improvements in v16 over v15?",
+          "a": "Key improvements include full Windows 11 support, updated compatibility with Microsoft 365 and Office 2021, improved multi-monitor support, and Microsoft Teams integration."
+        }
+      ]
+    },
+    {
+      "slug": "dragon-professional-16-subscription",
+      "badge": "Annual Subscription",
+      "navLabel": "Annual Subscription",
+      "title": "Dragon Professional 16 Annual Subscription",
+      "metaTitle": "Dragon Professional 16 Annual Subscription | $595/yr AUD | VRA Australia",
+      "metaDesc": "Dragon Professional 16 annual subscription. $595 AUD per year. Install on as many PCs as needed. Enhanced direct support included. Nuance Management Centre compatible.",
+      "headline": "Dragon Professional 16 - Annual Subscription",
+      "subheadline": "The full Dragon Professional 16 feature set on an annual subscription. Install on as many Windows PCs as you need and receive enhanced direct support from the Nuance team.",
+      "price": "$595",
+      "priceNote": "AUD inc GST per year",
+      "licenceNote": "Install on as many PCs as needed. Licence issued as username and password.",
+      "installLimit": "Unlimited PCs",
+      "bestFor": "Flexible users needing multiple PCs",
+      "vraUrl": "https://www.voicerecognition.com.au/collections/dragon-professional/products/dragon-professional-16-annual-subscription",
+      "ctaText": "Buy Annual Subscription",
+      "highlight": true,
+      "features": [
+        "Full Dragon Professional 16 feature set - no limitations",
+        "Install on as many Windows PCs as you need",
+        "Enhanced direct support included in subscription price",
+        "Nuance Management Centre (NMC) compatible",
+        "Licence issued as username and password",
+        "Activation may take up to 24 hours after purchase",
+        "Renews annually - cancel before renewal date to end subscription"
+      ],
+      "faqs": [
+        {
+          "q": "How does the subscription licence work?",
+          "a": "The subscription licence is issued as a username and password rather than a traditional licence key. Activation after purchase can take up to 24 hours. The subscription renews annually."
+        },
+        {
+          "q": "Can I install the subscription on multiple computers?",
+          "a": "Yes. Unlike the perpetual licence which allows 2 activations, the subscription licence can be installed on as many Windows PCs as you need."
+        },
+        {
+          "q": "What happens if I do not renew?",
+          "a": "If you do not renew before the annual renewal date, the licence expires and Dragon Professional will stop functioning. Your user profiles and custom vocabulary are stored locally and will not be deleted."
+        },
+        {
+          "q": "Is the subscription cheaper long-term than the perpetual licence?",
+          "a": "Over 3 years, the perpetual licence ($994 once) costs less than 3 annual subscriptions ($595 x 3 = $1,785). The subscription suits users who want flexible multi-PC deployment or prefer annual billing."
+        }
+      ]
+    },
+    {
+      "slug": "dragon-professional-16-student",
+      "badge": "Student / Education",
+      "navLabel": "Student / Education",
+      "title": "Dragon Professional 16 Student Edition",
+      "metaTitle": "Dragon Professional 16 Student Pricing | $545 AUD | Education | VRA Australia",
+      "metaDesc": "Dragon Professional 16 at student and education pricing. $545 AUD inc GST. Full version, perpetual licence. Two PC activations. For students and educators in Australia.",
+      "headline": "Dragon Professional 16 - Student and Education Pricing",
+      "subheadline": "The complete Dragon Professional 16 experience at a discounted price for students and educators. Dictate essays, assignments, and research faster and more accurately than typing.",
+      "price": "$545",
+      "priceNote": "AUD inc GST - perpetual licence",
+      "licenceNote": "Full version. Licensed per user. Install on up to 2 PCs.",
+      "installLimit": "Up to 2 PCs",
+      "bestFor": "Students and educators",
+      "vraUrl": "https://www.voicerecognition.com.au/collections/dragon-professional/products/dragon-professional-16-educational-student",
+      "ctaText": "Buy Student Edition",
+      "highlight": false,
+      "features": [
+        "Full Dragon Professional 16 - no feature restrictions",
+        "Discounted from $994 to $545 for students and educators",
+        "Perpetual licence - pay once, own it permanently",
+        "Install on up to 2 Windows PCs",
+        "Dictate essays, assignments, and research notes hands-free",
+        "Excellent for students with dyslexia, RSI, or accessibility needs",
+        "Windows 10 and Windows 11 compatible"
+      ],
+      "faqs": [
+        {
+          "q": "Is this the full version of Dragon Professional 16?",
+          "a": "Yes. The student and education edition is the complete Dragon Professional 16 product with no feature restrictions. The only difference is the pricing."
+        },
+        {
+          "q": "Is proof of student or educator status required?",
+          "a": "Please contact Voice Recognition Australia directly when purchasing for specific eligibility requirements."
+        },
+        {
+          "q": "Can students use Dragon for accessibility purposes?",
+          "a": "Yes. Dragon Professional is widely used by students with dyslexia, repetitive strain injuries, and other conditions that make typing difficult or painful. Full hands-free PC control is included."
+        }
+      ]
+    },
+    {
+      "slug": "dragon-professional-group",
+      "badge": "Enterprise and Government",
+      "navLabel": "Enterprise (Group)",
+      "title": "Dragon Professional Group",
+      "metaTitle": "Dragon Professional Group | Enterprise and Government | VRA Australia",
+      "metaDesc": "Dragon Professional Group for enterprise and government. Centralised management via Nuance Management Centre. Volume licensing, SSO, usage reporting. Contact Voice Recognition Australia.",
+      "headline": "Dragon Professional Group - Enterprise and Government",
+      "subheadline": "Dragon Professional Group delivers the full Dragon Professional 16 capability with added tools for IT teams - centralised management, volume licensing, Active Directory and SSO authentication, and usage reporting via the Nuance Management Centre.",
+      "price": "Enquire",
+      "priceNote": "Volume pricing - contact us",
+      "licenceNote": "Centralised management via Nuance Management Centre. Volume licensing available.",
+      "installLimit": "Managed via NMC",
+      "bestFor": "Teams of 5 or more",
+      "vraUrl": "https://www.voicerecognition.com.au/pages/dragon-professional-group-enterprise",
+      "ctaText": "Enquire About Enterprise Licensing",
+      "highlight": false,
+      "features": [
+        "All Dragon Professional 16 features for every user",
+        "Centralised management via Nuance Management Centre (NMC)",
+        "Volume licensing with central assignment and redistribution",
+        "Active Directory and SSO authentication support",
+        "Shared vocabulary, AutoText, and command distribution across users",
+        "Usage reporting at user, group, and enterprise level",
+        "TLS 1.2 secured connection to NMC",
+        "Citrix and Remote Desktop (RDP) deployment supported",
+        "Local Australian deployment support from Voice Recognition Australia"
+      ],
+      "faqs": [
+        {
+          "q": "What is the Nuance Management Centre?",
+          "a": "The Nuance Management Centre (NMC) is a server-based administration tool for IT teams to centrally manage Dragon Professional Group deployments - including assigning licences, managing user profiles, distributing custom vocabulary and commands, and monitoring usage across the organisation."
+        },
+        {
+          "q": "Does Dragon Professional Group support Single Sign-On?",
+          "a": "Yes. Dragon Professional Group supports Active Directory authentication and native NMC authentication. Single sign-on via Windows credentials is supported in managed environments."
+        },
+        {
+          "q": "Can Dragon Professional Group be deployed on Citrix or Remote Desktop?",
+          "a": "Yes. Dragon Professional Group supports Citrix and Remote Desktop Protocol (RDP) deployments. Specific configuration requirements apply - contact our team for guidance on your environment."
+        },
+        {
+          "q": "What are the security considerations for enterprise deployment?",
+          "a": "Dragon Professional Group communicates with NMC via TLS 1.2. Note that Dragon dictation recording files (DRA files) are not encrypted and should be stored with appropriate security controls. Consult the enterprise installation guide for full security guidance."
+        }
+      ]
+    }
+  ],
+  "benefits": [
+    {
+      "title": "Works offline after activation",
+      "body": "Once installed and activated, Dragon Professional 16 runs without an internet connection. No cloud processing, no data leaving your network. Critical for legal, healthcare, and government users with data handling requirements."
+    },
+    {
+      "title": "Professional accuracy and custom vocabulary",
+      "body": "Dragon Professional 16 adapts to your voice, accent, and industry vocabulary. Add custom words, AutoText shortcuts, and voice macros to build a dictation environment tailored to how you actually work."
+    },
+    {
+      "title": "Transcribe audio recordings",
+      "body": "Beyond live dictation, Dragon Professional 16 can transcribe pre-recorded single-speaker audio files. Supported formats include MP3, WAV, WMA, DS2, and DSS - ideal for field notes and recorded dictation workflows."
+    },
+    {
+      "title": "Enterprise-ready deployment",
+      "body": "Dragon Professional Group adds centralised management via the Nuance Management Centre - volume licensing, Active Directory authentication, shared vocabularies, usage reporting, and Citrix support for large-scale rollouts."
+    }
+  ],
+  "proofPoints": [
+    "40 years in market - trusted by professionals since 1985",
+    "15 million users worldwide across legal, medical, and government",
+    "Works offline after installation and activation",
+    "Local Australian support from Voice Recognition Australia"
+  ],
+  "steps": [
+    {
+      "title": "Choose your version",
+      "text": "Compare perpetual, upgrade, subscription, student, and enterprise options to find the right fit for your needs and budget."
+    },
+    {
+      "title": "Purchase from VRA",
+      "text": "Buy securely from Voice Recognition Australia, Australia's longest-serving Dragon reseller. Receive your licence and download link promptly."
+    },
+    {
+      "title": "Install and start dictating",
+      "text": "Follow the guided installation, activate your licence, and begin dictating immediately. Local support available if you need assistance."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Is Dragon Professional 16 available for Mac?",
+      "a": "Dragon Professional 16 is a Windows-only product (Windows 10 and Windows 11). There is no Mac version of Dragon Professional 16. Nuance discontinued Dragon for Mac."
+    },
+    {
+      "q": "What is the difference between Dragon Professional 16 and Dragon Professional Anywhere?",
+      "a": "Dragon Professional 16 is a locally installed Windows application that can operate offline after activation. Dragon Professional Anywhere is a cloud-native product that requires an internet connection. Dragon Professional 16 is preferred where data handling requirements or intermittent connectivity are a concern."
+    },
+    {
+      "q": "Can Dragon Professional 16 transcribe meetings or multi-speaker recordings?",
+      "a": "No. Dragon Professional 16 is designed for single-speaker audio only. It will not reliably transcribe multi-speaker conversations, interviews, or meeting recordings. Supported formats for single-speaker transcription include MP3, WAV, WMA, DS2, and DSS."
+    },
+    {
+      "q": "Does Dragon Professional 16 work with Microsoft Teams?",
+      "a": "Dragon Professional 16 includes support for dictating into Microsoft Teams. Some advanced voice commands may have limitations in Teams Home edition. Refer to the Dragon Professional 16 release notes for current Teams compatibility details."
+    },
+    {
+      "q": "Is there a free trial available?",
+      "a": "A 15-day trial is available. Contact Voice Recognition Australia to arrange trial access along with local onboarding support."
+    },
+    {
+      "q": "Which microphone should I use with Dragon Professional 16?",
+      "a": "Dragon Professional 16 works with a range of USB and 3.5mm microphones. Apple AirPods are not supported for dictation. A dedicated dictation microphone or USB headset generally provides the best accuracy. Contact our team for microphone recommendations."
+    }
+  ],
+  "footerLinks": [
+    { "label": "About", "url": "/about" },
+    { "label": "Privacy Policy", "url": "/privacy" },
+    { "label": "Terms", "url": "/terms" },
+    { "label": "Contact", "url": "#final-cta" }
+  ]
+}
