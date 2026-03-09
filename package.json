@@ -1,0 +1,1 @@
+{\n  \"name\": \"dragonprofessional16\",\n  \"private\": true,\n  \"version\": \"0.0.1\",\n  \"type\": \"module\",\n  \"scripts\": {\n    \"dev\": \"astro dev\",\n    \"build\": \"astro build\",\n    \"preview\": \"astro preview\"\n  },\n  \"dependencies\": {\n    \"astro\": \"^4.0.0\"\n  }\n}\n
