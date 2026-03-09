@@ -1,15 +1,11 @@
 {
   "hero": {
     "key": "hero",
-    "r2Key": "dragonprofessional16/2026/03/09/dragon-professional-16-speech-recognition-australia-af4fbd11.png",
-    "filename": "dragon-professional-16-speech-recognition-australia-af4fbd11.png",
+    "r2Key": "dragonprofessional16/2026/03/09/dragon-professional-16-software-box.png.png",
+    "filename": "dragon-professional-16-software-box.png.png",
     "contentType": "image/png",
-    "bytes": 1720540,
-    "altText": "Using Dragon speech recognition software Windows PC Australian office environment legal government",
-    "prompt": "Professional using Dragon speech recognition software on Windows PC, modern Australian office environment, legal or government setting, dictating documents hands-free, confident and productive, dark and red professional tones",
-    "promptHash": "a403a89c42d2ba2aca4861072d75512988125f288f54fa600f847b09fc23961e",
-    "generatedAt": "2026-03-09T06:20:58.937Z",
-    "site": "dragonprofessional16"
+    "altText": "Nuance Dragon Professional 16 retail box edition - speech recognition software",
+    "manual": true
   },
   "about-banner": {
     "key": "about-banner",
@@ -18,8 +14,6 @@
     "contentType": "image/png",
     "bytes": 1828220,
     "altText": "Australian enterprise technology support team office environment speech recognition software deployment trusted",
-    "prompt": "Australian enterprise technology support team, professional office environment, speech recognition software deployment, trusted local experts, collaborative and professional",
-    "promptHash": "cf00e70a12bc76e6f176317d6b587fa21953e8fb54eed3717145f48bac394a3a",
     "generatedAt": "2026-03-09T06:21:15.442Z",
     "site": "dragonprofessional16"
   },
@@ -30,8 +24,6 @@
     "contentType": "image/png",
     "bytes": 1778854,
     "altText": "Close up dictating into microphone connected Windows PC Dragon software interface visible",
-    "prompt": "Close-up of professional dictating into a high-quality microphone connected to a Windows PC, Dragon Professional software interface visible on screen, clean desk in a legal or corporate office",
-    "promptHash": "162fbbc1c504edf45c620310d60b4e41d78c535ca6ac9c241ffd2031f480ac8c",
     "generatedAt": "2026-03-09T06:21:34.565Z",
     "site": "dragonprofessional16"
   },
@@ -42,8 +34,6 @@
     "contentType": "image/png",
     "bytes": 1767494,
     "altText": "Enterprise knowledge worker using voice commands automate document workflows Windows multiple application",
-    "prompt": "Enterprise knowledge worker using voice commands to automate document workflows on Windows, multiple application windows open, productivity focus, modern professional Australian workplace",
-    "promptHash": "b07d27656eebff2bc1e2ef2b450c6c20d1322c46fdaff9f1d72003b4c5f823b2",
     "generatedAt": "2026-03-09T06:21:49.786Z",
     "site": "dragonprofessional16"
   },
@@ -54,9 +44,92 @@
     "contentType": "image/png",
     "bytes": 1737831,
     "altText": "Australian government legal reviewing documents speech recognition technology formal environment trust expertise",
-    "prompt": "Australian government or legal professional reviewing documents with speech recognition technology, formal professional environment, trust and expertise, dark professional tones",
-    "promptHash": "60729ca7032130e19ef698e10400ca8033f9be6d77fc367c38d23491b39b8295",
     "generatedAt": "2026-03-09T06:22:05.653Z",
+    "site": "dragonprofessional16"
+  },
+  "product-perpetual-hero": {
+    "key": "product-perpetual-hero",
+    "r2Key": "dragonprofessional16/2026/03/09/dragon-professional-16-software-download.png",
+    "filename": "dragon-professional-16-software-download.png",
+    "contentType": "image/png",
+    "altText": "Dragon Professional 16 software download - professional using speech recognition on laptop in relaxed setting",
+    "manual": true
+  },
+  "product-perpetual-feature": {
+    "key": "product-perpetual-feature",
+    "r2Key": "dragonprofessional16/2026/03/09/dragon-professional-16.png",
+    "filename": "dragon-professional-16.png",
+    "contentType": "image/png",
+    "altText": "Dragon Professional 16 perpetual licence - offline dictation on Windows PC",
+    "manual": true
+  },
+  "product-upgrade-hero": {
+    "key": "product-upgrade-hero",
+    "r2Key": "dragonprofessional16/2026/03/09/dragon-professional-16-software-box.png.png",
+    "filename": "dragon-professional-16-software-box.png.png",
+    "contentType": "image/png",
+    "altText": "Dragon Professional 16 retail box - upgrade from version 15",
+    "manual": true
+  },
+  "product-upgrade-feature": {
+    "key": "product-upgrade-feature",
+    "r2Key": "dragonprofessional16/2026/03/09/dragon-professional-16-dictation-workflow-ea159f92.png",
+    "filename": "dragon-professional-16-dictation-workflow-ea159f92.png",
+    "contentType": "image/png",
+    "altText": "Dragon Professional 16 Windows 11 upgrade - dictation workflow on modern PC",
+    "generatedAt": "2026-03-09T06:21:34.565Z",
+    "site": "dragonprofessional16"
+  },
+  "product-subscription-hero": {
+    "key": "product-subscription-hero",
+    "r2Key": "dragonprofessional16/2026/03/09/dragon-professional-16-software-download.png",
+    "filename": "dragon-professional-16-software-download.png",
+    "contentType": "image/png",
+    "altText": "Dragon Professional 16 annual subscription - flexible use across multiple PCs",
+    "manual": true
+  },
+  "product-subscription-feature": {
+    "key": "product-subscription-feature",
+    "r2Key": "dragonprofessional16/2026/03/09/dragon-voice-command-automation-enterprise-ee67d552.png",
+    "filename": "dragon-voice-command-automation-enterprise-ee67d552.png",
+    "contentType": "image/png",
+    "altText": "Dragon Professional subscription - voice command automation across multiple Windows PCs",
+    "generatedAt": "2026-03-09T06:21:49.786Z",
+    "site": "dragonprofessional16"
+  },
+  "product-student-hero": {
+    "key": "product-student-hero",
+    "r2Key": "dragonprofessional16/2026/03/09/dragon-professional-16.png",
+    "filename": "dragon-professional-16.png",
+    "contentType": "image/png",
+    "altText": "Dragon Professional 16 student edition - speech recognition for Australian students",
+    "manual": true
+  },
+  "product-student-feature": {
+    "key": "product-student-feature",
+    "r2Key": "dragonprofessional16/2026/03/09/dragon-professional-16-dictation-workflow-ea159f92.png",
+    "filename": "dragon-professional-16-dictation-workflow-ea159f92.png",
+    "contentType": "image/png",
+    "altText": "Student dictating assignment with Dragon Professional 16 hands-free on Windows PC",
+    "generatedAt": "2026-03-09T06:21:34.565Z",
+    "site": "dragonprofessional16"
+  },
+  "product-enterprise-hero": {
+    "key": "product-enterprise-hero",
+    "r2Key": "dragonprofessional16/2026/03/09/dragon-professional-16-government-legal-australia-943bec6f.png",
+    "filename": "dragon-professional-16-government-legal-australia-943bec6f.png",
+    "contentType": "image/png",
+    "altText": "Dragon Professional Group enterprise government deployment Australia",
+    "generatedAt": "2026-03-09T06:22:05.653Z",
+    "site": "dragonprofessional16"
+  },
+  "product-enterprise-feature": {
+    "key": "product-enterprise-feature",
+    "r2Key": "dragonprofessional16/2026/03/09/dragon-voice-command-automation-enterprise-ee67d552.png",
+    "filename": "dragon-voice-command-automation-enterprise-ee67d552.png",
+    "contentType": "image/png",
+    "altText": "Enterprise Dragon Professional Group centralised management Nuance Management Centre",
+    "generatedAt": "2026-03-09T06:21:49.786Z",
     "site": "dragonprofessional16"
   }
 }
