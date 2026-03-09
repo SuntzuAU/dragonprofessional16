@@ -1,18 +1,18 @@
 {
   "hero": {
     "key": "hero",
-    "r2Key": "dragonprofessional16/2026/03/09/dragon-professional-16-software-box.png.png",
-    "filename": "dragon-professional-16-software-box.png.png",
+    "r2Key": "dragonprofessional16/2026/03/09/dragon-professional-16-speech-recognition-australia-af4fbd11.png",
+    "filename": "dragon-professional-16-speech-recognition-australia-af4fbd11.png",
     "contentType": "image/png",
-    "altText": "Nuance Dragon Professional 16 retail box edition - speech recognition software",
-    "manual": true
+    "altText": "Dragon Professional 16 speech recognition software in use in Australian professional office environment",
+    "generatedAt": "2026-03-09T06:20:58.937Z",
+    "site": "dragonprofessional16"
   },
   "about-banner": {
     "key": "about-banner",
     "r2Key": "dragonprofessional16/2026/03/09/voice-recognition-australia-dragon-support-team-87a4f6ae.png",
     "filename": "voice-recognition-australia-dragon-support-team-87a4f6ae.png",
     "contentType": "image/png",
-    "bytes": 1828220,
     "altText": "Australian enterprise technology support team office environment speech recognition software deployment trusted",
     "generatedAt": "2026-03-09T06:21:15.442Z",
     "site": "dragonprofessional16"
@@ -22,7 +22,6 @@
     "r2Key": "dragonprofessional16/2026/03/09/dragon-professional-16-dictation-workflow-ea159f92.png",
     "filename": "dragon-professional-16-dictation-workflow-ea159f92.png",
     "contentType": "image/png",
-    "bytes": 1778854,
     "altText": "Close up dictating into microphone connected Windows PC Dragon software interface visible",
     "generatedAt": "2026-03-09T06:21:34.565Z",
     "site": "dragonprofessional16"
@@ -32,7 +31,6 @@
     "r2Key": "dragonprofessional16/2026/03/09/dragon-voice-command-automation-enterprise-ee67d552.png",
     "filename": "dragon-voice-command-automation-enterprise-ee67d552.png",
     "contentType": "image/png",
-    "bytes": 1767494,
     "altText": "Enterprise knowledge worker using voice commands automate document workflows Windows multiple application",
     "generatedAt": "2026-03-09T06:21:49.786Z",
     "site": "dragonprofessional16"
@@ -42,7 +40,6 @@
     "r2Key": "dragonprofessional16/2026/03/09/dragon-professional-16-government-legal-australia-943bec6f.png",
     "filename": "dragon-professional-16-government-legal-australia-943bec6f.png",
     "contentType": "image/png",
-    "bytes": 1737831,
     "altText": "Australian government legal reviewing documents speech recognition technology formal environment trust expertise",
     "generatedAt": "2026-03-09T06:22:05.653Z",
     "site": "dragonprofessional16"
@@ -65,10 +62,10 @@
   },
   "product-upgrade-hero": {
     "key": "product-upgrade-hero",
-    "r2Key": "dragonprofessional16/2026/03/09/dragon-professional-16-software-box.png.png",
-    "filename": "dragon-professional-16-software-box.png.png",
+    "r2Key": "dragonprofessional16/2026/03/09/dragon-professional-16-software-download.png",
+    "filename": "dragon-professional-16-software-download.png",
     "contentType": "image/png",
-    "altText": "Dragon Professional 16 retail box - upgrade from version 15",
+    "altText": "Dragon Professional 16 upgrade from version 15 - professional using speech recognition",
     "manual": true
   },
   "product-upgrade-feature": {
