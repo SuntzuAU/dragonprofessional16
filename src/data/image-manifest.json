@@ -1,37 +1,62 @@
 {
   "hero": {
     "key": "hero",
-    "r2Key": "",
-    "filename": "",
-    "altText": "Dragon Professional 16 speech recognition software in use in Australian professional office environment",
-    "prompt": ""
+    "r2Key": "dragonprofessional16/2026/03/09/dragon-professional-16-speech-recognition-australia-af4fbd11.png",
+    "filename": "dragon-professional-16-speech-recognition-australia-af4fbd11.png",
+    "contentType": "image/png",
+    "bytes": 1720540,
+    "altText": "Using Dragon speech recognition software Windows PC Australian office environment legal government",
+    "prompt": "Professional using Dragon speech recognition software on Windows PC, modern Australian office environment, legal or government setting, dictating documents hands-free, confident and productive, dark and red professional tones",
+    "promptHash": "a403a89c42d2ba2aca4861072d75512988125f288f54fa600f847b09fc23961e",
+    "generatedAt": "2026-03-09T06:20:58.937Z",
+    "site": "dragonprofessional16"
   },
   "about-banner": {
     "key": "about-banner",
-    "r2Key": "",
-    "filename": "",
-    "altText": "Voice Recognition Australia team supporting Dragon Professional deployments across Australian enterprise and government",
-    "prompt": ""
+    "r2Key": "dragonprofessional16/2026/03/09/voice-recognition-australia-dragon-support-team-87a4f6ae.png",
+    "filename": "voice-recognition-australia-dragon-support-team-87a4f6ae.png",
+    "contentType": "image/png",
+    "bytes": 1828220,
+    "altText": "Australian enterprise technology support team office environment speech recognition software deployment trusted",
+    "prompt": "Australian enterprise technology support team, professional office environment, speech recognition software deployment, trusted local experts, collaborative and professional",
+    "promptHash": "cf00e70a12bc76e6f176317d6b587fa21953e8fb54eed3717145f48bac394a3a",
+    "generatedAt": "2026-03-09T06:21:15.442Z",
+    "site": "dragonprofessional16"
   },
   "feature-dictation": {
     "key": "feature-dictation",
-    "r2Key": "",
-    "filename": "",
-    "altText": "Professional dictating into microphone with Dragon Professional 16 open on Windows PC",
-    "prompt": ""
+    "r2Key": "dragonprofessional16/2026/03/09/dragon-professional-16-dictation-workflow-ea159f92.png",
+    "filename": "dragon-professional-16-dictation-workflow-ea159f92.png",
+    "contentType": "image/png",
+    "bytes": 1778854,
+    "altText": "Close up dictating into microphone connected Windows PC Dragon software interface visible",
+    "prompt": "Close-up of professional dictating into a high-quality microphone connected to a Windows PC, Dragon Professional software interface visible on screen, clean desk in a legal or corporate office",
+    "promptHash": "162fbbc1c504edf45c620310d60b4e41d78c535ca6ac9c241ffd2031f480ac8c",
+    "generatedAt": "2026-03-09T06:21:34.565Z",
+    "site": "dragonprofessional16"
   },
   "feature-automation": {
     "key": "feature-automation",
-    "r2Key": "",
-    "filename": "",
-    "altText": "Enterprise knowledge worker using Dragon voice commands to automate document workflows",
-    "prompt": ""
+    "r2Key": "dragonprofessional16/2026/03/09/dragon-voice-command-automation-enterprise-ee67d552.png",
+    "filename": "dragon-voice-command-automation-enterprise-ee67d552.png",
+    "contentType": "image/png",
+    "bytes": 1767494,
+    "altText": "Enterprise knowledge worker using voice commands automate document workflows Windows multiple application",
+    "prompt": "Enterprise knowledge worker using voice commands to automate document workflows on Windows, multiple application windows open, productivity focus, modern professional Australian workplace",
+    "promptHash": "b07d27656eebff2bc1e2ef2b450c6c20d1322c46fdaff9f1d72003b4c5f823b2",
+    "generatedAt": "2026-03-09T06:21:49.786Z",
+    "site": "dragonprofessional16"
   },
   "cta-banner": {
     "key": "cta-banner",
-    "r2Key": "",
-    "filename": "",
-    "altText": "Australian legal or government professional using Dragon Professional 16 for document dictation",
-    "prompt": ""
+    "r2Key": "dragonprofessional16/2026/03/09/dragon-professional-16-government-legal-australia-943bec6f.png",
+    "filename": "dragon-professional-16-government-legal-australia-943bec6f.png",
+    "contentType": "image/png",
+    "bytes": 1737831,
+    "altText": "Australian government legal reviewing documents speech recognition technology formal environment trust expertise",
+    "prompt": "Australian government or legal professional reviewing documents with speech recognition technology, formal professional environment, trust and expertise, dark professional tones",
+    "promptHash": "60729ca7032130e19ef698e10400ca8033f9be6d77fc367c38d23491b39b8295",
+    "generatedAt": "2026-03-09T06:22:05.653Z",
+    "site": "dragonprofessional16"
   }
 }
