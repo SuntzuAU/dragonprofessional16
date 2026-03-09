@@ -1,9 +1,9 @@
 {
   "hero": {
     "key": "hero",
-    "r2Key": "dragonprofessional16/2026/03/09/Dragon-Professional-16-Software-Australia.png",
-    "filename": "Dragon-Professional-16-Software-Australia.png",
-    "contentType": "image/png",
+    "r2Key": "dragonprofessional16/2026/03/09/Dragon-Professional-16-Software-Australia.webp",
+    "filename": "Dragon-Professional-16-Software-Australia.webp",
+    "contentType": "image/webp",
     "altText": "Dragon Professional 16 speech recognition software - Australia's leading dictation solution for legal, medical and enterprise",
     "manual": true,
     "site": "dragonprofessional16"
