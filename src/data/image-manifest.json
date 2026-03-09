@@ -62,10 +62,10 @@
   },
   "product-upgrade-hero": {
     "key": "product-upgrade-hero",
-    "r2Key": "dragonprofessional16/2026/03/09/dragon-professional-16-software-download.png",
-    "filename": "dragon-professional-16-software-download.png",
+    "r2Key": "dragonprofessional16/2026/03/09/Dragon-Professional-16-Upgrade.png",
+    "filename": "Dragon-Professional-16-Upgrade.png",
     "contentType": "image/png",
-    "altText": "Dragon Professional 16 upgrade from version 15 - professional using speech recognition",
+    "altText": "Dragon Professional 16 upgrade from version 15 - Windows 11 compatible speech recognition",
     "manual": true
   },
   "product-upgrade-feature": {
@@ -96,10 +96,10 @@
   },
   "product-student-hero": {
     "key": "product-student-hero",
-    "r2Key": "dragonprofessional16/2026/03/09/dragon-professional-16-software.png",
-    "filename": "dragon-professional-16-software.png",
+    "r2Key": "dragonprofessional16/2026/03/09/Dragon-Professional-Student-Educational.png",
+    "filename": "Dragon-Professional-Student-Educational.png",
     "contentType": "image/png",
-    "altText": "Dragon Professional 16 student edition - speech recognition for Australian students",
+    "altText": "Dragon Professional 16 student and education edition - speech recognition for Australian students",
     "manual": true
   },
   "product-student-feature": {
@@ -113,12 +113,11 @@
   },
   "product-enterprise-hero": {
     "key": "product-enterprise-hero",
-    "r2Key": "dragonprofessional16/2026/03/09/dragon-professional-16-government-legal-australia-943bec6f.png",
-    "filename": "dragon-professional-16-government-legal-australia-943bec6f.png",
+    "r2Key": "dragonprofessional16/2026/03/09/Dragon-Professional-Group-Enterprise-Government.png",
+    "filename": "Dragon-Professional-Group-Enterprise-Government.png",
     "contentType": "image/png",
-    "altText": "Dragon Professional Group enterprise government deployment Australia",
-    "generatedAt": "2026-03-09T06:22:05.653Z",
-    "site": "dragonprofessional16"
+    "altText": "Dragon Professional Group enterprise and government deployment Australia - centralised management",
+    "manual": true
   },
   "product-enterprise-feature": {
     "key": "product-enterprise-feature",
