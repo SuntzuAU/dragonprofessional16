@@ -1,0 +1,677 @@
+---
+import site from "../site.config.json";
+import ACForm from "../components/ACForm.astro";
+
+const c = site.colours;
+const year = new Date().getFullYear();
+
+// Helper: prefix anchor-only links with / for nav
+function homeUrl(url) {
+  if (!url) return "/";
+  return url.startsWith("#") ? `/${url}` : url;
+}
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dragon Professional 16 - Full Feature Comparison | All Versions | VRA Australia</title>
+    <meta name="description" content="Compare all Dragon Professional 16 versions side by side - perpetual, upgrade, subscription, student, and enterprise. Full feature matrix including offline use, PC limits, NMC support, and pricing. Voice Recognition Australia." />
+    <link rel="canonical" href={`${site.domain}/comparison`} />
+
+    {site.googleAnalyticsId && (
+      <script async src={`https://www.googletagmanager.com/gtag/js?id=${site.googleAnalyticsId}`}></script>
+      <script define:vars={{ gaId: site.googleAnalyticsId }}>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', gaId);
+      </script>
+    )}
+
+    <script define:vars={{ c }}>
+      const css = `
+        body { background: ${c.background}; color: ${c.text}; }
+        .btn-primary { background: ${c.accent}; border-color: ${c.accent}; color: #fff; }
+        .btn-primary:hover { background: ${c.accentHover}; border-color: ${c.accentHover}; }
+        .btn-secondary { color: ${c.primary}; border-color: #cbd5e1; }
+        .neutral-bg { background: ${c.neutral}; }
+        .dark-bg { background: ${c.primary}; color: white; }
+        .nav-links a:hover, .dropdown-toggle:hover { color: ${c.accent}; }
+        .dropdown-menu { border-top: 2px solid ${c.accent}; }
+        .check { color: ${c.accent}; }
+        .col-head { background: ${c.primary}; color: white; }
+        .col-head.featured { background: ${c.accent}; }
+        .section-head td { background: #f1f5f9; color: ${c.primary}; font-weight: 700; }
+        .vs-head { background: ${c.primary}; color: white; }
+        .price-row td { font-weight: 800; color: ${c.accent}; font-size: 18px; }
+        .cta-cell a { background: ${c.accent}; color: #fff; }
+        .cta-cell a:hover { background: ${c.accentHover}; }
+      `;
+      const el = document.createElement('style');
+      el.textContent = css;
+      document.head.appendChild(el);
+    </script>
+
+    <style is:inline>
+      *,*::before,*::after{box-sizing:border-box}
+      body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6}
+      a{color:inherit;text-decoration:none}
+      img{max-width:100%;display:block}
+      .wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+      header{position:sticky;top:0;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid #e2e8f0;z-index:100}
+      .nav{display:flex;align-items:center;justify-content:space-between;padding:10px 0;gap:16px}
+      .logo img{height:40px;width:auto}
+      .nav-links{display:flex;gap:18px;font-size:14px;font-weight:500;color:#334155;align-items:center}
+      .nav-links a{white-space:nowrap}
+      .dropdown{position:relative}
+      .dropdown-toggle{cursor:pointer;display:flex;align-items:center;gap:4px;white-space:nowrap}
+      .dropdown-toggle svg{transition:transform .15s}
+      .dropdown:hover .dropdown-toggle svg{transform:rotate(180deg)}
+      .dropdown-menu{display:none;position:absolute;top:100%;left:0;background:#fff;border:1px solid #e2e8f0;border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.1);min-width:220px;padding:8px 0 6px;z-index:200}
+      .dropdown:hover .dropdown-menu{display:block}
+      .dropdown-menu a{display:block;padding:10px 16px;font-size:14px;font-weight:500;color:#334155;transition:background .1s}
+      .dropdown-menu a:hover{background:#fef2f2;color:#CC0000}
+      .nav-ctas{display:flex;gap:10px;align-items:center;flex-shrink:0}
+      .btn{display:inline-block;padding:10px 20px;border-radius:8px;font-weight:700;font-size:14px;border:2px solid transparent;cursor:pointer;transition:all .15s;white-space:nowrap}
+      .btn-secondary{background:white;border-color:#cbd5e1}
+      .btn-lg{padding:14px 28px;font-size:16px;border-radius:10px}
+      .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none}
+      .hamburger span{display:block;width:22px;height:2px;background:#334155;border-radius:2px}
+      .mobile-nav{display:none;padding:12px 0 8px;border-top:1px solid #e2e8f0}
+      .mobile-nav a{display:block;padding:10px 0;font-size:15px;font-weight:500;color:#334155;border-bottom:1px solid #f1f5f9}
+      section{padding:56px 0}
+      .page-hero{padding:40px 0 32px;border-bottom:1px solid #e2e8f0}
+      .breadcrumb{font-size:13px;color:#64748b;margin-bottom:12px}
+      .breadcrumb a{color:#CC0000;font-weight:500}
+      .page-hero h1{font-size:36px;line-height:1.1;margin:0 0 10px;letter-spacing:-0.03em}
+      .page-hero p{font-size:16px;color:#475569;margin:0;max-width:680px}
+
+      /* Main comparison table */
+      .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:16px;border:1px solid #e2e8f0;margin-top:32px}
+      table{width:100%;border-collapse:collapse;min-width:700px}
+      th,td{padding:12px 14px;font-size:14px;border-bottom:1px solid #f1f5f9;text-align:left;vertical-align:middle}
+      th{font-weight:700}
+      .col-head{padding:16px 14px;font-size:13px;font-weight:700;text-align:center;vertical-align:bottom}
+      .feature-col{width:30%;font-size:14px;color:#334155;font-weight:500}
+      .val-col{text-align:center;font-size:14px;color:#475569}
+      .section-head td{padding:10px 14px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;border-bottom:1px solid #e2e8f0}
+      .check{font-size:18px;font-weight:900}
+      .cross{color:#94a3b8;font-size:16px}
+      .partial{color:#f59e0b;font-size:14px;font-weight:600}
+      .note{font-size:11px;color:#94a3b8;display:block;margin-top:2px}
+      .price-row td{padding:16px 14px;border-top:2px solid #e2e8f0}
+      .cta-cell{text-align:center;padding:12px 8px}
+      .cta-cell a{display:inline-block;padding:8px 14px;border-radius:8px;font-size:13px;font-weight:700;transition:background .15s;white-space:nowrap}
+
+      /* vs section */
+      .vs-table-wrap{overflow-x:auto;border-radius:16px;border:1px solid #e2e8f0;margin-top:24px}
+      .vs-head td{padding:14px;font-size:14px;font-weight:700;text-align:center}
+      .vs-head td:first-child{text-align:left}
+      .vs-row td{padding:12px 14px;font-size:14px;border-bottom:1px solid #f1f5f9;vertical-align:top}
+      .vs-row td:first-child{font-weight:500;color:#334155}
+      .dragon-col{background:#fff8f8}
+      .win-col{background:#f8faff}
+      .google-col{background:#f8fff8}
+      .sub-col{background:#fffbf0}
+
+      /* Content sections */
+      .prose{max-width:820px}
+      .prose h2{font-size:24px;letter-spacing:-0.02em;margin:0 0 12px}
+      .prose p{font-size:15px;line-height:1.8;color:#334155;margin:0 0 16px}
+      .prose ul{margin:0 0 16px;padding-left:24px}
+      .prose li{font-size:15px;line-height:1.8;color:#334155;margin-bottom:4px}
+      .two-col{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:24px}
+      .info-card{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:22px}
+      .info-card h3{margin:0 0 10px;font-size:17px}
+      .info-card p{margin:0;font-size:14px;color:#475569;line-height:1.7}
+      .info-card ul{margin:8px 0 0;padding-left:20px}
+      .info-card li{font-size:14px;color:#475569;line-height:1.8}
+      .verdict-badge{display:inline-block;padding:3px 10px;border-radius:999px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px}
+      .verdict-dragon{background:#fde8e8;color:#991b1b}
+      .verdict-free{background:#e0f2fe;color:#0c4a6e}
+      .verdict-either{background:#fef3c7;color:#92400e}
+
+      footer{background:#111;color:#64748b;padding:28px 0;font-size:14px}
+      .footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+      .footer-links{display:flex;gap:20px}
+      .footer-links a:hover{color:white}
+      .footer-disclaimer{font-size:11px;color:#475569;line-height:1.6;margin-top:12px;padding-top:12px;border-top:1px solid #222}
+
+      @media(max-width:600px){
+        .nav-links{display:none}
+        .nav-ctas .btn-secondary{display:none}
+        .hamburger{display:flex}
+        section{padding:36px 0}
+        .page-hero h1{font-size:26px}
+        .two-col{grid-template-columns:1fr}
+        .footer-inner{flex-direction:column;align-items:center;text-align:center}
+        .footer-links{justify-content:center}
+      }
+    </style>
+  </head>
+  <body>
+
+    <header>
+      <div class="wrap">
+        <div class="nav">
+          <div class="logo">
+            <a href="/"><img src="/logo.png" alt={site.siteName} onerror="this.style.display='none'" /></a>
+          </div>
+          <nav class="nav-links" aria-label="Primary">
+            {site.navItems?.map((item) => <a href={homeUrl(item.url)}>{item.label}</a>)}
+            {site.navDropdown && (
+              <div class="dropdown">
+                <span class="dropdown-toggle">
+                  {site.navDropdown.label}
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </span>
+                <div class="dropdown-menu">
+                  {site.navDropdown.items?.map((item) => <a href={item.url}>{item.label}</a>)}
+                </div>
+              </div>
+            )}
+          </nav>
+          <div class="nav-ctas">
+            <a class="btn btn-primary" href="/#final-cta">{site.primaryCTA.text}</a>
+            <button class="hamburger" aria-label="Open menu" onclick="var mn=this.closest('header').querySelector('.mobile-nav');mn.style.display=mn.style.display==='block'?'none':'block'">
+              <span></span><span></span><span></span>
+            </button>
+          </div>
+        </div>
+        <nav class="mobile-nav" aria-label="Mobile navigation">
+          <a href="/">Home</a>
+          {site.navDropdown?.items?.map((item) => <a href={item.url}>{item.label}</a>)}
+          {site.navItems?.map((item) => <a href={homeUrl(item.url)}>{item.label}</a>)}
+        </nav>
+      </div>
+    </header>
+
+    <main>
+
+      <div class="page-hero">
+        <div class="wrap">
+          <div class="breadcrumb"><a href="/">Home</a> &rsaquo; Feature Comparison</div>
+          <h1>Dragon Professional 16 - Full Feature Comparison</h1>
+          <p>Compare all five Dragon Professional 16 licensing options side by side, then see how Dragon stacks up against free Windows tools and subscription-based alternatives. All information sourced from official Nuance documentation and Voice Recognition Australia.</p>
+        </div>
+      </div>
+
+      <!-- SECTION 1: Version comparison table -->
+      <section>
+        <div class="wrap">
+          <h2 style="font-size:26px;letter-spacing:-0.02em;margin:0 0 8px">Dragon Professional 16 - Version Comparison</h2>
+          <p style="color:#475569;font-size:15px;margin:0">All five licensing options compared across features that matter to professional buyers.</p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th class="feature-col" style="background:#f8fafc;border-bottom:2px solid #e2e8f0">Feature</th>
+                  <th class="col-head">Perpetual<br/><span style="font-size:11px;font-weight:400;opacity:.85">$994 once</span></th>
+                  <th class="col-head">Upgrade<br/><span style="font-size:11px;font-weight:400;opacity:.85">$495 once</span></th>
+                  <th class="col-head featured">Subscription<br/><span style="font-size:11px;font-weight:400;opacity:.85">$595/yr</span></th>
+                  <th class="col-head">Student<br/><span style="font-size:11px;font-weight:400;opacity:.85">$545 once</span></th>
+                  <th class="col-head">Enterprise<br/><span style="font-size:11px;font-weight:400;opacity:.85">Enquire</span></th>
+                </tr>
+              </thead>
+              <tbody>
+
+                <tr class="section-head"><td colspan="6">Licensing and Installation</td></tr>
+                <tr>
+                  <td class="feature-col">Licence type</td>
+                  <td class="val-col">Perpetual</td>
+                  <td class="val-col">Perpetual</td>
+                  <td class="val-col">Annual subscription</td>
+                  <td class="val-col">Perpetual</td>
+                  <td class="val-col">Volume / NMC managed</td>
+                </tr>
+                <tr>
+                  <td class="feature-col">PC activations</td>
+                  <td class="val-col">Up to 2</td>
+                  <td class="val-col">Up to 2</td>
+                  <td class="val-col">Unlimited</td>
+                  <td class="val-col">Up to 2</td>
+                  <td class="val-col">Managed via NMC</td>
+                </tr>
+                <tr>
+                  <td class="feature-col">Licence delivery</td>
+                  <td class="val-col">Licence key</td>
+                  <td class="val-col">Licence key</td>
+                  <td class="val-col">Username &amp; password</td>
+                  <td class="val-col">Licence key</td>
+                  <td class="val-col">NMC assigned</td>
+                </tr>
+                <tr>
+                  <td class="feature-col">Activation wait</td>
+                  <td class="val-col">Immediate</td>
+                  <td class="val-col">Immediate</td>
+                  <td class="val-col"><span class="partial">Up to 24 hrs</span></td>
+                  <td class="val-col">Immediate</td>
+                  <td class="val-col">Via IT / NMC</td>
+                </tr>
+                <tr>
+                  <td class="feature-col">Eligible buyers</td>
+                  <td class="val-col">Anyone</td>
+                  <td class="val-col">v15 owners only</td>
+                  <td class="val-col">Anyone</td>
+                  <td class="val-col">Students / educators</td>
+                  <td class="val-col">Organisations</td>
+                </tr>
+
+                <tr class="section-head"><td colspan="6">Core Dictation Features</td></tr>
+                <tr>
+                  <td class="feature-col">Real-time dictation (Windows apps)</td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                </tr>
+                <tr>
+                  <td class="feature-col">Works offline after activation</td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                </tr>
+                <tr>
+                  <td class="feature-col">Custom vocabulary</td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                </tr>
+                <tr>
+                  <td class="feature-col">AutoText (boilerplate shortcuts)</td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                </tr>
+                <tr>
+                  <td class="feature-col">Voice macros and commands</td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                </tr>
+                <tr>
+                  <td class="feature-col">Hands-free PC control</td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                </tr>
+                <tr>
+                  <td class="feature-col">Single-speaker transcription<span class="note">MP3, WAV, WMA, DS2, DSS</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                </tr>
+                <tr>
+                  <td class="feature-col">Multi-speaker / meeting transcription</td>
+                  <td class="val-col"><span class="cross">&#10005;</span></td>
+                  <td class="val-col"><span class="cross">&#10005;</span></td>
+                  <td class="val-col"><span class="cross">&#10005;</span></td>
+                  <td class="val-col"><span class="cross">&#10005;</span></td>
+                  <td class="val-col"><span class="cross">&#10005;</span></td>
+                </tr>
+                <tr>
+                  <td class="feature-col">Mac support</td>
+                  <td class="val-col"><span class="cross">&#10005;</span></td>
+                  <td class="val-col"><span class="cross">&#10005;</span></td>
+                  <td class="val-col"><span class="cross">&#10005;</span></td>
+                  <td class="val-col"><span class="cross">&#10005;</span></td>
+                  <td class="val-col"><span class="cross">&#10005;</span></td>
+                </tr>
+
+                <tr class="section-head"><td colspan="6">Compatibility</td></tr>
+                <tr>
+                  <td class="feature-col">Windows 10 / 11</td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                </tr>
+                <tr>
+                  <td class="feature-col">Microsoft 365 / Office 2021</td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                </tr>
+                <tr>
+                  <td class="feature-col">Microsoft Teams dictation</td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                </tr>
+                <tr>
+                  <td class="feature-col">Google Docs dictation</td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                </tr>
+                <tr>
+                  <td class="feature-col">Citrix / Remote Desktop</td>
+                  <td class="val-col"><span class="cross">&#10005;</span></td>
+                  <td class="val-col"><span class="cross">&#10005;</span></td>
+                  <td class="val-col"><span class="cross">&#10005;</span></td>
+                  <td class="val-col"><span class="cross">&#10005;</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                </tr>
+
+                <tr class="section-head"><td colspan="6">Enterprise / IT Management</td></tr>
+                <tr>
+                  <td class="feature-col">Nuance Management Centre (NMC)</td>
+                  <td class="val-col"><span class="cross">&#10005;</span></td>
+                  <td class="val-col"><span class="cross">&#10005;</span></td>
+                  <td class="val-col"><span class="partial">Compatible</span></td>
+                  <td class="val-col"><span class="cross">&#10005;</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                </tr>
+                <tr>
+                  <td class="feature-col">Active Directory / SSO</td>
+                  <td class="val-col"><span class="cross">&#10005;</span></td>
+                  <td class="val-col"><span class="cross">&#10005;</span></td>
+                  <td class="val-col"><span class="cross">&#10005;</span></td>
+                  <td class="val-col"><span class="cross">&#10005;</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                </tr>
+                <tr>
+                  <td class="feature-col">Central vocab / command distribution</td>
+                  <td class="val-col"><span class="cross">&#10005;</span></td>
+                  <td class="val-col"><span class="cross">&#10005;</span></td>
+                  <td class="val-col"><span class="cross">&#10005;</span></td>
+                  <td class="val-col"><span class="cross">&#10005;</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                </tr>
+                <tr>
+                  <td class="feature-col">Usage reporting</td>
+                  <td class="val-col"><span class="cross">&#10005;</span></td>
+                  <td class="val-col"><span class="cross">&#10005;</span></td>
+                  <td class="val-col"><span class="cross">&#10005;</span></td>
+                  <td class="val-col"><span class="cross">&#10005;</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                </tr>
+                <tr>
+                  <td class="feature-col">Volume licensing / licence reassignment</td>
+                  <td class="val-col"><span class="cross">&#10005;</span></td>
+                  <td class="val-col"><span class="cross">&#10005;</span></td>
+                  <td class="val-col"><span class="cross">&#10005;</span></td>
+                  <td class="val-col"><span class="cross">&#10005;</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                </tr>
+
+                <tr class="section-head"><td colspan="6">Support and Trial</td></tr>
+                <tr>
+                  <td class="feature-col">15-day free trial</td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                </tr>
+                <tr>
+                  <td class="feature-col">VRA local Australian support</td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                </tr>
+                <tr>
+                  <td class="feature-col">Enhanced direct Nuance support</td>
+                  <td class="val-col"><span class="cross">&#10005;</span></td>
+                  <td class="val-col"><span class="cross">&#10005;</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                  <td class="val-col"><span class="cross">&#10005;</span></td>
+                  <td class="val-col"><span class="check">&#10003;</span></td>
+                </tr>
+
+                <tr class="price-row">
+                  <td class="feature-col" style="color:#0f172a;font-weight:700">Price (AUD inc GST)</td>
+                  <td class="val-col">$994<span class="note">one-time</span></td>
+                  <td class="val-col">$495<span class="note">one-time</span></td>
+                  <td class="val-col">$595<span class="note">per year</span></td>
+                  <td class="val-col">$545<span class="note">one-time</span></td>
+                  <td class="val-col">Enquire<span class="note">volume pricing</span></td>
+                </tr>
+                <tr>
+                  <td class="feature-col" style="font-size:13px;color:#64748b">Best for</td>
+                  <td class="cta-cell"><a href="/dragon-professional-16">View details</a></td>
+                  <td class="cta-cell"><a href="/dragon-professional-16-upgrade">View details</a></td>
+                  <td class="cta-cell"><a href="/dragon-professional-16-subscription">View details</a></td>
+                  <td class="cta-cell"><a href="/dragon-professional-16-student">View details</a></td>
+                  <td class="cta-cell"><a href="/dragon-professional-group">View details</a></td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+          <p style="font-size:12px;color:#94a3b8;margin-top:12px">Pricing sourced from Voice Recognition Australia (verified March 2026). Verify current pricing before purchase. Feature information sourced from official Nuance documentation.</p>
+        </div>
+      </section>
+
+      <!-- SECTION 2: Dragon vs competitors -->
+      <section class="neutral-bg">
+        <div class="wrap">
+          <h2 style="font-size:26px;letter-spacing:-0.02em;margin:0 0 8px">Dragon Professional 16 vs Free Alternatives</h2>
+          <p style="color:#475569;font-size:15px;margin:0 0 4px">How Dragon compares to Windows built-in voice tools and browser-based dictation. Information sourced from official Microsoft, Google, and Nuance documentation.</p>
+
+          <div class="vs-table-wrap">
+            <table style="min-width:600px">
+              <thead>
+                <tr class="vs-head">
+                  <td style="width:26%">Feature</td>
+                  <td class="dragon-col" style="text-align:center;font-weight:700;color:#CC0000;background:#fde8e8">Dragon Professional 16</td>
+                  <td class="win-col" style="text-align:center;font-weight:700;color:#1e40af;background:#dbeafe">Windows Voice Typing<span style="display:block;font-size:11px;font-weight:400">(Win+H)</span></td>
+                  <td class="google-col" style="text-align:center;font-weight:700;color:#166534;background:#dcfce7">Google Docs Voice Typing</td>
+                  <td class="sub-col" style="text-align:center;font-weight:700;color:#92400e;background:#fef3c7">Subscription Apps<span style="display:block;font-size:11px;font-weight:400">(Whisper Flow etc.)</span></td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="vs-row">
+                  <td>Works offline</td>
+                  <td class="dragon-col" style="text-align:center"><span class="check">&#10003;</span> After activation</td>
+                  <td class="win-col" style="text-align:center"><span class="cross">&#10005;</span> Requires internet</td>
+                  <td class="google-col" style="text-align:center"><span class="cross">&#10005;</span> Browser / cloud</td>
+                  <td class="sub-col" style="text-align:center"><span class="cross">&#10005;</span> Cloud-dependent</td>
+                </tr>
+                <tr class="vs-row">
+                  <td>Works in any Windows app</td>
+                  <td class="dragon-col" style="text-align:center"><span class="check">&#10003;</span></td>
+                  <td class="win-col" style="text-align:center"><span class="partial">Limited</span></td>
+                  <td class="google-col" style="text-align:center"><span class="cross">&#10005;</span> Google Docs only</td>
+                  <td class="sub-col" style="text-align:center"><span class="partial">Varies by app</span></td>
+                </tr>
+                <tr class="vs-row">
+                  <td>Custom vocabulary</td>
+                  <td class="dragon-col" style="text-align:center"><span class="check">&#10003;</span> Deep customisation</td>
+                  <td class="win-col" style="text-align:center"><span class="cross">&#10005;</span></td>
+                  <td class="google-col" style="text-align:center"><span class="cross">&#10005;</span></td>
+                  <td class="sub-col" style="text-align:center"><span class="partial">Basic</span></td>
+                </tr>
+                <tr class="vs-row">
+                  <td>Voice macros / automation</td>
+                  <td class="dragon-col" style="text-align:center"><span class="check">&#10003;</span></td>
+                  <td class="win-col" style="text-align:center"><span class="cross">&#10005;</span></td>
+                  <td class="google-col" style="text-align:center"><span class="cross">&#10005;</span></td>
+                  <td class="sub-col" style="text-align:center"><span class="cross">&#10005;</span></td>
+                </tr>
+                <tr class="vs-row">
+                  <td>Transcribe audio files</td>
+                  <td class="dragon-col" style="text-align:center"><span class="check">&#10003;</span> Single speaker</td>
+                  <td class="win-col" style="text-align:center"><span class="cross">&#10005;</span></td>
+                  <td class="google-col" style="text-align:center"><span class="cross">&#10005;</span></td>
+                  <td class="sub-col" style="text-align:center"><span class="partial">Some do</span></td>
+                </tr>
+                <tr class="vs-row">
+                  <td>Mac support</td>
+                  <td class="dragon-col" style="text-align:center"><span class="cross">&#10005;</span> Windows only</td>
+                  <td class="win-col" style="text-align:center"><span class="cross">&#10005;</span> Windows only</td>
+                  <td class="google-col" style="text-align:center"><span class="check">&#10003;</span></td>
+                  <td class="sub-col" style="text-align:center"><span class="check">&#10003;</span> Most do</td>
+                </tr>
+                <tr class="vs-row">
+                  <td>Cost</td>
+                  <td class="dragon-col" style="text-align:center">From $495 AUD</td>
+                  <td class="win-col" style="text-align:center">Free (built-in)</td>
+                  <td class="google-col" style="text-align:center">Free</td>
+                  <td class="sub-col" style="text-align:center">Subscription</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="font-size:12px;color:#94a3b8;margin-top:12px">Source: Microsoft Support documentation (Voice Typing, Voice Access), Google Docs Help, and official Dragon Professional 16 documentation. Comparison reflects publicly available information at time of publication (March 2026).</p>
+        </div>
+      </section>
+
+      <!-- SECTION 3: Who should choose what -->
+      <section>
+        <div class="wrap">
+          <h2 style="font-size:26px;letter-spacing:-0.02em;margin:0 0 8px">Which version is right for you?</h2>
+          <p style="color:#475569;font-size:15px;margin:0 0 4px">A practical guide based on the most common professional buying scenarios.</p>
+          <div class="two-col" style="margin-top:28px">
+
+            <div class="info-card">
+              <div class="verdict-badge verdict-dragon">Perpetual - $994</div>
+              <h3>You want to own it permanently</h3>
+              <p>Best for professionals who plan to use Dragon long-term and want to avoid ongoing subscription fees. Pay once, use it for years. Over 3 years, costs less than the subscription option.</p>
+              <ul>
+                <li>Lawyers, accountants, medical professionals</li>
+                <li>Anyone with stable Windows 10/11 setup</li>
+                <li>Users who prefer owning software outright</li>
+              </ul>
+            </div>
+
+            <div class="info-card">
+              <div class="verdict-badge verdict-dragon">Upgrade - $495</div>
+              <h3>You already have Dragon v15</h3>
+              <p>If you own Dragon Professional Individual or Group version 15, the upgrade is the most cost-effective path to v16. You get full Windows 11 compatibility and updated Microsoft 365 support at roughly half the perpetual price. Your existing profiles carry over.</p>
+              <ul>
+                <li>Existing Dragon v15 users only</li>
+                <li>Requires v15 licence key at installation</li>
+              </ul>
+            </div>
+
+            <div class="info-card">
+              <div class="verdict-badge verdict-dragon">Subscription - $595/yr</div>
+              <h3>You need it on multiple PCs</h3>
+              <p>The subscription is the only single-user option with unlimited PC activations. Useful if you regularly move between a desktop and a laptop, or need to reinstall frequently. Comes with enhanced direct Nuance support.</p>
+              <ul>
+                <li>Users with multiple Windows PCs</li>
+                <li>Those who prefer annual billing</li>
+                <li>Note: more expensive than perpetual over 2+ years</li>
+              </ul>
+            </div>
+
+            <div class="info-card">
+              <div class="verdict-badge verdict-dragon">Student - $545</div>
+              <h3>You are a student or educator</h3>
+              <p>The full Dragon Professional 16 product at a discounted price. No feature restrictions. Widely used by students with dyslexia, RSI, or other accessibility needs. Perpetual licence, so you own it after one payment.</p>
+              <ul>
+                <li>University and TAFE students</li>
+                <li>Teachers and academic staff</li>
+                <li>Accessibility-related dictation needs</li>
+              </ul>
+            </div>
+
+            <div class="info-card">
+              <div class="verdict-badge verdict-dragon">Enterprise Group - Enquire</div>
+              <h3>You are deploying for a team or organisation</h3>
+              <p>Dragon Professional Group adds IT management tools that the retail versions do not have. Central management via NMC, Active Directory/SSO, volume licensing, usage reporting, and Citrix/RDP support. Required for organisations deploying to 5 or more users.</p>
+              <ul>
+                <li>Government agencies and departments</li>
+                <li>Legal chambers and large practices</li>
+                <li>Healthcare organisations and hospitals</li>
+                <li>Any IT-managed Windows environment</li>
+              </ul>
+            </div>
+
+            <div class="info-card">
+              <div class="verdict-badge verdict-free">Free tools may be enough if...</div>
+              <h3>Your needs are light</h3>
+              <p>Windows Voice Typing (Win+H) and Google Docs voice typing are free and reasonable for occasional, light dictation. They require an internet connection and lack custom vocabulary, automation, and offline capability. If you need professional-grade accuracy, offline operation, or custom workflows, Dragon is the appropriate tool.</p>
+              <ul>
+                <li>Occasional dictation in one app only</li>
+                <li>Always-online environment</li>
+                <li>No custom vocabulary requirements</li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 4: SEO prose -->
+      <section class="neutral-bg">
+        <div class="wrap">
+          <div class="prose">
+            <h2>About Dragon Professional 16 licensing in Australia</h2>
+            <p>Dragon Professional 16 is sold in Australia through Voice Recognition Australia (VRA), which has been the authorised Dragon reseller in Australia for over 25 years. Unlike buying through international stores, purchasing through VRA gives you local support, Australian pricing in AUD, and access to VRA's deployment and onboarding team.</p>
+            <p>The key choice most Australian buyers face is between the perpetual licence ($994), the upgrade ($495 for existing v15 owners), and the annual subscription ($595/yr). For most individuals, the perpetual licence is the most cost-effective long-term option. The subscription makes sense when you need the software on multiple PCs or prefer annual billing cycles.</p>
+            <h2>Dragon vs Windows built-in voice tools</h2>
+            <p>Microsoft Windows 11 includes two built-in voice tools: Voice Typing (Win+H shortcut) and Voice Access. Both require an internet connection to function, per Microsoft's own documentation. Dragon Professional 16, once installed and activated, operates without an internet connection.</p>
+            <p>The practical difference matters most for professionals who work with sensitive documents, operate in environments with limited connectivity, or need consistent accuracy in specialised vocabulary. Windows Voice Typing is a reasonable option for light, occasional dictation in a connected environment. It is not designed for the sustained, high-accuracy, customised dictation workflows that Dragon Professional 16 is built for.</p>
+            <h2>What Dragon Professional 16 does not do</h2>
+            <p>It is worth being clear about the boundaries of Dragon Professional 16, based on official Nuance support documentation. The software is designed for single-speaker dictation and transcription. It will not reliably transcribe multi-speaker conversations, meetings, or interviews. If you need meeting transcription, Dragon Professional 16 is not the right tool.</p>
+            <p>Dragon Professional 16 is also a Windows-only product. Nuance discontinued Dragon for Mac. There is no v16 Mac version. If you need cross-platform dictation that includes Mac, look at cloud-based alternatives.</p>
+            <h2>System requirements</h2>
+            <p>Dragon Professional 16 requires Windows 10 or Windows 11 (32-bit or 64-bit). The official data sheet cites 8GB free disk space; the release notes and enterprise installation guide reference 12GB - allow at least 12GB to be safe. An internet connection is required for the initial download and activation, but not for ongoing use.</p>
+            <p>Supported audio input formats for transcription include MP3, WAV, WMA, DS2, and DSS. Apple AirPods are not supported for live dictation. A dedicated USB dictation microphone or headset is recommended for best accuracy.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section id="final-cta" class="dark-bg">
+        <div class="wrap">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start">
+            <div>
+              <h2 style="color:white;font-size:26px;margin:0 0 12px">Ready to buy or need a recommendation?</h2>
+              <p style="color:#94a3b8;margin:0 0 20px">Voice Recognition Australia has been deploying Dragon Professional in legal, medical, government, and enterprise environments across Australia for 25 years. Tell us your situation and we will point you to the right version.</p>
+              <div style="display:flex;gap:12px;flex-wrap:wrap">
+                <a href="https://www.voicerecognition.com.au/collections/dragon-professional" class="btn btn-primary" target="_blank" rel="noopener">Buy from VRA &rarr;</a>
+                <a href="/" class="btn btn-secondary">Back to homepage</a>
+              </div>
+            </div>
+            <div>
+              <ACForm />
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <div class="wrap">
+        <div class="footer-inner">
+          <div>&copy; {year} {site.siteName}</div>
+          <div class="footer-links">
+            {site.footerLinks?.map((l) => <a href={homeUrl(l.url)}>{l.label}</a>)}
+          </div>
+        </div>
+        <div class="footer-disclaimer">{site.branding.footerDisclaimer}</div>
+      </div>
+    </footer>
+
+  </body>
+</html>

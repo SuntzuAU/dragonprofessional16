@@ -38,9 +38,9 @@
   },
   "navItems": [
     { "label": "Why Dragon", "url": "#benefits" },
-    { "label": "Compare", "url": "#compare" },
+    { "label": "Pricing", "url": "#compare" },
+    { "label": "Compare", "url": "/comparison" },
     { "label": "FAQ", "url": "#faq" },
-    { "label": "Resources", "url": "/resources" },
     { "label": "Contact", "url": "#final-cta" }
   ],
   "navDropdown": {
@@ -54,7 +54,7 @@
     ]
   },
   "primaryCTA": { "text": "Get in Touch", "url": "#final-cta" },
-  "secondaryCTA": { "text": "Compare Versions", "url": "#compare" },
+  "secondaryCTA": { "text": "Compare Versions", "url": "/comparison" },
   "form": {
     "id": "283",
     "submitText": "Request Information",
