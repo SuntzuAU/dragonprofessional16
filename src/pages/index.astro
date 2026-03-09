@@ -1,0 +1,413 @@
+---
+import manifest from "../data/image-manifest.json";
+import site from "../site.config.json";
+
+const year = new Date().getFullYear();
+const R2_BASE = import.meta.env.PUBLIC_R2_BASE || "";
+
+function imgSrc(key) {
+  const entry = manifest[key];
+  if (!entry?.r2Key || !R2_BASE) return "";
+  return `${R2_BASE.replace(/\/$/, "")}/${entry.r2Key}`;
+}
+function imgAlt(key) {
+  return manifest[key]?.altText || key;
+}
+
+const c = site.colours;
+
+const benefitIcons = [
+  `<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="16" fill="#fde8e8"/><path d="M16 8a8 8 0 1 1 0 16A8 8 0 0 1 16 8zm1 4h-2v5.17l3.41 3.42 1.42-1.41L17 15.83V12z" fill="#CC0000"/></svg>`,
+  `<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="16" fill="#fde8e8"/><path d="M21 12H11a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1zm-1 8h-8v-6h8v6zm-5-8V9a1 1 0 0 1 2 0v3h-2z" fill="#CC0000"/></svg>`,
+  `<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="16" fill="#fde8e8"/><path d="M16 9a4 4 0 0 1 4 4c0 2-1.5 3.6-3.5 4a1 1 0 0 0-.5.9V19h-1v-1.1c0-.9.6-1.7 1.5-1.9A3 3 0 1 0 13 12h-1a4 4 0 0 1 4-3zm-.5 12v-2h1v2h-1z" fill="#CC0000"/></svg>`,
+  `<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="16" fill="#fde8e8"/><path d="M23 10H9a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V11a1 1 0 0 0-1-1zm-1 10H10v-8h12v8zm-9-6h6v2h-6v-2z" fill="#CC0000"/></svg>`,
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{site.branding.metaTitle ?? site.siteName}</title>
+    <meta name="description" content={site.branding.metaDesc ?? site.branding.subheadline} />
+    <link rel="canonical" href={site.domain} />
+
+    {site.googleAnalyticsId && (
+      <script async src={`https://www.googletagmanager.com/gtag/js?id=${site.googleAnalyticsId}`}></script>
+      <script define:vars={{ gaId: site.googleAnalyticsId }}>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', gaId);
+      </script>
+    )}
+
+    <script define:vars={{ c }}>
+      const css = `
+        body { background: ${c.background}; color: ${c.text}; }
+        .btn-primary { background: ${c.accent}; border-color: ${c.accent}; color: #fff; }
+        .btn-primary:hover { background: ${c.accentHover}; border-color: ${c.accentHover}; }
+        .btn-secondary { color: ${c.primary}; border-color: #cbd5e1; }
+        .btn-secondary:hover { border-color: ${c.primary}; }
+        .neutral-bg { background: ${c.neutral}; }
+        .dark-bg { background: ${c.primary}; color: white; }
+        .stats-bar { background: ${c.primary}; }
+        .stats-accent { color: ${c.accent}; }
+        .card p { color: ${c.muted}; }
+        .benefit-card p { color: ${c.muted}; }
+        .hero p { color: ${c.muted}; }
+        .pricing-card.highlight { border-color: ${c.accent}; box-shadow: 0 8px 32px rgba(204,0,0,.12); }
+        .pricing-badge { background: ${c.accent}; color: #fff; }
+        .pricing-price { color: ${c.accent}; }
+        .step-num { background: ${c.accent}; color: #fff; }
+        ._submit { background: ${c.accent}; color: #fff; }
+        ._submit:hover { background: ${c.accentHover}; }
+        .hero-pill { background: #fde8e8; border-color: #fca5a5; color: #7f1d1d; }
+        .sh p { color: ${c.muted}; }
+        .nav-links a:hover, .dropdown-toggle:hover { color: ${c.accent}; }
+        .dropdown-menu { border-top: 2px solid ${c.accent}; }
+        .product-badge { background: ${c.accent}; color: #fff; }
+        .compare-card:hover { border-color: ${c.accent}; }
+        .compare-price { color: ${c.accent}; }
+        .highlight-row td { background: #fff5f5; font-weight: 700; color: ${c.primary}; }
+      `;
+      const el = document.createElement('style');
+      el.textContent = css;
+      document.head.appendChild(el);
+    </script>
+
+    <style is:inline>
+      *,*::before,*::after{box-sizing:border-box}
+      body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6}
+      a{color:inherit;text-decoration:none}
+      img{max-width:100%;display:block}
+      .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+      header{position:sticky;top:0;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid #e2e8f0;z-index:100}
+      .nav{display:flex;align-items:center;justify-content:space-between;padding:10px 0;gap:16px}
+      .logo img{height:40px;width:auto}
+      .logo-text{font-weight:800;font-size:18px;color:#1a1a1a;letter-spacing:-0.03em}
+      .nav-links{display:flex;gap:18px;font-size:14px;font-weight:500;color:#334155;align-items:center}
+      .nav-links a{white-space:nowrap}
+      .dropdown{position:relative}
+      .dropdown-toggle{cursor:pointer;display:flex;align-items:center;gap:4px;white-space:nowrap}
+      .dropdown-toggle svg{transition:transform .15s}
+      .dropdown:hover .dropdown-toggle svg{transform:rotate(180deg)}
+      .dropdown-menu{display:none;position:absolute;top:calc(100% + 8px);left:0;background:#fff;border:1px solid #e2e8f0;border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.1);min-width:220px;padding:6px 0;z-index:200}
+      .dropdown:hover .dropdown-menu{display:block}
+      .dropdown-menu a{display:block;padding:10px 16px;font-size:14px;font-weight:500;color:#334155;transition:background .1s}
+      .dropdown-menu a:hover{background:#fef2f2;color:#CC0000}
+      .nav-ctas{display:flex;gap:10px;align-items:center;flex-shrink:0}
+      .btn{display:inline-block;padding:10px 20px;border-radius:8px;font-weight:700;font-size:14px;border:2px solid transparent;cursor:pointer;transition:all .15s;white-space:nowrap}
+      .btn-secondary{background:white;border-color:#cbd5e1}
+      .btn-lg{padding:14px 28px;font-size:16px;border-radius:10px}
+      .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none}
+      .hamburger span{display:block;width:22px;height:2px;background:#334155;border-radius:2px}
+      .mobile-nav{display:none;padding:12px 0 8px;border-top:1px solid #e2e8f0}
+      .mobile-nav a{display:block;padding:10px 0;font-size:15px;font-weight:500;color:#334155;border-bottom:1px solid #f1f5f9}
+      section{padding:64px 0}
+      .hero{padding:72px 0 56px}
+      .hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+      .hero-pill{display:inline-flex;align-items:center;border:1px solid;border-radius:999px;padding:6px 14px;font-size:13px;font-weight:600;margin-bottom:18px}
+      .hero h1{font-size:42px;line-height:1.1;margin:0 0 16px;letter-spacing:-0.03em}
+      .hero p{font-size:17px;margin:0 0 28px;line-height:1.7}
+      .hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+      .hero-img{border-radius:16px;overflow:hidden;aspect-ratio:16/9;background:#f5f5f5;box-shadow:0 24px 64px rgba(0,0,0,.15)}
+      .hero-img img{width:100%;height:100%;object-fit:cover}
+      .stats-bar{padding:13px 0}
+      .sh{margin-bottom:40px}
+      .sh h2{font-size:32px;letter-spacing:-0.02em;margin:0 0 10px}
+      .sh p{font-size:17px;margin:0;max-width:600px}
+      .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+      .c6{grid-column:span 6}
+      .c4{grid-column:span 4}
+      .c3{grid-column:span 3}
+      .c7{grid-column:span 7}
+      .c5{grid-column:span 5}
+      .c12{grid-column:span 12}
+      .card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:24px}
+      .benefit-card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:28px}
+      .benefit-card h3{margin:8px 0 10px;font-size:18px}
+      .card-icon{margin-bottom:14px;line-height:1}
+      .compare-card{background:#fff;border:2px solid #e2e8f0;border-radius:20px;padding:24px;display:flex;flex-direction:column;transition:border-color .15s,box-shadow .15s;text-decoration:none;color:inherit}
+      .compare-card:hover{box-shadow:0 8px 32px rgba(0,0,0,.1)}
+      .compare-card.featured{border-color:#CC0000}
+      .product-badge{display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:999px;margin-bottom:10px;text-transform:uppercase;letter-spacing:.05em}
+      .compare-title{font-size:17px;font-weight:700;margin:0 0 4px}
+      .compare-for{font-size:13px;color:#64748b;margin:0 0 12px}
+      .compare-price{font-size:28px;font-weight:800;line-height:1;margin:0 0 4px}
+      .compare-pricenote{font-size:12px;color:#64748b;margin:0 0 16px}
+      .compare-btn{margin-top:auto;display:block;text-align:center;padding:10px 16px;border-radius:8px;font-weight:700;font-size:14px;background:#f1f5f9;color:#1a1a1a;transition:background .15s}
+      .compare-card:hover .compare-btn,.compare-card.featured .compare-btn{background:#CC0000;color:#fff}
+      .step-num{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;font-weight:800;font-size:16px;margin-bottom:14px}
+      .formbox{background:#fff;border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:16px}
+      ._form_element{margin-bottom:12px}
+      ._form_element input,._form_element textarea{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;color:#0f172a;font-size:14px;font-family:system-ui,-apple-system,sans-serif;padding:10px 12px;width:100%}
+      ._submit{border:none;border-radius:8px;font-weight:700;font-size:15px;padding:12px 20px;width:100%;margin-top:8px;cursor:pointer;transition:background .15s}
+      footer{background:#111;color:#64748b;padding:28px 0;font-size:14px}
+      .footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+      .footer-links{display:flex;gap:20px}
+      .footer-links a:hover{color:white}
+      .footer-disclaimer{font-size:11px;color:#475569;line-height:1.6;margin-top:12px;padding-top:12px;border-top:1px solid #222}
+
+      @media(max-width:900px){
+        .hero-inner{grid-template-columns:1fr}
+        .hero h1{font-size:32px}
+        .c6,.c4,.c5,.c7,.c3{grid-column:span 12}
+        .sh h2{font-size:26px}
+      }
+      @media(max-width:600px){
+        .nav-links{display:none}
+        .nav-ctas .btn-secondary{display:none}
+        .nav-ctas .btn-primary{padding:8px 16px;font-size:13px}
+        .hamburger{display:flex}
+        section{padding:40px 0}
+        .hero{padding:36px 0 28px}
+        .hero h1{font-size:26px}
+        .hero p{font-size:15px}
+        .sh h2{font-size:22px}
+        .sh p{font-size:15px}
+        .sh{margin-bottom:24px}
+        .hero-btns{flex-direction:column}
+        .hero-btns .btn-lg{width:100%;text-align:center;padding:13px 20px}
+        .card,.benefit-card,.compare-card,.formbox{padding:18px}
+        .footer-inner{flex-direction:column;align-items:center;text-align:center}
+        .footer-links{justify-content:center}
+      }
+    </style>
+  </head>
+  <body>
+
+    <header>
+      <div class="wrap">
+        <div class="nav">
+          <div class="logo">
+            <img src="/logo.png" alt={site.siteName} onerror="this.style.display='none'" />
+          </div>
+          <nav class="nav-links" aria-label="Primary">
+            {site.navItems?.map((item) => <a href={item.url}>{item.label}</a>)}
+            {site.navDropdown && (
+              <div class="dropdown">
+                <span class="dropdown-toggle">
+                  {site.navDropdown.label}
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </span>
+                <div class="dropdown-menu">
+                  {site.navDropdown.items?.map((item) => <a href={item.url}>{item.label}</a>)}
+                </div>
+              </div>
+            )}
+          </nav>
+          <div class="nav-ctas">
+            {site.secondaryCTA?.text && <a class="btn btn-secondary" href={site.secondaryCTA.url}>{site.secondaryCTA.text}</a>}
+            <a class="btn btn-primary" href={site.primaryCTA.url}>{site.primaryCTA.text}</a>
+            <button class="hamburger" aria-label="Open menu" onclick="var mn=this.closest('header').querySelector('.mobile-nav');mn.style.display=mn.style.display==='block'?'none':'block'">
+              <span></span><span></span><span></span>
+            </button>
+          </div>
+        </div>
+        <nav class="mobile-nav" aria-label="Mobile navigation">
+          {site.navItems?.map((item) => <a href={item.url}>{item.label}</a>)}
+          {site.navDropdown?.items?.map((item) => <a href={item.url}>&nbsp;&nbsp;{item.label}</a>)}
+        </nav>
+      </div>
+    </header>
+
+    <main>
+
+      <section class="hero">
+        <div class="wrap">
+          <div class="hero-inner">
+            <div>
+              <div class="hero-pill">{site.branding.industry} &bull; {site.branding.region}</div>
+              <h1>{site.branding.headline}</h1>
+              <p>{site.branding.subheadline}</p>
+              <div class="hero-btns">
+                <a class="btn btn-primary btn-lg" href={site.primaryCTA.url}>{site.primaryCTA.text}</a>
+                {site.secondaryCTA?.text && <a class="btn btn-secondary btn-lg" href={site.secondaryCTA.url}>{site.secondaryCTA.text}</a>}
+              </div>
+            </div>
+            <div class="hero-img">
+              {imgSrc("hero")
+                ? <img src={imgSrc("hero")} alt={imgAlt("hero")} loading="eager" decoding="async" />
+                : <div style="width:100%;height:100%;min-height:280px;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:14px">Hero image loading</div>
+              }
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="stats-bar">
+        <div class="wrap">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+            <div class="stats-accent" style="font-size:15px;font-weight:800;text-align:center">{site.branding.statsMessage}</div>
+            <div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:center">
+              {site.stats?.map((s) => (
+                <div style="font-size:13px;color:#94a3b8;display:flex;align-items:center;gap:4px">
+                  <span style="color:white;font-weight:600">{s.value}</span>&nbsp;{s.label}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section id="benefits">
+        <div class="wrap">
+          <div class="sh">
+            <h2>{site.branding.benefitsHeading}</h2>
+            <p>{site.branding.benefitsSubheading}</p>
+          </div>
+          <div class="grid">
+            {site.benefits?.map((b, i) => (
+              <div class="benefit-card c6">
+                <div class="card-icon" set:html={benefitIcons[i] ?? benefitIcons[0]} />
+                <h3>{b.title}</h3>
+                <p>{b.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="compare" class="neutral-bg">
+        <div class="wrap">
+          <div class="sh">
+            <h2>{site.branding.compareHeading}</h2>
+            <p>{site.branding.compareSubheading}</p>
+          </div>
+          <div class="grid">
+            {site.products?.map((p) => (
+              <a href={`/${p.slug}`} class={`compare-card c4${p.highlight ? ' featured' : ''}`}>
+                <div class="product-badge">{p.badge}</div>
+                <div class="compare-title">{p.title}</div>
+                <div class="compare-for">{p.bestFor}</div>
+                <div class="compare-price">{p.price}</div>
+                <div class="compare-pricenote">{p.priceNote}</div>
+                <div class="compare-btn">View details</div>
+              </a>
+            ))}
+          </div>
+          <p style="font-size:13px;color:#94a3b8;margin-top:20px">All prices AUD inc GST as published by Voice Recognition Australia. Verify current pricing before purchase.</p>
+        </div>
+      </section>
+
+      <section id="how-it-works">
+        <div class="wrap">
+          <div class="sh">
+            <h2>How to buy and get started</h2>
+            <p>{site.branding.howItWorksSubheading}</p>
+          </div>
+          <div class="grid">
+            {site.steps?.map((s, i) => (
+              <div class="card c4">
+                <div class="step-num">{i + 1}</div>
+                <h3>{s.title}</h3>
+                <p>{s.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="neutral-bg">
+        <div class="wrap">
+          <div class="grid">
+            <div class="card c7">
+              {imgSrc("about-banner") && <div style="border-radius:10px;overflow:hidden;aspect-ratio:16/9;margin-bottom:16px"><img src={imgSrc("about-banner")} alt={imgAlt("about-banner")} loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover" /></div>}
+              <h3>{site.branding.aboutHeading}</h3>
+              <p>{site.branding.aboutBody}</p>
+              <div style="margin-top:16px;display:flex;flex-wrap:wrap;gap:8px">
+                {site.proofPoints?.map((p) => (
+                  <div style="background:#f5f5f5;border-radius:999px;padding:6px 14px;font-size:13px;font-weight:600;color:#334155">&#10003; {p}</div>
+                ))}
+              </div>
+            </div>
+            <div class="card c5" style="background:#1a1a1a;color:white;border-color:#1a1a1a">
+              <h3 style="color:white;margin:0 0 20px">All Dragon Professional 16 versions</h3>
+              {site.products?.map((p) => (
+                <a href={`/${p.slug}`} style="display:block;background:rgba(255,255,255,.06);border-radius:10px;padding:14px;margin-bottom:10px;text-decoration:none;transition:background .15s">
+                  <div style="color:#CC0000;font-weight:700;font-size:14px;margin-bottom:2px">{p.title}</div>
+                  <div style="display:flex;justify-content:space-between;align-items:center">
+                    <span style="font-size:13px;color:#94a3b8">{p.bestFor}</span>
+                    <span style="font-weight:800;color:white;font-size:15px">{p.price}</span>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="faq">
+        <div class="wrap">
+          <div class="sh">
+            <h2>Frequently asked questions</h2>
+          </div>
+          <div class="grid">
+            {site.faqs?.map((f) => (
+              <div class="card c6">
+                <h3 style="margin:0 0 8px;font-size:16px">{f.q}</h3>
+                <p style="margin:0;font-size:15px">{f.a}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="final-cta" class="dark-bg">
+        <div class="wrap">
+          <div class="grid">
+            <div class="c7">
+              {imgSrc("cta-banner") && <div style="border-radius:16px;overflow:hidden;aspect-ratio:16/9;margin-bottom:24px"><img src={imgSrc("cta-banner")} alt={imgAlt("cta-banner")} loading="lazy" style="width:100%;height:100%;object-fit:cover" /></div>}
+              <h2 style="color:white;font-size:28px;margin:0 0 12px">{site.branding.ctaHeading}</h2>
+              <p style="color:#94a3b8;margin:0 0 20px">{site.branding.ctaBody}</p>
+              <ul style="color:#94a3b8;margin:0;padding-left:20px;line-height:2.2;font-size:15px">
+                {site.branding.ctaBullets?.map((b) => <li>{b}</li>)}
+              </ul>
+            </div>
+            <div class="c5">
+              <div class="formbox">
+                <div style="font-weight:800;font-size:20px;color:#0f172a">Get in touch</div>
+                <div style="color:#475569;font-size:15px;margin-bottom:4px">Local Australian support. Fast response.</div>
+                <form method="POST" action="https://voicerecognition.activehosted.com/proc.php" id={`_form_${site.form.id}_`} class="_form _inline-form" novalidate>
+                  <input type="hidden" name="u" value={site.form.hiddenU} />
+                  <input type="hidden" name="f" value={site.form.hiddenF} />
+                  <input type="hidden" name="s" />
+                  <input type="hidden" name="c" value="0" />
+                  <input type="hidden" name="m" value="0" />
+                  <input type="hidden" name="act" value="sub" />
+                  <input type="hidden" name="v" value="2" />
+                  <input type="hidden" name="or" value={site.form.hiddenOr} />
+                  <div class="_form-content">
+                    <div class="_form_element"><input type="text" name="firstname" placeholder="Your Name" required /></div>
+                    <div class="_form_element"><input type="text" name="email" placeholder="Your Email" required /></div>
+                    <div class="_form_element"><input type="text" name="phone" placeholder="Your Phone Number" /></div>
+                    <div class="_form_element"><input type="text" name="field[35]" placeholder="Organisation" /></div>
+                    <div class="_form_element"><textarea name="field[18]" placeholder="Briefly describe your needs or enquiry"></textarea></div>
+                    <button class="_submit" type="submit">{site.form.submitText}</button>
+                  </div>
+                  <div class="_form-thank-you" style="display:none"></div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <div class="wrap">
+        <div class="footer-inner">
+          <div>&copy; {year} {site.siteName}</div>
+          <div class="footer-links">
+            {site.footerLinks?.map((l) => <a href={l.url}>{l.label}</a>)}
+          </div>
+        </div>
+        <div class="footer-disclaimer">{site.branding.footerDisclaimer}</div>
+      </div>
+    </footer>
+
+  </body>
+</html>

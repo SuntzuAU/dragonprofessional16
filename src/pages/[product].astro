@@ -1,0 +1,336 @@
+---
+import site from "../site.config.json";
+import manifest from "../data/image-manifest.json";
+
+export function getStaticPaths() {
+  return site.products.map((p) => ({
+    params: { product: p.slug },
+    props: { product: p },
+  }));
+}
+
+const { product } = Astro.props;
+const c = site.colours;
+const year = new Date().getFullYear();
+const R2_BASE = import.meta.env.PUBLIC_R2_BASE || "";
+
+function imgSrc(key) {
+  const entry = manifest[key];
+  if (!entry?.r2Key || !R2_BASE) return "";
+  return `${R2_BASE.replace(/\/$/, "")}/${entry.r2Key}`;
+}
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{product.metaTitle}</title>
+    <meta name="description" content={product.metaDesc} />
+    <link rel="canonical" href={`${site.domain}/${product.slug}`} />
+
+    {site.googleAnalyticsId && (
+      <script async src={`https://www.googletagmanager.com/gtag/js?id=${site.googleAnalyticsId}`}></script>
+      <script define:vars={{ gaId: site.googleAnalyticsId }}>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', gaId);
+      </script>
+    )}
+
+    <script define:vars={{ c }}>
+      const css = `
+        body { background: ${c.background}; color: ${c.text}; }
+        .btn-primary { background: ${c.accent}; border-color: ${c.accent}; color: #fff; }
+        .btn-primary:hover { background: ${c.accentHover}; border-color: ${c.accentHover}; }
+        .btn-secondary { color: ${c.primary}; border-color: #cbd5e1; }
+        .btn-secondary:hover { border-color: ${c.primary}; }
+        .neutral-bg { background: ${c.neutral}; }
+        .dark-bg { background: ${c.primary}; color: white; }
+        .stats-bar { background: ${c.primary}; }
+        .nav-links a:hover, .dropdown-toggle:hover { color: ${c.accent}; }
+        .dropdown-menu { border-top: 2px solid ${c.accent}; }
+        .feature-check { color: ${c.accent}; }
+        .price-display { color: ${c.accent}; }
+        .licence-badge { background: ${c.accent}; color: #fff; }
+        ._submit { background: ${c.accent}; color: #fff; }
+        ._submit:hover { background: ${c.accentHover}; }
+        .card p { color: ${c.muted}; }
+        .sh p { color: ${c.muted}; }
+        .breadcrumb a { color: ${c.accent}; }
+      `;
+      const el = document.createElement('style');
+      el.textContent = css;
+      document.head.appendChild(el);
+    </script>
+
+    <style is:inline>
+      *,*::before,*::after{box-sizing:border-box}
+      body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6}
+      a{color:inherit;text-decoration:none}
+      img{max-width:100%;display:block}
+      .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+      header{position:sticky;top:0;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid #e2e8f0;z-index:100}
+      .nav{display:flex;align-items:center;justify-content:space-between;padding:10px 0;gap:16px}
+      .logo img{height:40px;width:auto}
+      .nav-links{display:flex;gap:18px;font-size:14px;font-weight:500;color:#334155;align-items:center}
+      .dropdown{position:relative}
+      .dropdown-toggle{cursor:pointer;display:flex;align-items:center;gap:4px;white-space:nowrap}
+      .dropdown-toggle svg{transition:transform .15s}
+      .dropdown:hover .dropdown-toggle svg{transform:rotate(180deg)}
+      .dropdown-menu{display:none;position:absolute;top:calc(100% + 8px);left:0;background:#fff;border:1px solid #e2e8f0;border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.1);min-width:220px;padding:6px 0;z-index:200}
+      .dropdown:hover .dropdown-menu{display:block}
+      .dropdown-menu a{display:block;padding:10px 16px;font-size:14px;font-weight:500;color:#334155;transition:background .1s}
+      .dropdown-menu a:hover{background:#fef2f2;color:#CC0000}
+      .nav-ctas{display:flex;gap:10px;align-items:center;flex-shrink:0}
+      .btn{display:inline-block;padding:10px 20px;border-radius:8px;font-weight:700;font-size:14px;border:2px solid transparent;cursor:pointer;transition:all .15s;white-space:nowrap}
+      .btn-secondary{background:white;border-color:#cbd5e1}
+      .btn-lg{padding:14px 28px;font-size:16px;border-radius:10px}
+      .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none}
+      .hamburger span{display:block;width:22px;height:2px;background:#334155;border-radius:2px}
+      .mobile-nav{display:none;padding:12px 0 8px;border-top:1px solid #e2e8f0}
+      .mobile-nav a{display:block;padding:10px 0;font-size:15px;font-weight:500;color:#334155;border-bottom:1px solid #f1f5f9}
+      section{padding:64px 0}
+      .product-hero{padding:48px 0 40px}
+      .breadcrumb{font-size:13px;color:#64748b;margin-bottom:20px}
+      .breadcrumb a{font-weight:500}
+      .product-hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+      .licence-badge{display:inline-block;font-size:11px;font-weight:700;padding:4px 12px;border-radius:999px;margin-bottom:14px;text-transform:uppercase;letter-spacing:.05em}
+      .product-hero h1{font-size:36px;line-height:1.1;margin:0 0 14px;letter-spacing:-0.03em}
+      .product-hero p{font-size:16px;line-height:1.7;margin:0 0 24px;color:#475569}
+      .price-display{font-size:48px;font-weight:800;line-height:1;margin:0 0 4px}
+      .price-note{font-size:14px;color:#64748b;margin:0 0 6px}
+      .licence-note{font-size:13px;color:#64748b;margin:0 0 20px;padding:10px 14px;background:#f8fafc;border-radius:8px;border-left:3px solid #e2e8f0}
+      .buy-actions{display:flex;flex-direction:column;gap:12px}
+      .vra-btn{display:block;text-align:center;padding:14px 24px;border-radius:10px;font-weight:700;font-size:15px;background:#1a1a1a;color:#fff;transition:background .15s;border:2px solid #1a1a1a}
+      .vra-btn:hover{background:#333}
+      .sh{margin-bottom:32px}
+      .sh h2{font-size:28px;letter-spacing:-0.02em;margin:0 0 8px}
+      .sh p{font-size:16px;margin:0}
+      .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+      .c6{grid-column:span 6}
+      .c4{grid-column:span 4}
+      .c12{grid-column:span 12}
+      .card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:24px}
+      .feature-list{list-style:none;padding:0;margin:0}
+      .feature-list li{padding:9px 0;border-bottom:1px solid #f1f5f9;font-size:15px;display:flex;gap:10px;align-items:flex-start}
+      .feature-list li:last-child{border-bottom:none}
+      .feature-check{font-weight:700;flex-shrink:0;font-size:16px}
+      .faq-card{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:22px}
+      .faq-card h3{margin:0 0 8px;font-size:16px}
+      .faq-card p{margin:0;font-size:15px;color:#475569}
+      .other-versions{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+      .other-version-link{padding:8px 16px;border-radius:8px;border:1px solid #e2e8f0;font-size:13px;font-weight:600;color:#334155;transition:all .15s}
+      .other-version-link:hover{border-color:#CC0000;color:#CC0000}
+      .formbox{background:#fff;border-radius:16px;padding:28px}
+      ._form_element{margin-bottom:12px}
+      ._form_element input,._form_element textarea{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;color:#0f172a;font-size:14px;font-family:system-ui,-apple-system,sans-serif;padding:10px 12px;width:100%}
+      ._submit{border:none;border-radius:8px;font-weight:700;font-size:15px;padding:12px 20px;width:100%;margin-top:8px;cursor:pointer;transition:background .15s}
+      footer{background:#111;color:#64748b;padding:28px 0;font-size:14px}
+      .footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+      .footer-links{display:flex;gap:20px}
+      .footer-links a:hover{color:white}
+      .footer-disclaimer{font-size:11px;color:#475569;line-height:1.6;margin-top:12px;padding-top:12px;border-top:1px solid #222}
+
+      @media(max-width:900px){
+        .product-hero-inner{grid-template-columns:1fr}
+        .product-hero h1{font-size:28px}
+        .c6,.c4{grid-column:span 12}
+        .sh h2{font-size:24px}
+      }
+      @media(max-width:600px){
+        .nav-links{display:none}
+        .nav-ctas .btn-secondary{display:none}
+        .hamburger{display:flex}
+        section{padding:40px 0}
+        .product-hero{padding:28px 0}
+        .card,.faq-card,.formbox{padding:18px}
+        .price-display{font-size:36px}
+        .footer-inner{flex-direction:column;align-items:center;text-align:center}
+        .footer-links{justify-content:center}
+      }
+    </style>
+  </head>
+  <body>
+
+    <header>
+      <div class="wrap">
+        <div class="nav">
+          <div class="logo">
+            <a href="/"><img src="/logo.png" alt={site.siteName} onerror="this.style.display='none'" /></a>
+          </div>
+          <nav class="nav-links" aria-label="Primary">
+            {site.navItems?.map((item) => <a href={item.url}>{item.label}</a>)}
+            {site.navDropdown && (
+              <div class="dropdown">
+                <span class="dropdown-toggle">
+                  {site.navDropdown.label}
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </span>
+                <div class="dropdown-menu">
+                  {site.navDropdown.items?.map((item) => <a href={item.url}>{item.label}</a>)}
+                </div>
+              </div>
+            )}
+          </nav>
+          <div class="nav-ctas">
+            <a class="btn btn-primary" href="/#final-cta">{site.primaryCTA.text}</a>
+            <button class="hamburger" aria-label="Open menu" onclick="var mn=this.closest('header').querySelector('.mobile-nav');mn.style.display=mn.style.display==='block'?'none':'block'">
+              <span></span><span></span><span></span>
+            </button>
+          </div>
+        </div>
+        <nav class="mobile-nav" aria-label="Mobile navigation">
+          <a href="/">Home</a>
+          {site.navDropdown?.items?.map((item) => <a href={item.url}>{item.label}</a>)}
+          {site.navItems?.map((item) => <a href={item.url}>{item.label}</a>)}
+        </nav>
+      </div>
+    </header>
+
+    <main>
+
+      <section class="product-hero">
+        <div class="wrap">
+          <div class="breadcrumb">
+            <a href="/">Home</a> &rsaquo; <a href="/#compare">All versions</a> &rsaquo; {product.title}
+          </div>
+          <div class="product-hero-inner">
+            <div>
+              <div class="licence-badge">{product.badge}</div>
+              <h1>{product.headline}</h1>
+              <p>{product.subheadline}</p>
+              <div style="margin-bottom:8px">
+                <div class="price-display">{product.price}</div>
+                <div class="price-note">{product.priceNote}</div>
+              </div>
+              <div class="licence-note">{product.licenceNote}</div>
+              <div class="buy-actions">
+                <a href={product.vraUrl} class="btn btn-primary btn-lg" target="_blank" rel="noopener">{product.ctaText} &rarr;</a>
+                <a href="/#final-cta" class="vra-btn">Talk to VRA - local support</a>
+              </div>
+            </div>
+            <div>
+              {imgSrc("hero") && <div style="border-radius:16px;overflow:hidden;aspect-ratio:16/9;box-shadow:0 16px 48px rgba(0,0,0,.12)"><img src={imgSrc("hero")} alt={`${product.title} - Dragon Professional 16`} loading="eager" decoding="async" style="width:100%;height:100%;object-fit:cover" /></div>}
+              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:16px">
+                <div style="text-align:center;padding:14px;background:#f5f5f5;border-radius:10px">
+                  <div style="font-size:18px;font-weight:800;color:#1a1a1a">{product.price}</div>
+                  <div style="font-size:12px;color:#64748b">Price AUD</div>
+                </div>
+                <div style="text-align:center;padding:14px;background:#f5f5f5;border-radius:10px">
+                  <div style="font-size:18px;font-weight:800;color:#1a1a1a">{product.installLimit}</div>
+                  <div style="font-size:12px;color:#64748b">Install limit</div>
+                </div>
+                <div style="text-align:center;padding:14px;background:#f5f5f5;border-radius:10px">
+                  <div style="font-size:18px;font-weight:800;color:#1a1a1a">{product.licenceType}</div>
+                  <div style="font-size:12px;color:#64748b">Licence type</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="neutral-bg">
+        <div class="wrap">
+          <div class="sh">
+            <h2>What's included</h2>
+            <p>Everything you get with {product.title}.</p>
+          </div>
+          <div class="card c12">
+            <ul class="feature-list">
+              {product.features?.map((f) => (
+                <li><span class="feature-check">&#10003;</span>{f}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="wrap">
+          <div class="sh">
+            <h2>Frequently asked questions</h2>
+          </div>
+          <div class="grid">
+            {product.faqs?.map((f) => (
+              <div class="faq-card c6">
+                <h3>{f.q}</h3>
+                <p>{f.a}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section class="neutral-bg">
+        <div class="wrap">
+          <div class="sh">
+            <h2>Other Dragon Professional 16 versions</h2>
+            <p>Compare all five versions to find the right fit for your needs.</p>
+          </div>
+          <div class="other-versions">
+            {site.products?.filter(p => p.slug !== product.slug).map(p => (
+              <a href={`/${p.slug}`} class="other-version-link">{p.title} - {p.price}</a>
+            ))}
+          </div>
+          <div style="margin-top:24px">
+            <a href="/#compare" class="btn btn-primary">Compare all versions</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="final-cta" class="dark-bg">
+        <div class="wrap">
+          <div class="grid">
+            <div class="c7">
+              <h2 style="color:white;font-size:28px;margin:0 0 12px">Questions about {product.title}?</h2>
+              <p style="color:#94a3b8;margin:0 0 20px">Our team has deployed Dragon Professional across Australian government, legal, and enterprise environments for 25 years. We can help you choose the right version and get set up quickly.</p>
+              <a href={product.vraUrl} class="btn btn-primary btn-lg" target="_blank" rel="noopener" style="margin-right:12px">{product.ctaText} &rarr;</a>
+            </div>
+            <div class="c5">
+              <div class="formbox">
+                <div style="font-weight:800;font-size:18px;color:#0f172a">Get local advice</div>
+                <div style="color:#475569;font-size:14px;margin-bottom:12px">Voice Recognition Australia - authorised Dragon reseller</div>
+                <form method="POST" action="https://voicerecognition.activehosted.com/proc.php" id={`_form_${site.form.id}_`} class="_form _inline-form" novalidate>
+                  <input type="hidden" name="u" value={site.form.hiddenU} />
+                  <input type="hidden" name="f" value={site.form.hiddenF} />
+                  <input type="hidden" name="s" />
+                  <input type="hidden" name="c" value="0" />
+                  <input type="hidden" name="m" value="0" />
+                  <input type="hidden" name="act" value="sub" />
+                  <input type="hidden" name="v" value="2" />
+                  <input type="hidden" name="or" value={site.form.hiddenOr} />
+                  <div class="_form-content">
+                    <div class="_form_element"><input type="text" name="firstname" placeholder="Your Name" required /></div>
+                    <div class="_form_element"><input type="text" name="email" placeholder="Your Email" required /></div>
+                    <div class="_form_element"><input type="text" name="phone" placeholder="Phone" /></div>
+                    <div class="_form_element"><textarea name="field[18]" placeholder={`Enquiry about ${product.title}`}></textarea></div>
+                    <button class="_submit" type="submit">{site.form.submitText}</button>
+                  </div>
+                  <div class="_form-thank-you" style="display:none"></div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <div class="wrap">
+        <div class="footer-inner">
+          <div>&copy; {year} {site.siteName}</div>
+          <div class="footer-links">
+            {site.footerLinks?.map((l) => <a href={l.url}>{l.label}</a>)}
+          </div>
+        </div>
+        <div class="footer-disclaimer">{site.branding.footerDisclaimer}</div>
+      </div>
+    </footer>
+
+  </body>
+</html>
