@@ -25,6 +25,12 @@ function imgAlt(key) {
   return manifest[key]?.altText || "";
 }
 
+// Prefix anchor-only links with / so they navigate back to homepage
+function homeUrl(url) {
+  if (!url) return "/";
+  return url.startsWith("#") ? `/${url}` : url;
+}
+
 const heroKey = product.heroImageKey || "hero";
 const featureKey = product.featureImageKey || "feature-dictation";
 ---
@@ -169,7 +175,7 @@ const featureKey = product.featureImageKey || "feature-dictation";
             <a href="/"><img src="/logo.png" alt={site.siteName} onerror="this.style.display='none'" /></a>
           </div>
           <nav class="nav-links" aria-label="Primary">
-            {site.navItems?.map((item) => <a href={item.url}>{item.label}</a>)}
+            {site.navItems?.map((item) => <a href={homeUrl(item.url)}>{item.label}</a>)}
             {site.navDropdown && (
               <div class="dropdown">
                 <span class="dropdown-toggle">
@@ -192,7 +198,7 @@ const featureKey = product.featureImageKey || "feature-dictation";
         <nav class="mobile-nav" aria-label="Mobile navigation">
           <a href="/">Home</a>
           {site.navDropdown?.items?.map((item) => <a href={item.url}>{item.label}</a>)}
-          {site.navItems?.map((item) => <a href={item.url}>{item.label}</a>)}
+          {site.navItems?.map((item) => <a href={homeUrl(item.url)}>{item.label}</a>)}
         </nav>
       </div>
     </header>
@@ -326,7 +332,7 @@ const featureKey = product.featureImageKey || "feature-dictation";
         <div class="footer-inner">
           <div>&copy; {year} {site.siteName}</div>
           <div class="footer-links">
-            {site.footerLinks?.map((l) => <a href={l.url}>{l.label}</a>)}
+            {site.footerLinks?.map((l) => <a href={homeUrl(l.url)}>{l.label}</a>)}
           </div>
         </div>
         <div class="footer-disclaimer">{site.branding.footerDisclaimer}</div>
