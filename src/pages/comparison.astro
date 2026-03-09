@@ -51,7 +51,7 @@ const DRAGON_ANYWHERE_URL = "https://www.voicerecognition.com.au/products/dragon
         .cta-cell a:hover { background: ${c.accentHover}; }
         .anywhere-link { color: ${c.accent}; font-weight: 600; font-size: 13px; }
         .anywhere-link:hover { text-decoration: underline; }
-        .reseller-notice { border-left: 3px solid ${c.accent}; }
+        .about-section { border-top: 3px solid ${c.accent}; }
       `;
       const el = document.createElement('style');
       el.textContent = css;
@@ -90,8 +90,9 @@ const DRAGON_ANYWHERE_URL = "https://www.voicerecognition.com.au/products/dragon
       .breadcrumb{font-size:13px;color:#64748b;margin-bottom:12px}
       .breadcrumb a{color:#CC0000;font-weight:500}
       .page-hero h1{font-size:36px;line-height:1.1;margin:0 0 10px;letter-spacing:-0.03em}
-      .page-hero p{font-size:16px;color:#475569;margin:0 0 16px;max-width:680px}
-      .reseller-notice{background:#fff8f8;padding:14px 18px;border-radius:10px;font-size:13px;color:#475569;line-height:1.6;max-width:780px}
+      .page-hero p{font-size:16px;color:#475569;margin:0;max-width:680px}
+      .footnote-ref{font-size:11px;vertical-align:super;color:#CC0000;font-weight:700;margin-left:2px}
+      .footnote-ref:hover{text-decoration:underline}
       .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:16px;border:1px solid #e2e8f0;margin-top:32px}
       table{width:100%;border-collapse:collapse;min-width:700px}
       th,td{padding:12px 14px;font-size:14px;border-bottom:1px solid #f1f5f9;text-align:left;vertical-align:middle}
@@ -117,7 +118,7 @@ const DRAGON_ANYWHERE_URL = "https://www.voicerecognition.com.au/products/dragon
       .src-col{background:#f0fdf4}
       .browser-col{background:#fafaf0}
       .prose{max-width:820px}
-      .prose h2{font-size:24px;letter-spacing:-0.02em;margin:0 0 12px}
+      .prose h2{font-size:22px;letter-spacing:-0.02em;margin:0 0 10px}
       .prose p{font-size:15px;line-height:1.8;color:#334155;margin:0 0 16px}
       .prose ul{margin:0 0 16px;padding-left:24px}
       .prose li{font-size:15px;line-height:1.8;color:#334155;margin-bottom:4px}
@@ -130,6 +131,11 @@ const DRAGON_ANYWHERE_URL = "https://www.voicerecognition.com.au/products/dragon
       .verdict-badge{display:inline-block;padding:3px 10px;border-radius:999px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px}
       .verdict-dragon{background:#fde8e8;color:#991b1b}
       .verdict-free{background:#e0f2fe;color:#0c4a6e}
+      .about-section{padding:48px 0;background:#f8fafc}
+      .about-inner{max-width:820px}
+      .about-inner h2{font-size:20px;letter-spacing:-0.02em;margin:0 0 16px;color:#0f172a}
+      .about-inner p{font-size:14px;line-height:1.8;color:#475569;margin:0 0 12px}
+      .about-inner p:last-child{margin:0}
       footer{background:#111;color:#64748b;padding:28px 0;font-size:14px}
       .footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
       .footer-links{display:flex;gap:20px}
@@ -190,10 +196,7 @@ const DRAGON_ANYWHERE_URL = "https://www.voicerecognition.com.au/products/dragon
         <div class="wrap">
           <div class="breadcrumb"><a href="/">Home</a> &rsaquo; Feature Comparison</div>
           <h1>Dragon Professional 16 - Full Feature Comparison</h1>
-          <p>Compare all five Dragon Professional 16 licensing options side by side, then see how Dragon stacks up against Windows Voice Typing, Speech Recognition Cloud, and browser-based dictation tools.</p>
-          <div class="reseller-notice">
-            <strong>About Voice Recognition Australia:</strong> We are an independent, authorised reseller of Dragon Professional software. We are not Microsoft or Nuance Communications. Dragon and Dragon Professional are trademarks of Nuance Communications, a Microsoft company. Voice Recognition Australia is Australia and Asia Pacific's longest-serving Dragon reseller, with over 25 years of local deployment experience across government, legal, healthcare, and enterprise environments.
-          </div>
+          <p>Compare all five Dragon Professional 16 licensing options side by side, then see how Dragon stacks up against Windows Voice Typing, Speech Recognition Cloud, and browser-based dictation tools. Sold in Australia by Voice Recognition Australia<a href="#about-vra" class="footnote-ref">*</a></p>
         </div>
       </div>
 
@@ -465,7 +468,7 @@ const DRAGON_ANYWHERE_URL = "https://www.voicerecognition.com.au/products/dragon
                   <td class="val-col">Enquire<span class="note">volume pricing</span></td>
                 </tr>
                 <tr>
-                  <td class="feature-col" style="font-size:13px;color:#64748b"></td>
+                  <td class="feature-col"></td>
                   <td class="cta-cell"><a href="/dragon-professional-16">View details</a></td>
                   <td class="cta-cell"><a href="/dragon-professional-16-upgrade">View details</a></td>
                   <td class="cta-cell"><a href="/dragon-professional-16-subscription">View details</a></td>
@@ -476,7 +479,7 @@ const DRAGON_ANYWHERE_URL = "https://www.voicerecognition.com.au/products/dragon
               </tbody>
             </table>
           </div>
-          <p style="font-size:12px;color:#94a3b8;margin-top:12px">Pricing sourced from Voice Recognition Australia (verified March 2026). Verify current pricing before purchase. Feature information sourced from official Nuance/Dragon documentation. Voice Recognition Australia is an independent authorised reseller and is not affiliated with Microsoft or Nuance Communications.</p>
+          <p style="font-size:12px;color:#94a3b8;margin-top:12px">Pricing sourced from Voice Recognition Australia (verified March 2026). Verify current pricing before purchase. Feature information sourced from official Nuance/Dragon documentation.</p>
         </div>
       </section>
 
@@ -564,7 +567,7 @@ const DRAGON_ANYWHERE_URL = "https://www.voicerecognition.com.au/products/dragon
               </tbody>
             </table>
           </div>
-          <p style="font-size:12px;color:#94a3b8;margin-top:12px">Sources: Microsoft Support documentation, Google Docs Help, speechrecognition.cloud, and official Dragon Professional 16 documentation. Comparison reflects publicly available information (March 2026). Voice Recognition Australia is an independent reseller and is not affiliated with Microsoft, Nuance Communications, or Speech Recognition Cloud.</p>
+          <p style="font-size:12px;color:#94a3b8;margin-top:12px">Sources: Microsoft Support documentation, Google Docs Help, speechrecognition.cloud, and official Dragon Professional 16 documentation. Comparison reflects publicly available information (March 2026).</p>
         </div>
       </section>
 
@@ -644,17 +647,14 @@ const DRAGON_ANYWHERE_URL = "https://www.voicerecognition.com.au/products/dragon
       <section class="neutral-bg">
         <div class="wrap">
           <div class="prose">
-            <h2>About Dragon Professional 16 licensing in Australia</h2>
-            <p>Dragon Professional 16 is sold in Australia through Voice Recognition Australia (VRA), Australia and Asia Pacific's longest-serving Dragon reseller with over 25 years of local deployment experience. VRA is an independent authorised reseller - not Microsoft or Nuance Communications. Purchasing through VRA gives you Australian pricing in AUD and access to VRA's local deployment and onboarding team for subscription and enterprise customers.</p>
-            <p>The key choice most Australian buyers face is between the perpetual licence ($994), the upgrade ($495 for existing v15 owners), and the annual subscription ($595/yr). For most individuals, the perpetual licence is the most cost-effective long-term option. The subscription suits users who need the software on multiple PCs or prefer annual billing.</p>
-            <h2>Dragon Professional 16 vs Speech Recognition Cloud</h2>
-            <p>Dragon Professional 16 and Speech Recognition Cloud serve different needs. Dragon is a locally installed, offline-capable, English-only product built for deep workflow integration - custom vocabulary, voice macros, audio transcription, and hands-free PC control. Speech Recognition Cloud is a cloud-based subscription that works instantly with no voice training, supports 57+ languages, and runs in any Windows application. Both are available through the VRA network. The right choice depends on your connectivity requirements, language needs, and whether you want a locally installed or cloud-based solution.</p>
             <h2>Dragon vs Windows built-in voice tools</h2>
             <p>Windows 11 includes Voice Typing (Win+H) and Voice Access - both require an internet connection per Microsoft's own documentation. Dragon Professional 16, once installed and activated, operates without an internet connection. For professionals working with sensitive documents, in environments with limited connectivity, or requiring consistent accuracy with specialised vocabulary, this distinction is significant.</p>
+            <h2>Dragon Professional 16 vs Speech Recognition Cloud</h2>
+            <p>Dragon and Speech Recognition Cloud serve different needs. Dragon is a locally installed, offline-capable, English-only product built for deep workflow integration - custom vocabulary, voice macros, audio file transcription, and hands-free PC control. Speech Recognition Cloud is a cloud-based subscription that works instantly with no voice training, supports 57+ languages, and runs in any Windows application. The right choice depends on your connectivity requirements, language needs, and whether you want a locally installed or cloud-based solution.</p>
             <h2>What Dragon Professional 16 does not do</h2>
             <p>Dragon Professional 16 is designed for single-speaker dictation and transcription. It will not reliably transcribe multi-speaker conversations, meetings, or interviews. It is a Windows-only product - Nuance discontinued Dragon for Mac. It supports English only across six regional variants (Australian, New Zealand, UK, US, Canadian, and Indian English). For cloud-hosted or virtual desktop deployments, consider Dragon Professional Anywhere.</p>
             <h2>System requirements</h2>
-            <p>Dragon Professional 16 requires Windows 10 or Windows 11 (32-bit or 64-bit). Allow at least 12GB free disk space for installation. An internet connection is required for the initial download and activation, but not for ongoing use. Apple AirPods are not supported for live dictation - a dedicated USB headset or dictation microphone is recommended.</p>
+            <p>Dragon Professional 16 requires Windows 10 or Windows 11. Allow at least 12GB free disk space for installation. An internet connection is required for the initial download and activation, but not for ongoing use. Apple AirPods are not supported for live dictation - a dedicated USB headset or dictation microphone is recommended for best accuracy.</p>
           </div>
         </div>
       </section>
@@ -665,7 +665,7 @@ const DRAGON_ANYWHERE_URL = "https://www.voicerecognition.com.au/products/dragon
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start">
             <div>
               <h2 style="color:white;font-size:26px;margin:0 0 12px">Ready to buy or need a recommendation?</h2>
-              <p style="color:#94a3b8;margin:0 0 20px">Voice Recognition Australia has been deploying Dragon Professional in legal, medical, government, and enterprise environments across Australia and Asia Pacific for over 25 years. We are an independent authorised reseller - not Microsoft or Nuance. Tell us your situation and we will point you to the right product.</p>
+              <p style="color:#94a3b8;margin:0 0 20px">Voice Recognition Australia has been deploying Dragon Professional in legal, medical, government, and enterprise environments across Australia and Asia Pacific for over 25 years. Tell us your situation and we will point you to the right product.</p>
               <div style="display:flex;gap:12px;flex-wrap:wrap">
                 <a href="https://www.voicerecognition.com.au/collections/dragon-professional" class="btn btn-primary" target="_blank" rel="noopener">Buy from VRA &rarr;</a>
                 <a href="/" class="btn btn-secondary">Back to homepage</a>
@@ -674,6 +674,18 @@ const DRAGON_ANYWHERE_URL = "https://www.voicerecognition.com.au/products/dragon
             <div>
               <ACForm />
             </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT VRA — footnote anchor -->
+      <section id="about-vra" class="about-section">
+        <div class="wrap">
+          <div class="about-inner">
+            <h2>* About Voice Recognition Australia</h2>
+            <p>Voice Recognition Australia (VRA) is an independent, authorised reseller of Dragon Professional software. We are not Microsoft or Nuance Communications. Dragon, Dragon Professional, and Dragon Professional Anywhere are trademarks of Nuance Communications, a Microsoft company.</p>
+            <p>VRA has been the authorised Dragon reseller in Australia and Asia Pacific for over 25 years, with hands-on deployment experience across government, legal, healthcare, and enterprise environments. Purchasing through VRA gives you Australian pricing in AUD and, for subscription and enterprise customers, access to VRA's local onboarding and support team.</p>
+            <p>For most individual buyers, the key choice is between the perpetual licence ($994 once-off), the v15 upgrade ($495), and the annual subscription ($595/yr). For organisations deploying to multiple users, the Enterprise Group licence adds centralised management, Active Directory integration, and Citrix/RDP support. For cloud-hosted or virtual desktop environments, ask us about Dragon Professional Anywhere.</p>
           </div>
         </div>
       </section>
