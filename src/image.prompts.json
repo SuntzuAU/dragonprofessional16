@@ -1,0 +1,29 @@
+{
+  "images": [
+    {
+      "key": "hero",
+      "name": "dragon-professional-16-speech-recognition-australia",
+      "prompt": "Professional using Dragon speech recognition software on Windows PC, modern Australian office environment, legal or government setting, dictating documents hands-free, confident and productive, dark and red professional tones"
+    },
+    {
+      "key": "about-banner",
+      "name": "voice-recognition-australia-dragon-support-team",
+      "prompt": "Australian enterprise technology support team, professional office environment, speech recognition software deployment, trusted local experts, collaborative and professional"
+    },
+    {
+      "key": "feature-dictation",
+      "name": "dragon-professional-16-dictation-workflow",
+      "prompt": "Close-up of professional dictating into a high-quality microphone connected to a Windows PC, Dragon Professional software interface visible on screen, clean desk in a legal or corporate office"
+    },
+    {
+      "key": "feature-automation",
+      "name": "dragon-voice-command-automation-enterprise",
+      "prompt": "Enterprise knowledge worker using voice commands to automate document workflows on Windows, multiple application windows open, productivity focus, modern professional Australian workplace"
+    },
+    {
+      "key": "cta-banner",
+      "name": "dragon-professional-16-government-legal-australia",
+      "prompt": "Australian government or legal professional reviewing documents with speech recognition technology, formal professional environment, trust and expertise, dark professional tones"
+    }
+  ]
+}

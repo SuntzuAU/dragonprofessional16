@@ -1,0 +1,37 @@
+{
+  "hero": {
+    "key": "hero",
+    "r2Key": "",
+    "filename": "",
+    "altText": "Dragon Professional 16 speech recognition software in use in Australian professional office environment",
+    "prompt": ""
+  },
+  "about-banner": {
+    "key": "about-banner",
+    "r2Key": "",
+    "filename": "",
+    "altText": "Voice Recognition Australia team supporting Dragon Professional deployments across Australian enterprise and government",
+    "prompt": ""
+  },
+  "feature-dictation": {
+    "key": "feature-dictation",
+    "r2Key": "",
+    "filename": "",
+    "altText": "Professional dictating into microphone with Dragon Professional 16 open on Windows PC",
+    "prompt": ""
+  },
+  "feature-automation": {
+    "key": "feature-automation",
+    "r2Key": "",
+    "filename": "",
+    "altText": "Enterprise knowledge worker using Dragon voice commands to automate document workflows",
+    "prompt": ""
+  },
+  "cta-banner": {
+    "key": "cta-banner",
+    "r2Key": "",
+    "filename": "",
+    "altText": "Australian legal or government professional using Dragon Professional 16 for document dictation",
+    "prompt": ""
+  }
+}
