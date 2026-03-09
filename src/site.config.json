@@ -71,6 +71,8 @@
   "products": [
     {
       "slug": "dragon-professional-16",
+      "heroImageKey": "product-perpetual-hero",
+      "featureImageKey": "product-perpetual-feature",
       "badge": "Perpetual Licence",
       "navLabel": "Dragon Professional 16",
       "title": "Dragon Professional 16",
@@ -118,6 +120,8 @@
     },
     {
       "slug": "dragon-professional-16-upgrade",
+      "heroImageKey": "product-upgrade-hero",
+      "featureImageKey": "product-upgrade-feature",
       "badge": "Upgrade Pricing",
       "navLabel": "Upgrade from v15",
       "title": "Dragon Professional 16 Upgrade",
@@ -164,6 +168,8 @@
     },
     {
       "slug": "dragon-professional-16-subscription",
+      "heroImageKey": "product-subscription-hero",
+      "featureImageKey": "product-subscription-feature",
       "badge": "Annual Subscription",
       "navLabel": "Annual Subscription",
       "title": "Dragon Professional 16 Annual Subscription",
@@ -209,6 +215,8 @@
     },
     {
       "slug": "dragon-professional-16-student",
+      "heroImageKey": "product-student-hero",
+      "featureImageKey": "product-student-feature",
       "badge": "Student / Education",
       "navLabel": "Student / Education",
       "title": "Dragon Professional 16 Student Edition",
@@ -250,6 +258,8 @@
     },
     {
       "slug": "dragon-professional-group",
+      "heroImageKey": "product-enterprise-hero",
+      "featureImageKey": "product-enterprise-feature",
       "badge": "Enterprise and Government",
       "navLabel": "Enterprise (Group)",
       "title": "Dragon Professional Group",

@@ -3,27 +3,62 @@
     {
       "key": "hero",
       "name": "dragon-professional-16-speech-recognition-australia",
-      "prompt": "Professional using Dragon speech recognition software on Windows PC, modern Australian office environment, legal or government setting, dictating documents hands-free, confident and productive, dark and red professional tones"
+      "prompt": "Professional using Dragon speech recognition software on Windows PC, modern Australian office environment, legal or government setting, dictating documents hands-free, confident and productive, dark charcoal and red professional tones"
     },
     {
-      "key": "about-banner",
-      "name": "voice-recognition-australia-dragon-support-team",
-      "prompt": "Australian enterprise technology support team, professional office environment, speech recognition software deployment, trusted local experts, collaborative and professional"
+      "key": "about",
+      "name": "voice-recognition-australia-dragon-expert-team",
+      "prompt": "Experienced Australian enterprise technology team in a professional office, trusted speech recognition software specialists, collaborative meeting environment, warm and credible"
     },
     {
-      "key": "feature-dictation",
-      "name": "dragon-professional-16-dictation-workflow",
-      "prompt": "Close-up of professional dictating into a high-quality microphone connected to a Windows PC, Dragon Professional software interface visible on screen, clean desk in a legal or corporate office"
+      "key": "product-perpetual-hero",
+      "name": "dragon-professional-16-perpetual-licence-australia",
+      "prompt": "Corporate professional at a clean Windows PC desk dictating documents with Dragon Professional software, perpetual ownership concept, confident and settled, Australian legal or corporate office, dark professional tones"
     },
     {
-      "key": "feature-automation",
-      "name": "dragon-voice-command-automation-enterprise",
-      "prompt": "Enterprise knowledge worker using voice commands to automate document workflows on Windows, multiple application windows open, productivity focus, modern professional Australian workplace"
+      "key": "product-perpetual-feature",
+      "name": "dragon-professional-16-offline-dictation-windows",
+      "prompt": "Close-up of hands-free dictation in progress on a Windows PC, Dragon Professional software interface on screen, no internet required concept, secure private office environment"
     },
     {
-      "key": "cta-banner",
-      "name": "dragon-professional-16-government-legal-australia",
-      "prompt": "Australian government or legal professional reviewing documents with speech recognition technology, formal professional environment, trust and expertise, dark professional tones"
+      "key": "product-upgrade-hero",
+      "name": "dragon-professional-16-upgrade-from-v15",
+      "prompt": "Professional upgrading software on a Windows 11 PC, Dragon Professional upgrade concept, modern Australian office, improvement and advancement theme, clean desk setup"
+    },
+    {
+      "key": "product-upgrade-feature",
+      "name": "dragon-professional-16-windows-11-compatibility",
+      "prompt": "Windows 11 desktop with Dragon Professional software running, multiple Microsoft 365 apps open, productivity and compatibility theme, bright modern Australian office"
+    },
+    {
+      "key": "product-subscription-hero",
+      "name": "dragon-professional-16-annual-subscription-flexible",
+      "prompt": "Professional using Dragon Professional on multiple devices in different locations, flexible subscription concept, modern mobile Australian worker, laptop in a cafe and office setting"
+    },
+    {
+      "key": "product-subscription-feature",
+      "name": "dragon-professional-16-multi-pc-subscription",
+      "prompt": "Multiple Windows PCs on different desks in a modern Australian office, Dragon Professional subscription licence concept, flexible multi-device deployment, professional environment"
+    },
+    {
+      "key": "product-student-hero",
+      "name": "dragon-professional-16-student-education-australia",
+      "prompt": "Australian university student using Dragon Professional speech recognition to dictate an assignment on a Windows laptop, bright study environment, productive and focused, accessibility theme"
+    },
+    {
+      "key": "product-student-feature",
+      "name": "dragon-professional-16-accessibility-student-dictation",
+      "prompt": "Student dictating essay hands-free on a Windows PC using a headset microphone, Dragon Professional on screen, university library or study room, accessibility and productivity theme"
+    },
+    {
+      "key": "product-enterprise-hero",
+      "name": "dragon-professional-group-enterprise-government-australia",
+      "prompt": "Australian government or large enterprise IT team managing a Dragon Professional Group deployment, Nuance Management Centre on screen, server room or professional IT environment, trust and scale"
+    },
+    {
+      "key": "product-enterprise-feature",
+      "name": "dragon-professional-group-centralised-management-nmc",
+      "prompt": "IT administrator managing centralised Dragon Professional licences across a large Australian organisation, dashboard and reporting on screen, enterprise control and compliance theme"
     }
   ]
 }
