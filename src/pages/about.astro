@@ -1,0 +1,70 @@
+---
+import site from "../site.config.json";
+const year = new Date().getFullYear();
+const c = site.colours;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>About Voice Recognition Australia | {site.siteName}</title>
+    <meta name="description" content="Voice Recognition Australia - 25 years deploying Dragon speech recognition in Australian enterprise, government, legal, and healthcare environments." />
+    <link rel="canonical" href={`${site.domain}/about`} />
+    <script define:vars={{ c }}>
+      const css = `body{background:${c.background};color:${c.text}}.btn-primary{background:${c.accent};color:#fff;border-color:${c.accent}}.btn-primary:hover{background:${c.accentHover}}.nav-links a:hover{color:${c.accent}}`;
+      const el = document.createElement('style'); el.textContent = css; document.head.appendChild(el);
+    </script>
+    <style is:inline>
+      *,*::before,*::after{box-sizing:border-box}
+      body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6}
+      a{color:inherit;text-decoration:none}
+      .wrap{max-width:840px;margin:0 auto;padding:0 24px}
+      header{position:sticky;top:0;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid #e2e8f0;z-index:100}
+      .nav{display:flex;align-items:center;justify-content:space-between;padding:10px 0;gap:16px}
+      .logo img{height:40px;width:auto}
+      .nav-links{display:flex;gap:18px;font-size:14px;font-weight:500;color:#334155}
+      .nav-ctas{display:flex;gap:10px}
+      .btn{display:inline-block;padding:10px 20px;border-radius:8px;font-weight:700;font-size:14px;border:2px solid transparent}
+      section{padding:64px 0}
+      h1{font-size:36px;letter-spacing:-0.02em;margin:0 0 16px}
+      p{font-size:16px;color:#475569;margin:0 0 20px}
+      footer{background:#111;color:#64748b;padding:28px 0;font-size:14px}
+      .footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+      .footer-links{display:flex;gap:20px}
+      .footer-links a:hover{color:white}
+      @media(max-width:600px){.nav-links{display:none}.footer-inner{flex-direction:column;align-items:center;text-align:center}.footer-links{justify-content:center}}
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="wrap" style="max-width:1080px">
+        <div class="nav">
+          <div class="logo"><a href="/"><img src="/logo.png" alt={site.siteName} onerror="this.style.display='none'" /></a></div>
+          <nav class="nav-links"><a href="/">Home</a><a href="/#compare">Compare versions</a><a href="/#final-cta">Contact</a></nav>
+          <div class="nav-ctas"><a class="btn btn-primary" href="/#final-cta">{site.primaryCTA.text}</a></div>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section>
+        <div class="wrap">
+          <h1>About Voice Recognition Australia</h1>
+          <p>{site.branding.aboutBody}</p>
+          <p>We are Australia's longest-serving Dragon Professional reseller, with over 25 years of deployments across government agencies, legal chambers, medical practices, and large enterprise environments. When you purchase from VRA, you receive local onboarding, ongoing support, and expert advice from a team that has deployed Dragon in the most demanding Australian environments.</p>
+          <p>Dragon Professional 16 is available in five versions to suit individual professionals, upgrading users, students, and enterprise deployments. Our team can help you choose the right option.</p>
+          <a href="/#compare" class="btn btn-primary" style="margin-top:8px">Compare all versions</a>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div class="wrap" style="max-width:1080px">
+        <div class="footer-inner">
+          <div>&copy; {year} {site.siteName}</div>
+          <div class="footer-links">{site.footerLinks?.map((l) => <a href={l.url}>{l.label}</a>)}</div>
+        </div>
+        <div style="font-size:11px;color:#475569;margin-top:12px;padding-top:12px;border-top:1px solid #222">{site.branding.footerDisclaimer}</div>
+      </div>
+    </footer>
+  </body>
+</html>

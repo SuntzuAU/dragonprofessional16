@@ -1,0 +1,21 @@
+---
+import site from "../site.config.json";
+const year = new Date().getFullYear();
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Terms of Use | {site.siteName}</title>
+    <meta name="robots" content="noindex" />
+  </head>
+  <body style="margin:0;font-family:system-ui,sans-serif;background:#fff;color:#0f172a">
+    <div style="max-width:760px;margin:0 auto;padding:48px 24px">
+      <a href="/" style="color:#CC0000;font-weight:600;font-size:14px">&larr; Back to home</a>
+      <h1 style="font-size:32px;margin:24px 0 16px">Terms of Use</h1>
+      <p style="color:#475569">This website is provided by Voice Recognition Australia for informational purposes. Product pricing and availability are sourced from Voice Recognition Australia's website and may change without notice. Always verify current pricing at voicerecognition.com.au before making purchasing decisions. Dragon Professional is a trademark of Nuance Communications (Microsoft). Voice Recognition Australia is an authorised Australian reseller and is not affiliated with or endorsed by Microsoft or Nuance beyond the reseller relationship. All content on this website is copyright Voice Recognition Australia.</p>
+      <p style="color:#64748b;font-size:13px;margin-top:32px">&copy; {year} {site.siteName}</p>
+    </div>
+  </body>
+</html>

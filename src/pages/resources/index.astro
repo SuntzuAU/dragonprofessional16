@@ -1,0 +1,79 @@
+---
+import site from "../../site.config.json";
+const year = new Date().getFullYear();
+const c = site.colours;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dragon Professional 16 Resources and Articles | {site.siteName}</title>
+    <meta name="description" content="Guides, comparisons, and expert advice on Dragon Professional 16 for Australian professionals - from Voice Recognition Australia." />
+    <link rel="canonical" href={`${site.domain}/resources`} />
+    <script define:vars={{ c }}>
+      const css = `body{background:${c.background};color:${c.text}}.btn-primary{background:${c.accent};border-color:${c.accent};color:#fff}.btn-primary:hover{background:${c.accentHover}}.nav-links a:hover{color:${c.accent}}.dark-bg{background:${c.primary};color:white}`;
+      const el = document.createElement('style'); el.textContent = css; document.head.appendChild(el);
+    </script>
+    <style is:inline>
+      *,*::before,*::after{box-sizing:border-box}
+      body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6}
+      a{color:inherit;text-decoration:none}
+      .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+      header{position:sticky;top:0;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid #e2e8f0;z-index:100}
+      .nav{display:flex;align-items:center;justify-content:space-between;padding:10px 0;gap:16px}
+      .logo img{height:40px;width:auto}
+      .nav-links{display:flex;gap:18px;font-size:14px;font-weight:500;color:#334155}
+      .nav-ctas{display:flex;gap:10px}
+      .btn{display:inline-block;padding:10px 20px;border-radius:8px;font-weight:700;font-size:14px;border:2px solid transparent;cursor:pointer;transition:all .15s}
+      section{padding:64px 0}
+      .empty-state{text-align:center;padding:80px 24px;color:#64748b}
+      .empty-state h2{font-size:24px;margin:0 0 12px;color:#1a1a1a}
+      footer{background:#111;color:#64748b;padding:28px 0;font-size:14px}
+      .footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+      .footer-links{display:flex;gap:20px}
+      .footer-links a:hover{color:white}
+      @media(max-width:600px){.nav-links{display:none}.footer-inner{flex-direction:column;align-items:center;text-align:center}.footer-links{justify-content:center}}
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="wrap">
+        <div class="nav">
+          <div class="logo"><a href="/"><img src="/logo.png" alt={site.siteName} onerror="this.style.display='none'" /></a></div>
+          <nav class="nav-links" aria-label="Primary">
+            <a href="/">Home</a>
+            <a href="/#compare">Compare versions</a>
+            <a href="/#faq">FAQ</a>
+            <a href="/#final-cta">Contact</a>
+          </nav>
+          <div class="nav-ctas">
+            <a class="btn btn-primary" href="/#final-cta">{site.primaryCTA.text}</a>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section>
+        <div class="wrap">
+          <h1 style="font-size:36px;letter-spacing:-0.02em;margin:0 0 12px">Dragon Professional 16 Resources</h1>
+          <p style="font-size:17px;color:#475569;margin:0 0 48px">Guides, comparisons, and expert advice for Australian professionals considering Dragon Professional 16.</p>
+          <div class="empty-state">
+            <h2>Articles coming soon</h2>
+            <p>We are preparing guides on system requirements, upgrade paths, microphone recommendations, and enterprise deployment. Check back soon.</p>
+            <a href="/#compare" class="btn btn-primary" style="margin-top:20px">Compare Dragon versions now</a>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div class="wrap">
+        <div class="footer-inner">
+          <div>&copy; {year} {site.siteName}</div>
+          <div class="footer-links">{site.footerLinks?.map((l) => <a href={l.url}>{l.label}</a>)}</div>
+        </div>
+        <div style="font-size:11px;color:#475569;margin-top:12px;padding-top:12px;border-top:1px solid #222">{site.branding.footerDisclaimer}</div>
+      </div>
+    </footer>
+  </body>
+</html>
