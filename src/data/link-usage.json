@@ -1,0 +1,30 @@
+{
+  "_readme": "Per-site link usage tracker. Specific to THIS site. Auto-rebuilt by GitHub Actions on every merge. Do not edit manually - frontmatter is the source of truth.",
+  "thisSite": "dragonprofessional16.com.au",
+  "lastUpdated": "2026-03-10",
+  "internal": {
+    "totalLinks": 0,
+    "log": []
+  },
+  "external": {
+    "coverage": {
+      "voicerecognition.com.au": 0,
+      "pdfsoftware.com.au": 0,
+      "dragonprofessional16.com.au": 0,
+      "dragonnaturallyspeaking.com.au": 0,
+      "dictationsolutions.com.au": 0,
+      "speechrecognition.cloud": 0,
+      "cloudprinting.au": 0
+    },
+    "anchorsUsed": {
+      "voicerecognition.com.au": [],
+      "pdfsoftware.com.au": [],
+      "dragonprofessional16.com.au": [],
+      "dragonnaturallyspeaking.com.au": [],
+      "dictationsolutions.com.au": [],
+      "speechrecognition.cloud": [],
+      "cloudprinting.au": []
+    },
+    "log": []
+  }
+}
