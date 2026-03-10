@@ -35,7 +35,7 @@ const benefitIcons = [
     <meta name="description" content={site.branding.metaDesc ?? site.branding.subheadline} />
     <link rel="canonical" href={site.domain} />
 
-    <!-- Preload hero image — biggest LCP fix -->
+    <!-- Preload hero image -- biggest LCP fix -->
     {heroSrc && <link rel="preload" as="image" href={heroSrc} fetchpriority="high" />}
 
     {site.googleAnalyticsId && (
@@ -48,7 +48,7 @@ const benefitIcons = [
       </script>
     )}
 
-    <!-- Critical CSS inlined — no JS dependency for above-fold colours -->
+    <!-- Critical CSS inlined -- no JS dependency for above-fold colours -->
     <style is:inline define:vars={{
       bg: c.background,
       text: c.text,
@@ -168,7 +168,7 @@ const benefitIcons = [
       <div class="wrap">
         <div class="nav">
           <div class="logo">
-            <img src="/logo.png" alt={site.siteName} onerror="this.style.display='none'" width="160" height="40" />
+            <img src="/logo.jpg" alt={site.siteName} onerror="this.style.display='none'" width="160" height="40" />
           </div>
           <nav class="nav-links" aria-label="Primary">
             {site.navItems?.map((item) => <a href={item.url}>{item.label}</a>)}
