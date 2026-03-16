@@ -116,8 +116,8 @@ const featureKey = product.featureImageKey || "feature-dictation";
       .price-note{font-size:14px;color:#64748b;margin:0 0 6px}
       .licence-note{font-size:13px;color:#64748b;margin:0 0 20px;padding:10px 14px;background:#f8fafc;border-radius:8px;border-left:3px solid #e2e8f0}
       .buy-actions{display:flex;flex-direction:column;gap:12px}
-      .vra-btn{display:block;text-align:center;padding:14px 24px;border-radius:10px;font-weight:700;font-size:15px;background:#1a1a1a;color:#fff;transition:background .15s;border:2px solid #1a1a1a}
-      .vra-btn:hover{background:#333}
+      .info-btn{display:block;text-align:center;padding:14px 24px;border-radius:10px;font-weight:700;font-size:15px;background:#1a1a1a;color:#fff;transition:background .15s;border:2px solid #1a1a1a}
+      .info-btn:hover{background:#333}
       .sh{margin-bottom:32px}
       .sh h2{font-size:28px;letter-spacing:-0.02em;margin:0 0 8px}
       .sh p{font-size:16px;margin:0}
@@ -222,7 +222,7 @@ const featureKey = product.featureImageKey || "feature-dictation";
               <div class="licence-note">{product.licenceNote}</div>
               <div class="buy-actions">
                 <a href={product.vraUrl} class="btn btn-primary btn-lg" target="_blank" rel="noopener">{product.ctaText} &rarr;</a>
-                <a href="/#final-cta" class="vra-btn">Talk to VRA - local support</a>
+                <a href={product.vraUrl} class="info-btn" target="_blank" rel="noopener">More information and pricing &rarr;</a>
               </div>
             </div>
             <div>
