@@ -25,3 +25,25 @@ POST https://master-image-generator.speech-recognition-cloud.workers.dev/generat
 
 ## Gotchas
 No emoji in site.config.json. YAML needs spaces after colons. push_files can't touch .github/workflows/.
+
+## PRICING AND PRODUCT DATA - CRITICAL
+All product prices, cart URLs, info URLs, schema data, features, and FAQs live in ONE place only: `src/site.config.json` under the `products` array.
+
+NEVER hardcode prices, cart links, or product data anywhere else. NEVER update a product page file directly to change a price.
+
+If asked to update a price or cart link:
+1. Read `src/site.config.json` first
+2. Update ONLY the relevant field in the `products` array
+3. The `[product].astro` template reads from config at build time - all pages update automatically
+4. The Product schema (JSON-LD) is also generated from config - it stays in sync automatically
+
+Cart URL format:
+- Direct purchase: `https://www.voicerecognition.com.au/cart/add?id=VARIANT_ID&quantity=1`
+- Subscription with selling plan: `https://www.voicerecognition.com.au/cart/add?id=VARIANT_ID&selling_plan=PLAN_ID&quantity=1`
+
+Known variant IDs (verify on VRA before using):
+- Dragon Pro 16 perpetual: 44931726508278
+- Dragon Pro 16 upgrade: 44931746595062
+- Dragon Pro 16 subscription: 46140825338102 (selling_plan: 7531921654)
+- Dragon Pro 16 student: 47759915122934
+- Enterprise: enquiry page only, no cart
