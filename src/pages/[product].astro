@@ -25,7 +25,6 @@ function imgAlt(key) {
   return manifest[key]?.altText || "";
 }
 
-// Prefix anchor-only links with / so they navigate back to homepage
 function homeUrl(url) {
   if (!url) return "/";
   return url.startsWith("#") ? `/${url}` : url;
@@ -33,6 +32,37 @@ function homeUrl(url) {
 
 const heroKey = product.heroImageKey || "hero";
 const featureKey = product.featureImageKey || "feature-dictation";
+
+// Build JSON-LD schema
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": product.faqs?.map(f => ({
+    "@type": "Question",
+    "name": f.q,
+    "acceptedAnswer": { "@type": "Answer", "text": f.a }
+  })) || []
+};
+
+const productSchema = product.schemaPrice ? {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": product.schemaName || product.title,
+  "description": product.schemaDescription || product.subheadline,
+  "category": product.schemaCategory,
+  "brand": { "@type": "Brand", "name": product.schemaBrand || "Nuance / Microsoft" },
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": product.schemaPriceCurrency || "AUD",
+    "price": product.schemaPrice,
+    "availability": product.schemaAvailability || "https://schema.org/InStock",
+    "seller": {
+      "@type": "Organization",
+      "name": "Voice Recognition Australia",
+      "url": "https://www.voicerecognition.com.au"
+    }
+  }
+} : null;
 ---
 
 <!doctype html>
@@ -43,6 +73,8 @@ const featureKey = product.featureImageKey || "feature-dictation";
     <title>{product.metaTitle}</title>
     <meta name="description" content={product.metaDesc} />
     <link rel="canonical" href={`${site.domain}/${product.slug}`} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+    {productSchema && <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />}
 
     {site.googleAnalyticsId && (
       <script async src={`https://www.googletagmanager.com/gtag/js?id=${site.googleAnalyticsId}`}></script>
