@@ -173,13 +173,13 @@
       "badge": "Annual Subscription",
       "navLabel": "Annual Subscription",
       "title": "Dragon Professional 16 Annual Subscription",
-      "metaTitle": "Dragon Professional 16 Annual Subscription | $595/yr AUD | VRA Australia",
-      "metaDesc": "Dragon Professional 16 annual subscription. $595 AUD per year. Install on as many PCs as needed. Enhanced direct support included. Nuance Management Centre compatible.",
+      "metaTitle": "Dragon Professional 16 Annual Subscription | $695/yr AUD | VRA Australia",
+      "metaDesc": "Dragon Professional 16 annual subscription. $695 AUD per year auto-recurring. Install on as many PCs as needed. Enhanced direct support included. Nuance Management Centre compatible.",
       "headline": "Dragon Professional 16 - Annual Subscription",
       "subheadline": "The full Dragon Professional 16 feature set on an annual subscription. Install on as many Windows PCs as you need and receive enhanced direct support from the Nuance team.",
-      "price": "$595",
-      "priceNote": "AUD inc GST per year",
-      "licenceNote": "Install on as many PCs as needed. Licence issued as username and password.",
+      "price": "$695",
+      "priceNote": "AUD inc GST per year - auto-recurring",
+      "licenceNote": "Install on as many PCs as needed. Licence issued as username and password. Auto-renews annually at $695. One-off annual available at $795.",
       "installLimit": "Unlimited PCs",
       "bestFor": "Flexible users needing multiple PCs",
       "vraUrl": "https://www.voicerecognition.com.au/cart/add?id=46140825338102&selling_plan=7531921654&quantity=1",
@@ -188,16 +188,21 @@
       "features": [
         "Full Dragon Professional 16 feature set - no limitations",
         "Install on as many Windows PCs as you need",
+        "$695/yr auto-recurring - save $100 vs one-off annual ($795)",
         "Enhanced direct support included in subscription price",
         "Nuance Management Centre (NMC) compatible",
         "Licence issued as username and password",
         "Activation may take up to 24 hours after purchase",
-        "Renews annually - cancel before renewal date to end subscription"
+        "Auto-renews annually - cancel before renewal date to stop"
       ],
       "faqs": [
         {
           "q": "How does the subscription licence work?",
-          "a": "The subscription licence is issued as a username and password rather than a traditional licence key. Activation after purchase can take up to 24 hours. The subscription renews annually."
+          "a": "The subscription licence is issued as a username and password rather than a traditional licence key. Activation after purchase can take up to 24 hours. The subscription auto-renews annually at $695 AUD inc GST."
+        },
+        {
+          "q": "What is the difference between the $695 auto-recurring and $795 one-off annual?",
+          "a": "The $695 price applies when you set up automatic annual renewal - you save $100 per year compared to the $795 one-off annual option. Both give you the same full Dragon Professional 16 feature set with unlimited PC installs."
         },
         {
           "q": "Can I install the subscription on multiple computers?",
@@ -205,11 +210,11 @@
         },
         {
           "q": "What happens if I do not renew?",
-          "a": "If you do not renew before the annual renewal date, the licence expires and Dragon Professional will stop functioning. Your user profiles and custom vocabulary are stored locally and will not be deleted."
+          "a": "If you cancel before the annual renewal date, the licence expires and Dragon Professional will stop functioning. Your user profiles and custom vocabulary are stored locally and will not be deleted."
         },
         {
           "q": "Is the subscription cheaper long-term than the perpetual licence?",
-          "a": "Over 3 years, the perpetual licence ($994 once) costs less than 3 annual subscriptions ($595 x 3 = $1,785). The subscription suits users who want flexible multi-PC deployment or prefer annual billing."
+          "a": "Over 3 years, the perpetual licence ($994 once) costs less than 3 annual auto-recurring subscriptions ($695 x 3 = $2,085). The subscription suits users who want flexible multi-PC deployment, prefer annual billing, or want to avoid a higher upfront cost."
         }
       ]
     },
