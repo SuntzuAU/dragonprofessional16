@@ -1,15 +1,6 @@
 ---
 import site from "../site.config.json";
 const gaId = site.googleAnalyticsId;
+const gaSnippet = gaId ? `<script async src="https://www.googletagmanager.com/gtag/js?id=${gaId}"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${gaId}');</script>` : '';
 ---
-{gaId && (
-  <Fragment>
-    <script is:inline src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`} async></script>
-    <script is:inline define:vars={{ gaId }}>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', gaId);
-    </script>
-  </Fragment>
-)}
+<Fragment set:html={gaSnippet} />
