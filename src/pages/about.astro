@@ -1,5 +1,6 @@
 ---
 import site from "../site.config.json";
+import GaHead from "../components/GaHead.astro";
 const year = new Date().getFullYear();
 const c = site.colours;
 ---
@@ -11,6 +12,7 @@ const c = site.colours;
     <title>About Voice Recognition Australia | {site.siteName}</title>
     <meta name="description" content="Voice Recognition Australia - 25 years deploying Dragon speech recognition in Australian enterprise, government, legal, and healthcare environments." />
     <link rel="canonical" href={`${site.domain}/about`} />
+    <GaHead />
     <script define:vars={{ c }}>
       const css = `body{background:${c.background};color:${c.text}}.btn-primary{background:${c.accent};color:#fff;border-color:${c.accent}}.btn-primary:hover{background:${c.accentHover}}.nav-links a:hover{color:${c.accent}}`;
       const el = document.createElement('style'); el.textContent = css; document.head.appendChild(el);

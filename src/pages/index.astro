@@ -2,6 +2,7 @@
 import manifest from "../data/image-manifest.json";
 import site from "../site.config.json";
 import ACForm from "../components/ACForm.astro";
+import GaHead from "../components/GaHead.astro";
 
 const year = new Date().getFullYear();
 const R2_BASE = import.meta.env.PUBLIC_R2_BASE || "";
@@ -38,15 +39,7 @@ const benefitIcons = [
     <!-- Preload hero image -- biggest LCP fix -->
     {heroSrc && <link rel="preload" as="image" href={heroSrc} fetchpriority="high" />}
 
-    {site.googleAnalyticsId && (
-      <script async src={`https://www.googletagmanager.com/gtag/js?id=${site.googleAnalyticsId}`}></script>
-      <script define:vars={{ gaId: site.googleAnalyticsId }}>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', gaId);
-      </script>
-    )}
+    <GaHead />
 
     <!-- Critical CSS inlined -- no JS dependency for above-fold colours -->
     <style is:inline define:vars={{
