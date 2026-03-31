@@ -3,6 +3,33 @@ import site from "../site.config.json";
 import GaHead from "../components/GaHead.astro";
 const year = new Date().getFullYear();
 const c = site.colours;
+
+const orgSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Voice Recognition Australia",
+  "url": "https://www.voicerecognition.com.au",
+  "description": "Australia's longest-serving authorised Dragon reseller. 25+ years deploying speech recognition across healthcare, legal, government and enterprise.",
+  "foundingDate": "2000",
+  "sameAs": [
+    "https://dragonprofessional16.com.au",
+    "https://dragonnaturallyspeaking.com.au",
+    "https://dragonmedicalone.au",
+    "https://dictationsolutions.com.au",
+    "https://cloudprinting.au",
+    "https://speechrecognition.cloud",
+    "https://pdfsoftware.com.au"
+  ]
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": site.domain },
+    { "@type": "ListItem", "position": 2, "name": "About", "item": `${site.domain}/about` }
+  ]
+};
 ---
 <!doctype html>
 <html lang="en">
@@ -13,6 +40,8 @@ const c = site.colours;
     <meta name="description" content="Voice Recognition Australia - 25 years deploying Dragon speech recognition in Australian enterprise, government, legal, and healthcare environments." />
     <link rel="canonical" href={`${site.domain}/about`} />
     <GaHead />
+    <script type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
     <script define:vars={{ c }}>
       const css = `body{background:${c.background};color:${c.text}}.btn-primary{background:${c.accent};color:#fff;border-color:${c.accent}}.btn-primary:hover{background:${c.accentHover}}.nav-links a:hover{color:${c.accent}}`;
       const el = document.createElement('style'); el.textContent = css; document.head.appendChild(el);
