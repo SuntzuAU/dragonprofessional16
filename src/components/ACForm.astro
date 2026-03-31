@@ -1,6 +1,7 @@
 ---
 // ActiveCampaign Form 283 - Dragon Professional 16
 // Full embed including validation JavaScript
+// CRITICAL: phone field uses field[36] NOT name="phone" to avoid AC's intl-tel-input validation
 ---
 <div class="formbox">
   <div style="font-weight:800;font-size:20px;color:#0f172a;margin-bottom:4px">Get in touch</div>
@@ -28,7 +29,7 @@
       </div>
       <div class="_form_element _full_width">
         <div class="_field-wrapper">
-          <input type="text" id="phone" name="phone" placeholder="Your Phone Number" />
+          <input type="text" id="field36" name="field[36]" placeholder="Your Phone Number" autocomplete="off" />
         </div>
       </div>
       <div class="_form_element _full_width">
@@ -102,7 +103,7 @@
 </style>
 
 <script>
-  window.cfields = {"21": "number_of_users", "35": "company", "18": "comments_about_your_needs"};
+  window.cfields = {"36": "phone_number", "21": "number_of_users", "35": "company", "18": "comments_about_your_needs"};
 
   window._show_thank_you = function(id, message, trackcmp_url, email) {
     var form = document.getElementById('_form_' + id + '_'),
@@ -174,7 +175,7 @@
         }
       }
       if (no_error && elem.name == 'email') {
-        if (!value.match(/^[\+_a-z0-9-'&=]+(\.[[\+_a-z0-9-']+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i)) {
+        if (!value.match(/^[\+_a-z0-9-'&=]+(\.[\+_a-z0-9-']+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i)) {
           elem.className = elem.className + ' _has_error';
           no_error = false;
         }
