@@ -25,6 +25,46 @@ const benefitIcons = [
   `<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="16" fill="#fde8e8"/><path d="M16 9a4 4 0 0 1 4 4c0 2-1.5 3.6-3.5 4a1 1 0 0 0-.5.9V19h-1v-1.1c0-.9.6-1.7 1.5-1.9A3 3 0 1 0 13 12h-1a4 4 0 0 1 4-3zm-.5 12v-2h1v2h-1z" fill="#CC0000"/></svg>`,
   `<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="16" fill="#fde8e8"/><path d="M23 10H9a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V11a1 1 0 0 0-1-1zm-1 10H10v-8h12v8zm-9-6h6v2h-6v-2z" fill="#CC0000"/></svg>`,
 ];
+
+// --- Schema markup ---
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": site.faqs?.map(f => ({
+    "@type": "Question",
+    "name": f.q,
+    "acceptedAnswer": { "@type": "Answer", "text": f.a }
+  })) || []
+};
+
+const orgSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Voice Recognition Australia",
+  "url": "https://www.voicerecognition.com.au",
+  "description": "Australia's longest-serving authorised Dragon reseller. 25+ years deploying speech recognition across healthcare, legal, government and enterprise.",
+  "foundingDate": "2000",
+  "sameAs": [
+    "https://dragonprofessional16.com.au",
+    "https://dragonnaturallyspeaking.com.au",
+    "https://dragonmedicalone.au",
+    "https://dictationsolutions.com.au",
+    "https://cloudprinting.au",
+    "https://speechrecognition.cloud",
+    "https://pdfsoftware.com.au"
+  ]
+};
+
+const webSiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": site.siteName,
+  "url": site.domain,
+  "publisher": {
+    "@type": "Organization",
+    "name": "Voice Recognition Australia"
+  }
+};
 ---
 
 <!doctype html>
@@ -40,6 +80,11 @@ const benefitIcons = [
     {heroSrc && <link rel="preload" as="image" href={heroSrc} fetchpriority="high" />}
 
     <GaHead />
+
+    <!-- Schema markup -->
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(webSiteSchema)} />
 
     <!-- Critical CSS inlined -- no JS dependency for above-fold colours -->
     <style is:inline define:vars={{
