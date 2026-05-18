@@ -130,32 +130,32 @@
   },
   "dragon-medical-one-vs-dragon-professional-16-hero": {
     "key": "dragon-medical-one-vs-dragon-professional-16-hero",
-    "r2Key": "",
-    "filename": "",
-    "contentType": "image/png",
+    "r2Key": "dragonprofessional16/2026/05/18/dragon-medical-one-vs-dragon-professional-16-hero-dcc9a369.jpg",
+    "filename": "dragon-medical-one-vs-dragon-professional-16-hero-dcc9a369.jpg",
+    "contentType": "image/jpeg",
     "altText": "Australian doctor comparing Dragon Professional 16 and Dragon Medical One speech recognition options at desk",
-    "manual": true,
     "site": "dragonprofessional16",
-    "aspectRatio": "16:9"
+    "aspectRatio": "16:9",
+    "generatedAt": "2026-05-18T02:25:00Z"
   },
   "dragon-medical-one-vs-dragon-professional-16-break1": {
     "key": "dragon-medical-one-vs-dragon-professional-16-break1",
-    "r2Key": "",
-    "filename": "",
-    "contentType": "image/png",
+    "r2Key": "dragonprofessional16/2026/05/18/dragon-medical-one-vs-dragon-professional-16-break1-dceea0ee.jpg",
+    "filename": "dragon-medical-one-vs-dragon-professional-16-break1-dceea0ee.jpg",
+    "contentType": "image/jpeg",
     "altText": "Australian GP using cloud-based clinical dictation software in consultation room with mobile companion app",
-    "manual": true,
     "site": "dragonprofessional16",
-    "aspectRatio": "21:9"
+    "aspectRatio": "21:9",
+    "generatedAt": "2026-05-18T02:25:30Z"
   },
   "dragon-medical-one-vs-dragon-professional-16-break2": {
     "key": "dragon-medical-one-vs-dragon-professional-16-break2",
-    "r2Key": "",
-    "filename": "",
-    "contentType": "image/png",
+    "r2Key": "dragonprofessional16/2026/05/18/dragon-medical-one-vs-dragon-professional-16-break2-adb51865.jpg",
+    "filename": "dragon-medical-one-vs-dragon-professional-16-break2-adb51865.jpg",
+    "contentType": "image/jpeg",
     "altText": "Australian professional using Dragon Professional 16 speech recognition for business dictation in office environment",
-    "manual": true,
     "site": "dragonprofessional16",
-    "aspectRatio": "21:9"
+    "aspectRatio": "21:9",
+    "generatedAt": "2026-05-18T02:26:00Z"
   }
 }

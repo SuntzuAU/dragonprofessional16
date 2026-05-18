@@ -276,12 +276,6 @@ const breadcrumbSchema = {
       .compare-table tr:last-child td{border-bottom:none}
       .compare-table tr:nth-child(even) td{background:#fafafa}
 
-      .pathway-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;margin:28px 0 16px}
-      .pathway-card{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:10px}
-      .pathway-card h3{margin:0;font-size:15px;font-weight:700;color:#0f172a}
-      .pathway-card p{margin:0;font-size:14px;color:#475569;line-height:1.55}
-      .pathway-card .pathway-arrow{font-weight:700;font-size:14px;margin-top:auto}
-
       .formbox{background:#fff;border-radius:16px;padding:28px}
       footer{background:#111;color:#64748b;padding:28px 0;font-size:14px}
       .footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
@@ -292,7 +286,6 @@ const breadcrumbSchema = {
       @media(max-width:900px){
         .article-hero h1{font-size:30px}
         .article-body h2{font-size:22px}
-        .pathway-grid{grid-template-columns:1fr;gap:12px}
         .compare-table{font-size:13.5px}
         .compare-table th,.compare-table td{padding:10px 10px}
       }
@@ -504,28 +497,6 @@ const breadcrumbSchema = {
                 <p>{f.a}</p>
               </>
             ))}
-
-            <h2>Which path is right for you?</h2>
-
-            <div class="pathway-grid">
-              <div class="pathway-card">
-                <h3>Clinical dictation, EMR integration, established platform</h3>
-                <p>Dragon Medical One is the right choice for clinical documentation, multi-site work, and specialty practice.</p>
-                <a href="https://www.voicerecognition.com.au" target="_blank" rel="noopener" class="pathway-arrow">Buy Dragon Medical One from Voice Recognition Australia &rarr;</a>
-              </div>
-              <div class="pathway-card">
-                <h3>Professional dictation that isn't primarily clinical</h3>
-                <p>Dragon Professional 16 is excellent value for correspondence, research, and non-clinical professional work.</p>
-                <a href="/#compare" class="pathway-arrow">Compare the five Dragon Professional 16 versions &rarr;</a>
-              </div>
-              <div class="pathway-card">
-                <h3>Lightweight cloud alternative for clinical dictation</h3>
-                <p>Speech Recognition Cloud Medical is an Australian-built cloud option focused on fast, simple clinical dictation.</p>
-                <a href="https://speechrecognition.cloud" target="_blank" rel="noopener" class="pathway-arrow">Low-cost cloud dictation with medical vocabulary, installs in minutes &rarr;</a>
-              </div>
-            </div>
-
-            <p style="margin-top:24px">Whichever path you take, Voice Recognition Australia provides Australian support, onboarding, and 25 years of speech recognition deployment experience across general practice, specialist clinics, and hospital environments.</p>
 
           </div>
         </div>
