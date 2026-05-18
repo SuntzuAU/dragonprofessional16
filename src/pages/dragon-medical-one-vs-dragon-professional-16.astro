@@ -69,35 +69,31 @@ const webPageSchema = {
 const faqs = [
   {
     q: "Can I use Dragon Professional 16 inside Best Practice, Medical Director, or other Australian EMR software?",
-    a: "Dragon Professional 16 can dictate text into any Windows application that accepts keyboard input, which includes the text fields in most Australian EMR systems. However, it does not have designed EMR integration - it does not navigate between EMR fields by voice, does not use EMR-aware templates, and does not include clinical workflow features. It works as a typing replacement, not as a clinical documentation tool."
+    a: "Dragon Professional 16 will not work reliably in most Australian EMR systems. It is not designed or built for EMR integration. Dragon Medical One is the product built for that job - it is the established clinical dictation platform across Australian general practice, specialist clinics, and hospital environments."
   },
   {
     q: "Will Dragon Professional 16 understand medical terminology?",
-    a: "Out of the box, Dragon Professional 16 has a general English vocabulary. It will recognise common medical terms that appear in general English but will struggle with specialty-specific language, uncommon drug names, and clinical abbreviations. You can add these terms manually through the custom vocabulary feature, but this is a meaningful time investment. Dragon Medical One ships with these vocabularies built in."
+    a: "Not reliably. Dragon Professional 16 has a general English vocabulary. It will recognise common medical terms that appear in general English but struggles with specialty-specific language, drug names, and clinical abbreviations. Adding individual words manually does not replicate Dragon Medical One's clinical capability - Dragon Medical One has medical language baked into its recognition architecture, not just a longer word list."
   },
   {
     q: "Can I move my Dragon Professional 16 profile to Dragon Medical One later?",
-    a: "Custom vocabulary can be reviewed when moving between products, but the user profiles themselves are not directly portable - they are different products with different architectures. If you anticipate moving to Dragon Medical One eventually, it is usually more efficient to start there."
+    a: "Not really. Custom vocabulary can be exported from Dragon Professional 16, but Dragon Medical One has a fundamentally different architecture - its medical language understanding is built into the recognition engine, not just a word list. Moving from Pro 16 to Dragon Medical One is starting fresh on a more capable platform, not migrating a profile. If you know you need clinical dictation, it's more efficient to start with Dragon Medical One."
   },
   {
-    q: "Is Dragon Medical One worth the higher cost for a solo GP?",
-    a: "It depends on volume and workflow. For a GP doing high-volume clinical documentation across a busy practice, particularly one using EMR-resident notes, Dragon Medical One typically pays for itself in time saved within months. For a GP doing low-volume dictation, mostly correspondence, Dragon Professional 16 may be enough."
+    q: "Is Dragon Medical One good value for money for a GP?",
+    a: "Yes. Dragon Medical One saves the average clinician up to 90 minutes per day on documentation, depending on patient volume and practice workflow. For most GPs, the time recovered pays back the subscription cost within the first month, and continues to deliver compounding time savings every month after that. The value isn't in the licence price - it's in the hours of clinical and administrative time you stop losing to typing."
   },
   {
-    q: "Does Dragon Medical One work in Australian hospitals?",
-    a: "Dragon Medical One is widely deployed across Australian hospital systems. Specific deployment requirements vary by hospital IT environment and EMR. Voice Recognition Australia can advise on your specific setup."
+    q: "Is Dragon Medical One approved for use in Australian hospitals?",
+    a: "Yes. Dragon Medical One is approved for use across most Australian state government hospital systems and is the preferred clinical dictation product in many of them. It is widely deployed in public hospitals, specialist clinics, and private practice across Australia. Specific deployment requirements vary by hospital IT environment and EMR - Voice Recognition Australia can advise on your specific setup."
   },
   {
     q: "Can I trial both products before deciding?",
     a: "A 15-day trial is available for Dragon Professional 16, and Dragon Medical One trial access can be arranged with onboarding support. Contact Voice Recognition Australia to organise either trial."
   },
   {
-    q: "What about Dragon Professional Anywhere - is that the clinical product?",
-    a: "No. Dragon Professional Anywhere is the cloud-native version of Dragon Professional, designed for general business dictation across devices. It is not built for clinical work - that is Dragon Medical One's specific role."
-  },
-  {
     q: "Where do I buy each product in Australia?",
-    a: "Voice Recognition Australia is the authorised Australian reseller for both Dragon Professional 16 and Dragon Medical One. Both products can be purchased through voicerecognition.com.au with Australian support and onboarding included."
+    a: "Voice Recognition Australia is the largest Dragon and Nuance distributor in Australia and has held that position for 26 years. CEO Russell Bewsell has 28 years of experience in speech recognition, including presenting the national Dragonology training series on behalf of Nuance in 2017. VRA works with every state and federal government health department in Australia and is the established authority for speech recognition deployment, training, and support across healthcare, legal, and government environments. Both Dragon Professional 16 and Dragon Medical One can be purchased through voicerecognition.com.au with local Australian support and onboarding included."
   }
 ];
 
@@ -137,7 +133,7 @@ const dmoSchema = {
   "name": "Dragon Medical One",
   "operatingSystem": "Cloud-based, Windows compatible",
   "applicationCategory": "HealthApplication",
-  "description": "Dragon Medical One is Nuance and Microsoft's cloud-based clinical speech recognition platform, with built-in medical vocabularies for 90+ specialties, cloud user profiles, and designed EMR integration for Australian clinical environments.",
+  "description": "Dragon Medical One is Nuance and Microsoft's cloud-based clinical speech recognition platform, with built-in medical vocabularies covering the major medical disciplines, cloud user profiles, and designed EMR integration for Australian clinical environments. Hosted on Microsoft Azure.",
   "offers": {
     "@type": "Offer",
     "priceCurrency": "AUD",
@@ -368,7 +364,7 @@ const breadcrumbSchema = {
             <h2>What is Dragon Professional 16, and what is Dragon Medical One?</h2>
             <p><strong>Dragon Professional 16</strong> is Nuance's flagship desktop speech recognition product for general business use. It's a perpetual licence &mdash; pay $994 AUD once, install on up to two Windows PCs, and own it permanently. It works offline after activation. It's used widely across legal practices, government departments, consulting firms and any role where someone produces a high volume of professional documents and wants to dictate rather than type. It is highly accurate, deeply customisable through user-built vocabularies and voice macros, and it does not require an ongoing subscription.</p>
 
-            <p><strong>Dragon Medical One</strong> is a different product family entirely. It's a cloud-based annual subscription priced from $1,290 AUD per clinician per year. It is purpose-built for clinical documentation: medical vocabularies covering more than 90 specialties are built in from day one, the user profile follows the clinician between devices and sites, and it is designed to integrate with electronic medical record (EMR) systems used in Australian general practice, specialist clinics and hospitals. It is the product Nuance and Microsoft position as their clinical documentation platform &mdash; the one you'll see referenced in hospital procurement and EMR vendor documentation.</p>
+            <p><strong>Dragon Medical One</strong> is a different product family entirely. It's a cloud-based annual subscription priced from $1,290 AUD per clinician per year, hosted on Microsoft Azure &mdash; the same enterprise cloud infrastructure trusted by governments and health systems worldwide. It is purpose-built for clinical documentation: medical vocabularies covering multiple specialties with specific terminology for drug names, procedures and clinical language across the major medical disciplines built in from day one, the user profile follows the clinician between devices and sites, and it integrates with electronic medical record (EMR) systems used in Australian general practice, specialist clinics and hospitals. Dragon Medical One is also HIPAA-compliant and meets the privacy and security requirements for clinical use. It is the product Nuance and Microsoft position as their clinical documentation platform &mdash; the one you'll see referenced in hospital procurement and EMR vendor documentation.</p>
 
             <p>The two products share a brand name and a parent company, but they are not interchangeable. They are built for different audiences, on different commercial models, with different feature sets.</p>
 
@@ -379,19 +375,20 @@ const breadcrumbSchema = {
             )}
 
             <h2>Can I use Dragon Professional 16 for medical dictation?</h2>
-            <p>Technically, yes. Dragon Professional 16 will recognise speech and transcribe it into any Windows application &mdash; including medical software, Microsoft Word, Outlook, and EMR systems that accept dictation input. We have customers who use Pro 16 for medical correspondence, referral letters, research drafts and administrative work, and they get good results.</p>
+            <p>The honest answer is no &mdash; not for clinical work. Dragon Professional 16 is a general business dictation product. It works well for medical correspondence, referral letters, research drafts and administrative work, but it will not work reliably inside most Australian EMR systems, and it is not built or certified for clinical documentation.</p>
 
-            <p>The problem is what Dragon Professional 16 does <strong>not</strong> include for clinical work:</p>
+            <p>The problems compound when you try to use Pro 16 for clinical work:</p>
 
             <ul>
-              <li><strong>No specialist medical vocabularies.</strong> Pro 16 ships with a general English vocabulary. Medical terminology &mdash; drug names, anatomical terms, surgical procedures, specialty-specific language &mdash; is not pre-loaded. A clinician using Pro 16 for clinical notes will spend significant time adding custom words manually, and accuracy on uncommon terms will suffer until those words are added.</li>
-              <li><strong>No EMR integration pathway.</strong> Dragon Medical One has documented integrations and template support for clinical software environments. Pro 16 does not. It can dictate text into an EMR's text fields, but workflow features that clinicians rely on &mdash; structured note templates, navigation by voice between EMR fields, integration with clinical documentation modules &mdash; are not part of the Pro 16 product.</li>
-              <li><strong>No cloud profile.</strong> A Pro 16 user profile lives on the local computer. A clinician working across a clinic and a hospital, or between consulting rooms, needs to either replicate that profile on every device or accept that their custom vocabulary and accuracy improvements only apply on one machine.</li>
-              <li><strong>No continuous medical updates.</strong> New drugs are approved every quarter. New procedures, new terminology, new specialty language emerges constantly. Dragon Medical One receives continuous medical content updates as part of the subscription. Pro 16 receives general software updates but not curated medical content.</li>
-              <li><strong>No clinical-grade support pathway.</strong> Voice Recognition Australia provides Australian support for both products, but the underlying Nuance/Microsoft support model for Dragon Medical One is different &mdash; clinical issues are handled by a team familiar with medical workflows. Pro 16 support is general business support.</li>
+              <li><strong>It will not work in most EMRs.</strong> Dragon Professional 16 is not designed for electronic medical record systems and does not reliably dictate into most Australian EMRs. Dragon Medical One is the product Nuance and Microsoft built for that job.</li>
+              <li><strong>It is not built or certified for clinical privacy and security requirements.</strong> Dragon Professional 16 does not meet HIPAA or the equivalent Australian healthcare privacy and security standards required for handling patient information. Dragon Medical One is built and certified for clinical use.</li>
+              <li><strong>The medical vocabulary is not just missing words &mdash; it's a different architecture.</strong> Dragon Medical One has medical language and clinical context baked into the way the recognition engine works. Pro 16 has a general business vocabulary, and while you can add words manually, you cannot replicate the depth, prose patterns, and specialty-specific accuracy that Dragon Medical One delivers out of the box. It is not the same product with a different word list.</li>
+              <li><strong>No cloud profile.</strong> A Pro 16 user profile lives on the local computer. A clinician working across a clinic and a hospital, or between consulting rooms, cannot move their profile freely between devices.</li>
+              <li><strong>No continuous medical content updates.</strong> New drugs are approved every quarter. New procedures, new terminology, new specialty language emerges constantly. Dragon Medical One receives continuous medical content updates as part of the subscription. Pro 16 does not.</li>
+              <li><strong>No clinical-grade support pathway.</strong> Voice Recognition Australia provides Australian support for both products, but the underlying support model for Dragon Medical One is built around medical workflows. Pro 16 support is general business support.</li>
             </ul>
 
-            <p>A clinician using Dragon Professional 16 for clinical documentation can make it work, but they are paying a real cost in setup time, ongoing accuracy compromise, and workflow friction.</p>
+            <p>A clinician trying to use Dragon Professional 16 for clinical documentation is taking on compliance risk, accuracy risk, security risk, and compatibility risk. None of those risks are worth the upfront saving.</p>
 
             <h2>What does Dragon Medical One include that Dragon Professional 16 doesn't?</h2>
             <p>A practical feature-by-feature comparison for clinical work:</p>
@@ -405,7 +402,7 @@ const breadcrumbSchema = {
                 </tr>
               </thead>
               <tbody>
-                <tr><td><strong>Built-in medical vocabulary</strong></td><td>No</td><td>Yes &mdash; 90+ specialties</td></tr>
+                <tr><td><strong>Built-in medical vocabulary</strong></td><td>No</td><td>Yes &mdash; vocabularies for major medical disciplines</td></tr>
                 <tr><td><strong>Cloud user profile</strong></td><td>No &mdash; local only</td><td>Yes &mdash; follows clinician between devices</td></tr>
                 <tr><td><strong>EMR integration</strong></td><td>No formal pathway</td><td>Designed for EMR workflows</td></tr>
                 <tr><td><strong>Continuous medical content updates</strong></td><td>No</td><td>Yes &mdash; included in subscription</td></tr>
@@ -413,27 +410,18 @@ const breadcrumbSchema = {
                 <tr><td><strong>Internet required</strong></td><td>No &mdash; works offline after activation</td><td>Yes &mdash; cloud-based</td></tr>
                 <tr><td><strong>Install limit</strong></td><td>Up to 2 PCs</td><td>Cloud-based, runs on supported devices</td></tr>
                 <tr><td><strong>General business dictation</strong></td><td>Yes &mdash; strong</td><td>Yes &mdash; clinical-focused but works generally</td></tr>
-                <tr><td><strong>Single-speaker audio transcription</strong></td><td>Yes</td><td>Limited / different workflow</td></tr>
+                <tr><td><strong>Single-speaker audio file transcription (mp3, wav, etc.)</strong></td><td>Yes</td><td>No</td></tr>
               </tbody>
             </table>
 
             <p>The pattern is consistent: Dragon Professional 16 is broader (it works in any Windows application for any kind of dictation), and Dragon Medical One is deeper for one specific job (clinical documentation in a medical practice).</p>
 
-            <h2>When is Dragon Professional 16 enough for a doctor?</h2>
-            <p>Dragon Professional 16 is genuinely the right choice for some medical professionals. The question is what you're using it for.</p>
+            <h2>Is Dragon Professional 16 ever the right choice for a medical setting?</h2>
+            <p>For a doctor doing clinical work, the honest answer is no. The compliance, accuracy, security, compatibility, and vocabulary architecture problems outlined above mean Dragon Professional 16 is not the right tool for any clinician documenting patient care. The risks are real and not worth the upfront saving.</p>
 
-            <p><strong>Dragon Professional 16 may be sufficient if you:</strong></p>
-            <ul>
-              <li>Dictate <strong>correspondence, referrals, letters, research notes or administrative content</strong> rather than clinical-grade EMR documentation</li>
-              <li>Work primarily from <strong>one or two computers</strong> that you control</li>
-              <li>Are comfortable <strong>building your own custom vocabulary</strong> for the medical terms you use most often</li>
-              <li>Have a <strong>predictable, low-volume</strong> clinical dictation workload, or only dictate clinically as a secondary activity</li>
-              <li>Want to <strong>avoid a recurring subscription cost</strong> and prefer to own your software permanently</li>
-            </ul>
+            <p>Where Dragon Professional 16 can still earn its place in a medical setting is in <strong>non-clinical roles</strong>: practice administrators dictating correspondence, medical receptionists handling general office work, researchers drafting papers, and administrative staff working with non-clinical documents. In those contexts, Pro 16's accuracy, perpetual licensing, and offline operation are genuine strengths.</p>
 
-            <p>This profile applies to many GPs working primarily from a single practice, to researchers and academics, to administrative roles within hospitals, and to clinicians whose dictation is mostly non-clinical.</p>
-
-            <p>If this is you, Dragon Professional 16's $994 perpetual licence is excellent value and you don't need Dragon Medical One.</p>
+            <p>But for the clinician handling clinical documentation: Dragon Medical One (or another clinical-grade product) is the right starting point. Not Pro 16.
 
             {imgSrc(break2Key) && (
               <div class="break-image">
@@ -442,7 +430,7 @@ const breadcrumbSchema = {
             )}
 
             <h2>When do you actually need Dragon Medical One?</h2>
-            <p>Dragon Medical One earns its higher subscription cost when clinical documentation is the core of your work.</p>
+            <p>For most clinicians documenting patient care, Dragon Medical One is the appropriate starting point. It is built for the work, certified for it, and supported as a clinical product.</p>
 
             <p><strong>Dragon Medical One is the right choice if you:</strong></p>
             <ul>
@@ -454,7 +442,7 @@ const breadcrumbSchema = {
               <li>Need <strong>ongoing access to current medical content updates</strong> as new drugs, procedures and terminology emerge</li>
             </ul>
 
-            <p>For these clinicians, Dragon Professional 16 isn't a money-saver &mdash; it's a slow leak. The hours spent building vocabularies, the accuracy compromises on specialist terms, the friction of moving between devices, and the absence of EMR workflow features add up to a real cost that exceeds the subscription price of the right tool within months.</p>
+            <p>For these clinicians, Dragon Professional 16 isn't a money-saver &mdash; it's a slow leak. The hours spent building vocabularies, the accuracy compromises on specialist terms, the compliance gaps, the EMR friction, and the absence of clinical support add up fast. Dragon Medical One typically pays for itself within the first month of clinical use.</p>
 
             <h2>A common shortcut that costs doctors more in the long run</h2>
             <p>In 25 years of deploying speech recognition across Australian medical practices &mdash; including the original launch of Dragon products in Australia and a national training role on behalf of Nuance in 2017 &mdash; Voice Recognition Australia has watched the same buyer journey play out repeatedly.</p>
@@ -475,7 +463,7 @@ const breadcrumbSchema = {
             <ul>
               <li><strong>Lightweight and fast</strong> &mdash; small install, minimal setup, runs immediately on any modern Windows PC</li>
               <li><strong>No integration required</strong> &mdash; works in any Windows application, including EMR text fields, Word, Outlook, Chrome and Teams, without configuration projects</li>
-              <li><strong>Specialised medical vocabularies</strong> with ULTRA Accuracy Medical Mode</li>
+              <li><strong>Extensive medical vocabulary</strong> with ULTRA Accuracy Medical Mode</li>
               <li><strong>English-language support across seven localisations</strong> &mdash; Australia, US, UK, New Zealand, Canada, Ireland and India</li>
               <li><strong>No voice training</strong> &mdash; designed to work the moment you install it</li>
               <li><strong>Mobile companion app</strong> &mdash; turn your iPhone or Android into a wireless microphone for your PC, or capture voice notes on the go and send them to your active session</li>

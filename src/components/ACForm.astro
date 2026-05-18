@@ -1,6 +1,6 @@
 ---
 // ActiveCampaign Form 283 - Dragon Professional 16
-// Full embed including validation JavaScript
+// Full embed including validation JavaScript and Google reCAPTCHA v2
 // CRITICAL: phone field uses field[36] NOT name="phone" to avoid AC's intl-tel-input validation
 ---
 <div class="formbox">
@@ -15,7 +15,7 @@
     <input type="hidden" name="m" value="0" />
     <input type="hidden" name="act" value="sub" />
     <input type="hidden" name="v" value="2" />
-    <input type="hidden" name="or" value="452040ae-e495-4c74-bd95-dc0f67e3edd8" />
+    <input type="hidden" name="or" value="0e5ddc27-da81-4921-b850-56fe37f4a3c9" />
     <div class="_form-content">
       <div class="_form_element _full_width">
         <div class="_field-wrapper">
@@ -47,6 +47,10 @@
           <textarea id="field18" name="field[18]" placeholder="Optionally describe your needs"></textarea>
         </div>
       </div>
+      <div class="_form_element _full_width _recaptcha-wrap">
+        <label for="g-recaptcha-response" class="_form-label" style="font-size:13px;color:#475569;display:block;margin-bottom:6px">Please verify your request. <span style="color:#CC0000">*</span></label>
+        <div class="g-recaptcha" data-sitekey="6LcwIw8TAAAAACP1ysM08EhCgzd6q5JAOUR1a0Go"></div>
+      </div>
       <div class="_button-wrapper _full_width">
         <button id="_form_283_submit" class="_submit" type="submit">Request Information</button>
       </div>
@@ -70,6 +74,7 @@
     box-sizing: border-box;
   }
   ._form_element textarea { resize: vertical; min-height: 80px; }
+  ._recaptcha-wrap { margin-top: 6px; margin-bottom: 12px; }
   ._submit {
     background: #CC0000;
     color: #fff;
@@ -102,7 +107,7 @@
   }
 </style>
 
-<script>
+<script is:inline>
   window.cfields = {"36": "phone_number", "21": "number_of_users", "35": "company", "18": "comments_about_your_needs"};
 
   window._show_thank_you = function(id, message, trackcmp_url, email) {
@@ -152,10 +157,33 @@
     script.onerror = function() {
       if (isSubmit) {
         _show_error("283", "Sorry, your submission failed. Please try again.");
-        submitButton.disabled = false;
+        if (submitButton) submitButton.disabled = false;
       }
     };
     head.appendChild(script);
+  };
+
+  // reCAPTCHA renderer - called by Google's API once it loads
+  window.recaptcha_callback = function() {
+    var recaptchas = document.getElementsByClassName("g-recaptcha");
+    for (var i = 0; i < recaptchas.length; i++) {
+      var recaptcha_id = "recaptcha_" + i;
+      if (!recaptchas[i].id) {
+        recaptchas[i].id = recaptcha_id;
+      }
+      var el = document.getElementById(recaptchas[i].id);
+      if (el != null && !el.hasAttribute('data-rendered')) {
+        var sitekey = el.getAttribute("data-sitekey");
+        if (typeof grecaptcha !== 'undefined' && grecaptcha.render) {
+          try {
+            grecaptcha.render(el.id, { "sitekey": sitekey });
+            el.setAttribute('data-rendered', 'true');
+          } catch (e) {
+            // Already rendered or other rendering issue
+          }
+        }
+      }
+    }
   };
 
   (function() {
@@ -191,6 +219,13 @@
           if (!validate_field(input)) no_error = false;
         }
       }
+      if (typeof grecaptcha !== 'undefined' && grecaptcha.getResponse) {
+        var captchaResponse = grecaptcha.getResponse();
+        if (!captchaResponse || captchaResponse.length === 0) {
+          _show_error("283", "Please complete the reCAPTCHA verification.");
+          no_error = false;
+        }
+      }
       if (!no_error && e) e.preventDefault();
       return no_error;
     };
@@ -214,6 +249,12 @@
             q.push(form.elements[i].name + '=' + encodeURIComponent(form.elements[i].value)); break;
         }
       }
+      if (typeof grecaptcha !== 'undefined' && grecaptcha.getResponse) {
+        var captchaResponse = grecaptcha.getResponse();
+        if (captchaResponse) {
+          q.push('g-recaptcha-response=' + encodeURIComponent(captchaResponse));
+        }
+      }
       return q.join('&');
     };
 
@@ -228,5 +269,8 @@
         _load_script('https://voicerecognition.activehosted.com/proc.php?' + serialized + '&jsonp=true', null, true);
       }
     });
+
+    // Load Google reCAPTCHA API
+    _load_script("https://www.google.com/recaptcha/api.js?onload=recaptcha_callback&render=explicit");
   })();
 </script>
