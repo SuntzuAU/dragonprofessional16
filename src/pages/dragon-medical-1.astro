@@ -1,0 +1,569 @@
+---
+import site from "../site.config.json";
+import manifest from "../data/image-manifest.json";
+import ACForm from "../components/ACForm.astro";
+
+const c = site.colours;
+const year = new Date().getFullYear();
+const R2_BASE = import.meta.env.PUBLIC_R2_BASE || "";
+
+function imgSrc(key) {
+  const entry = manifest[key];
+  if (!entry?.r2Key || !R2_BASE) return "";
+  return `${R2_BASE.replace(/\/$/, "")}/${entry.r2Key}`;
+}
+
+function imgAlt(key) {
+  return manifest[key]?.altText || "";
+}
+
+function homeUrl(url) {
+  if (!url) return "/";
+  return url.startsWith("#") ? `/${url}` : url;
+}
+
+const pageTitle = "Dragon Professional 16 vs Dragon Medical One for Doctors | Which Should You Buy?";
+const pageDesc = "Thinking about Dragon Professional 16 for clinical work to save money? Honest comparison of Dragon Professional 16 vs Dragon Medical One for Australian doctors, GPs and specialists, from a 25-year speech recognition specialist.";
+const pageUrl = `${site.domain}/dragon-medical-1`;
+
+const heroKey = "dragon-medical-1-hero";
+const break1Key = "dragon-medical-1-break1";
+const break2Key = "dragon-medical-1-break2";
+
+// ---------- Schema (5 objects) ----------
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://www.voicerecognition.com.au/#russellbewsell",
+  "name": "Russell Bewsell",
+  "jobTitle": "Founder and CEO, Voice Recognition Australia",
+  "description": "Russell Bewsell is the founder of Voice Recognition Australia, Australia's longest-serving authorised Dragon and Nuance reseller. He presented the Dragonology national training series on behalf of Nuance in 2017 and has been deploying speech recognition across Australian medical, legal, and government environments for 25 years.",
+  "url": "https://www.voicerecognition.com.au",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Voice Recognition Australia",
+    "url": "https://www.voicerecognition.com.au"
+  }
+};
+
+const webPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "url": pageUrl,
+  "name": pageTitle,
+  "description": pageDesc,
+  "inLanguage": "en-AU",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Dragon Professional 16 Australia",
+    "url": site.domain
+  },
+  "author": { "@id": "https://www.voicerecognition.com.au/#russellbewsell" },
+  "about": [
+    { "@type": "SoftwareApplication", "name": "Dragon Professional 16" },
+    { "@type": "SoftwareApplication", "name": "Dragon Medical One" }
+  ]
+};
+
+const faqs = [
+  {
+    q: "Can I use Dragon Professional 16 inside Best Practice, Medical Director, or other Australian EMR software?",
+    a: "Dragon Professional 16 can dictate text into any Windows application that accepts keyboard input, which includes the text fields in most Australian EMR systems. However, it does not have designed EMR integration - it does not navigate between EMR fields by voice, does not use EMR-aware templates, and does not include clinical workflow features. It works as a typing replacement, not as a clinical documentation tool."
+  },
+  {
+    q: "Will Dragon Professional 16 understand medical terminology?",
+    a: "Out of the box, Dragon Professional 16 has a general English vocabulary. It will recognise common medical terms that appear in general English but will struggle with specialty-specific language, uncommon drug names, and clinical abbreviations. You can add these terms manually through the custom vocabulary feature, but this is a meaningful time investment. Dragon Medical One ships with these vocabularies built in."
+  },
+  {
+    q: "Can I move my Dragon Professional 16 profile to Dragon Medical One later?",
+    a: "Custom vocabulary can be reviewed when moving between products, but the user profiles themselves are not directly portable - they are different products with different architectures. If you anticipate moving to Dragon Medical One eventually, it is usually more efficient to start there."
+  },
+  {
+    q: "Is Dragon Medical One worth the higher cost for a solo GP?",
+    a: "It depends on volume and workflow. For a GP doing high-volume clinical documentation across a busy practice, particularly one using EMR-resident notes, Dragon Medical One typically pays for itself in time saved within months. For a GP doing low-volume dictation, mostly correspondence, Dragon Professional 16 may be enough."
+  },
+  {
+    q: "Does Dragon Medical One work in Australian hospitals?",
+    a: "Dragon Medical One is widely deployed across Australian hospital systems. Specific deployment requirements vary by hospital IT environment and EMR. Voice Recognition Australia can advise on your specific setup."
+  },
+  {
+    q: "Can I trial both products before deciding?",
+    a: "A 15-day trial is available for Dragon Professional 16, and Dragon Medical One trial access can be arranged with onboarding support. Contact Voice Recognition Australia to organise either trial."
+  },
+  {
+    q: "What about Dragon Professional Anywhere - is that the clinical product?",
+    a: "No. Dragon Professional Anywhere is the cloud-native version of Dragon Professional, designed for general business dictation across devices. It is not built for clinical work - that is Dragon Medical One's specific role."
+  },
+  {
+    q: "Where do I buy each product in Australia?",
+    a: "Voice Recognition Australia is the authorised Australian reseller for both Dragon Professional 16 and Dragon Medical One. Both products can be purchased through voicerecognition.com.au with Australian support and onboarding included."
+  }
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(f => ({
+    "@type": "Question",
+    "name": f.q,
+    "acceptedAnswer": { "@type": "Answer", "text": f.a }
+  }))
+};
+
+const dp16Schema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Dragon Professional 16",
+  "operatingSystem": "Windows 10, Windows 11",
+  "applicationCategory": "BusinessApplication",
+  "description": "Dragon Professional 16 is Nuance's flagship desktop speech recognition product for general business use - perpetual licence, offline operation after activation, customisable through user-built vocabularies and voice macros.",
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "AUD",
+    "price": "994",
+    "availability": "https://schema.org/InStock",
+    "seller": {
+      "@type": "Organization",
+      "name": "Voice Recognition Australia",
+      "url": "https://www.voicerecognition.com.au"
+    }
+  }
+};
+
+const dmoSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Dragon Medical One",
+  "operatingSystem": "Cloud-based, Windows compatible",
+  "applicationCategory": "HealthApplication",
+  "description": "Dragon Medical One is Nuance and Microsoft's cloud-based clinical speech recognition platform, with built-in medical vocabularies for 90+ specialties, cloud user profiles, and designed EMR integration for Australian clinical environments.",
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "AUD",
+    "price": "1290",
+    "priceValidUntil": `${year}-12-31`,
+    "availability": "https://schema.org/InStock",
+    "seller": {
+      "@type": "Organization",
+      "name": "Voice Recognition Australia",
+      "url": "https://www.voicerecognition.com.au"
+    }
+  }
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": site.domain },
+    { "@type": "ListItem", "position": 2, "name": "Compare", "item": `${site.domain}/comparison` },
+    { "@type": "ListItem", "position": 3, "name": "Dragon Medical One vs Dragon Professional 16", "item": pageUrl }
+  ]
+};
+---
+
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDesc} />
+    <link rel="canonical" href={pageUrl} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDesc} />
+    <meta property="og:url" content={pageUrl} />
+    <meta property="og:type" content="article" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(webPageSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(dp16Schema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(dmoSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+    {site.googleAnalyticsId && (
+      <script async src={`https://www.googletagmanager.com/gtag/js?id=${site.googleAnalyticsId}`}></script>
+      <script define:vars={{ gaId: site.googleAnalyticsId }}>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', gaId);
+      </script>
+    )}
+
+    <script define:vars={{ c }}>
+      const css = `
+        body { background: ${c.background}; color: ${c.text}; }
+        .btn-primary { background: ${c.accent}; border-color: ${c.accent}; color: #fff; }
+        .btn-primary:hover { background: ${c.accentHover}; border-color: ${c.accentHover}; }
+        .btn-secondary { color: ${c.primary}; border-color: #cbd5e1; }
+        .btn-secondary:hover { border-color: ${c.primary}; }
+        .neutral-bg { background: ${c.neutral}; }
+        .dark-bg { background: ${c.primary}; color: white; }
+        .stats-bar { background: ${c.primary}; }
+        .nav-links a:hover, .dropdown-toggle:hover { color: ${c.accent}; }
+        .dropdown-menu { border-top: 2px solid ${c.accent}; }
+        .breadcrumb a { color: ${c.accent}; }
+        .article-body h2 { color: ${c.primary}; }
+        .article-body a { color: ${c.accent}; text-decoration: underline; text-underline-offset: 3px; }
+        .article-body a:hover { color: ${c.accentHover}; }
+        .answer-lead { border-left: 4px solid ${c.accent}; }
+        .pathway-card .pathway-arrow { color: ${c.accent}; }
+      `;
+      const el = document.createElement('style');
+      el.textContent = css;
+      document.head.appendChild(el);
+    </script>
+
+    <style is:inline>
+      *,*::before,*::after{box-sizing:border-box}
+      body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.7}
+      a{color:inherit;text-decoration:none}
+      img{max-width:100%;display:block}
+      .wrap{max-width:880px;margin:0 auto;padding:0 24px}
+      .wrap-wide{max-width:1080px;margin:0 auto;padding:0 24px}
+      header{position:sticky;top:0;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid #e2e8f0;z-index:100}
+      .nav{display:flex;align-items:center;justify-content:space-between;padding:10px 0;gap:16px}
+      .logo img{height:40px;width:auto}
+      .nav-links{display:flex;gap:18px;font-size:14px;font-weight:500;color:#334155;align-items:center}
+      .dropdown{position:relative}
+      .dropdown-toggle{cursor:pointer;display:flex;align-items:center;gap:4px;white-space:nowrap}
+      .dropdown-toggle svg{transition:transform .15s}
+      .dropdown:hover .dropdown-toggle svg{transform:rotate(180deg)}
+      .dropdown-menu{display:none;position:absolute;top:100%;left:0;background:#fff;border:1px solid #e2e8f0;border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.1);min-width:240px;padding:8px 0 6px;z-index:200}
+      .dropdown:hover .dropdown-menu{display:block}
+      .dropdown-menu a{display:block;padding:10px 16px;font-size:14px;font-weight:500;color:#334155;transition:background .1s}
+      .dropdown-menu a:hover{background:#fef2f2;color:#CC0000}
+      .nav-ctas{display:flex;gap:10px;align-items:center;flex-shrink:0}
+      .btn{display:inline-block;padding:10px 20px;border-radius:8px;font-weight:700;font-size:14px;border:2px solid transparent;cursor:pointer;transition:all .15s;white-space:nowrap}
+      .btn-secondary{background:white;border-color:#cbd5e1}
+      .btn-lg{padding:14px 28px;font-size:16px;border-radius:10px}
+      .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none}
+      .hamburger span{display:block;width:22px;height:2px;background:#334155;border-radius:2px}
+      .mobile-nav{display:none;padding:12px 0 8px;border-top:1px solid #e2e8f0}
+      .mobile-nav a{display:block;padding:10px 0;font-size:15px;font-weight:500;color:#334155;border-bottom:1px solid #f1f5f9}
+
+      section{padding:56px 0}
+      .article-hero{padding:48px 0 32px}
+      .breadcrumb{font-size:13px;color:#64748b;margin-bottom:20px}
+      .breadcrumb a{font-weight:500}
+      .article-hero h1{font-size:38px;line-height:1.15;margin:0 0 16px;letter-spacing:-0.025em;font-weight:800}
+      .article-hero .byline{font-size:14px;color:#64748b;margin:0 0 24px}
+      .article-hero .byline strong{color:#334155}
+      .hero-image{border-radius:16px;overflow:hidden;box-shadow:0 16px 48px rgba(0,0,0,.12);margin:24px 0 0;aspect-ratio:16/9}
+      .hero-image img{width:100%;height:100%;object-fit:cover;display:block}
+
+      .answer-lead{background:#fafafa;padding:20px 24px;border-radius:0 12px 12px 0;font-size:17px;line-height:1.7;margin:0 0 32px;color:#0f172a}
+
+      .article-body{font-size:16px;line-height:1.75;color:#1f2937}
+      .article-body h2{font-size:26px;line-height:1.25;margin:48px 0 16px;letter-spacing:-0.02em;font-weight:700}
+      .article-body h2:first-child{margin-top:0}
+      .article-body h3{font-size:18px;line-height:1.3;margin:28px 0 10px;font-weight:700;color:#1f2937}
+      .article-body p{margin:0 0 18px}
+      .article-body ul{margin:0 0 20px;padding-left:0;list-style:none}
+      .article-body ul li{padding:8px 0 8px 28px;position:relative}
+      .article-body ul li::before{content:"\2713";position:absolute;left:0;top:8px;color:#CC0000;font-weight:700}
+      .article-body strong{color:#0f172a;font-weight:700}
+
+      .break-image{border-radius:14px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.08);margin:36px 0;aspect-ratio:21/9}
+      .break-image img{width:100%;height:100%;object-fit:cover;display:block}
+
+      .compare-table{width:100%;border-collapse:collapse;margin:24px 0 28px;font-size:14.5px;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.06)}
+      .compare-table th{background:#1a1a1a;color:#fff;font-weight:700;padding:12px 14px;text-align:left;font-size:13px;letter-spacing:.02em}
+      .compare-table td{padding:12px 14px;border-bottom:1px solid #f1f5f9;vertical-align:top}
+      .compare-table tr:last-child td{border-bottom:none}
+      .compare-table tr:nth-child(even) td{background:#fafafa}
+
+      .pathway-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;margin:28px 0 16px}
+      .pathway-card{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:10px}
+      .pathway-card h3{margin:0;font-size:15px;font-weight:700;color:#0f172a}
+      .pathway-card p{margin:0;font-size:14px;color:#475569;line-height:1.55}
+      .pathway-card .pathway-arrow{font-weight:700;font-size:14px;margin-top:auto}
+
+      .formbox{background:#fff;border-radius:16px;padding:28px}
+      footer{background:#111;color:#64748b;padding:28px 0;font-size:14px}
+      .footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+      .footer-links{display:flex;gap:20px}
+      .footer-links a:hover{color:white}
+      .footer-disclaimer{font-size:11px;color:#475569;line-height:1.6;margin-top:12px;padding-top:12px;border-top:1px solid #222}
+
+      @media(max-width:900px){
+        .article-hero h1{font-size:30px}
+        .article-body h2{font-size:22px}
+        .pathway-grid{grid-template-columns:1fr;gap:12px}
+        .compare-table{font-size:13.5px}
+        .compare-table th,.compare-table td{padding:10px 10px}
+      }
+      @media(max-width:600px){
+        .nav-links{display:none}
+        .nav-ctas .btn-secondary{display:none}
+        .hamburger{display:flex}
+        section{padding:36px 0}
+        .article-hero{padding:24px 0 20px}
+        .article-hero h1{font-size:26px}
+        .article-body{font-size:15.5px}
+        .footer-inner{flex-direction:column;align-items:center;text-align:center}
+        .footer-links{justify-content:center}
+      }
+    </style>
+  </head>
+  <body>
+
+    <header>
+      <div class="wrap-wide">
+        <div class="nav">
+          <div class="logo">
+            <a href="/"><img src="/logo.jpg" alt={site.siteName} onerror="this.style.display='none'" /></a>
+          </div>
+          <nav class="nav-links" aria-label="Primary">
+            {site.navItems?.map((item) => <a href={homeUrl(item.url)}>{item.label}</a>)}
+            {site.navDropdown && (
+              <div class="dropdown">
+                <span class="dropdown-toggle">
+                  {site.navDropdown.label}
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </span>
+                <div class="dropdown-menu">
+                  {site.navDropdown.items?.map((item) => <a href={item.url}>{item.label}</a>)}
+                </div>
+              </div>
+            )}
+          </nav>
+          <div class="nav-ctas">
+            <a class="btn btn-primary" href="#final-cta">{site.primaryCTA.text}</a>
+            <button class="hamburger" aria-label="Open menu" onclick="var mn=this.closest('header').querySelector('.mobile-nav');mn.style.display=mn.style.display==='block'?'none':'block'">
+              <span></span><span></span><span></span>
+            </button>
+          </div>
+        </div>
+        <nav class="mobile-nav" aria-label="Mobile navigation">
+          <a href="/">Home</a>
+          {site.navDropdown?.items?.map((item) => <a href={item.url}>{item.label}</a>)}
+          {site.navItems?.map((item) => <a href={homeUrl(item.url)}>{item.label}</a>)}
+        </nav>
+      </div>
+    </header>
+
+    <main>
+
+      <section class="article-hero">
+        <div class="wrap">
+          <div class="breadcrumb">
+            <a href="/">Home</a> &rsaquo; <a href="/comparison">Compare</a> &rsaquo; Dragon Medical One vs Dragon Professional 16
+          </div>
+          <h1>Dragon Professional 16 vs Dragon Medical One &mdash; Which Should Doctors Buy?</h1>
+          <div class="byline"><strong>Voice Recognition Australia</strong> &middot; Australia's longest-serving authorised Dragon and Nuance reseller</div>
+
+          {imgSrc(heroKey) && (
+            <div class="hero-image">
+              <img src={imgSrc(heroKey)} alt={imgAlt(heroKey) || "Australian doctor comparing Dragon Professional 16 and Dragon Medical One speech recognition options"} loading="eager" decoding="async" />
+            </div>
+          )}
+        </div>
+      </section>
+
+      <section style="padding-top:8px">
+        <div class="wrap">
+          <div class="article-body">
+
+            <div class="answer-lead">
+              Many Australian doctors come to this site looking at Dragon Professional 16's one-time price of <strong>$994</strong> and ask a reasonable question: can it do the job of Dragon Medical One for clinical work? The short answer is that it can dictate, but it isn't built for medicine &mdash; and the trade-offs matter more than the upfront saving suggests. This page walks through what each product actually does, when each one is the right fit, and how to avoid a common buying mistake that costs clinicians weeks of wasted effort.
+            </div>
+
+            <h2>What is Dragon Professional 16, and what is Dragon Medical One?</h2>
+            <p><strong>Dragon Professional 16</strong> is Nuance's flagship desktop speech recognition product for general business use. It's a perpetual licence &mdash; pay $994 AUD once, install on up to two Windows PCs, and own it permanently. It works offline after activation. It's used widely across legal practices, government departments, consulting firms and any role where someone produces a high volume of professional documents and wants to dictate rather than type. It is highly accurate, deeply customisable through user-built vocabularies and voice macros, and it does not require an ongoing subscription.</p>
+
+            <p><strong>Dragon Medical One</strong> is a different product family entirely. It's a cloud-based annual subscription priced from $1,290 AUD per clinician per year. It is purpose-built for clinical documentation: medical vocabularies covering more than 90 specialties are built in from day one, the user profile follows the clinician between devices and sites, and it is designed to integrate with electronic medical record (EMR) systems used in Australian general practice, specialist clinics and hospitals. It is the product Nuance and Microsoft position as their clinical documentation platform &mdash; the one you'll see referenced in hospital procurement and EMR vendor documentation.</p>
+
+            <p>The two products share a brand name and a parent company, but they are not interchangeable. They are built for different audiences, on different commercial models, with different feature sets.</p>
+
+            {imgSrc(break1Key) && (
+              <div class="break-image">
+                <img src={imgSrc(break1Key)} alt={imgAlt(break1Key) || "Australian GP using cloud-based clinical dictation software in consultation room"} loading="lazy" decoding="async" />
+              </div>
+            )}
+
+            <h2>Can I use Dragon Professional 16 for medical dictation?</h2>
+            <p>Technically, yes. Dragon Professional 16 will recognise speech and transcribe it into any Windows application &mdash; including medical software, Microsoft Word, Outlook, and EMR systems that accept dictation input. We have customers who use Pro 16 for medical correspondence, referral letters, research drafts and administrative work, and they get good results.</p>
+
+            <p>The problem is what Dragon Professional 16 does <strong>not</strong> include for clinical work:</p>
+
+            <ul>
+              <li><strong>No specialist medical vocabularies.</strong> Pro 16 ships with a general English vocabulary. Medical terminology &mdash; drug names, anatomical terms, surgical procedures, specialty-specific language &mdash; is not pre-loaded. A clinician using Pro 16 for clinical notes will spend significant time adding custom words manually, and accuracy on uncommon terms will suffer until those words are added.</li>
+              <li><strong>No EMR integration pathway.</strong> Dragon Medical One has documented integrations and template support for clinical software environments. Pro 16 does not. It can dictate text into an EMR's text fields, but workflow features that clinicians rely on &mdash; structured note templates, navigation by voice between EMR fields, integration with clinical documentation modules &mdash; are not part of the Pro 16 product.</li>
+              <li><strong>No cloud profile.</strong> A Pro 16 user profile lives on the local computer. A clinician working across a clinic and a hospital, or between consulting rooms, needs to either replicate that profile on every device or accept that their custom vocabulary and accuracy improvements only apply on one machine.</li>
+              <li><strong>No continuous medical updates.</strong> New drugs are approved every quarter. New procedures, new terminology, new specialty language emerges constantly. Dragon Medical One receives continuous medical content updates as part of the subscription. Pro 16 receives general software updates but not curated medical content.</li>
+              <li><strong>No clinical-grade support pathway.</strong> Voice Recognition Australia provides Australian support for both products, but the underlying Nuance/Microsoft support model for Dragon Medical One is different &mdash; clinical issues are handled by a team familiar with medical workflows. Pro 16 support is general business support.</li>
+            </ul>
+
+            <p>A clinician using Dragon Professional 16 for clinical documentation can make it work, but they are paying a real cost in setup time, ongoing accuracy compromise, and workflow friction.</p>
+
+            <h2>What does Dragon Medical One include that Dragon Professional 16 doesn't?</h2>
+            <p>A practical feature-by-feature comparison for clinical work:</p>
+
+            <table class="compare-table">
+              <thead>
+                <tr>
+                  <th>Feature</th>
+                  <th>Dragon Professional 16</th>
+                  <th>Dragon Medical One</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>Built-in medical vocabulary</strong></td><td>No</td><td>Yes &mdash; 90+ specialties</td></tr>
+                <tr><td><strong>Cloud user profile</strong></td><td>No &mdash; local only</td><td>Yes &mdash; follows clinician between devices</td></tr>
+                <tr><td><strong>EMR integration</strong></td><td>No formal pathway</td><td>Designed for EMR workflows</td></tr>
+                <tr><td><strong>Continuous medical content updates</strong></td><td>No</td><td>Yes &mdash; included in subscription</td></tr>
+                <tr><td><strong>Commercial model</strong></td><td>Perpetual licence, one-time $994</td><td>Annual subscription, from $1,290/yr</td></tr>
+                <tr><td><strong>Internet required</strong></td><td>No &mdash; works offline after activation</td><td>Yes &mdash; cloud-based</td></tr>
+                <tr><td><strong>Install limit</strong></td><td>Up to 2 PCs</td><td>Cloud-based, runs on supported devices</td></tr>
+                <tr><td><strong>General business dictation</strong></td><td>Yes &mdash; strong</td><td>Yes &mdash; clinical-focused but works generally</td></tr>
+                <tr><td><strong>Single-speaker audio transcription</strong></td><td>Yes</td><td>Limited / different workflow</td></tr>
+              </tbody>
+            </table>
+
+            <p>The pattern is consistent: Dragon Professional 16 is broader (it works in any Windows application for any kind of dictation), and Dragon Medical One is deeper for one specific job (clinical documentation in a medical practice).</p>
+
+            <h2>When is Dragon Professional 16 enough for a doctor?</h2>
+            <p>Dragon Professional 16 is genuinely the right choice for some medical professionals. The question is what you're using it for.</p>
+
+            <p><strong>Dragon Professional 16 may be sufficient if you:</strong></p>
+            <ul>
+              <li>Dictate <strong>correspondence, referrals, letters, research notes or administrative content</strong> rather than clinical-grade EMR documentation</li>
+              <li>Work primarily from <strong>one or two computers</strong> that you control</li>
+              <li>Are comfortable <strong>building your own custom vocabulary</strong> for the medical terms you use most often</li>
+              <li>Have a <strong>predictable, low-volume</strong> clinical dictation workload, or only dictate clinically as a secondary activity</li>
+              <li>Want to <strong>avoid a recurring subscription cost</strong> and prefer to own your software permanently</li>
+            </ul>
+
+            <p>This profile applies to many GPs working primarily from a single practice, to researchers and academics, to administrative roles within hospitals, and to clinicians whose dictation is mostly non-clinical.</p>
+
+            <p>If this is you, Dragon Professional 16's $994 perpetual licence is excellent value and you don't need Dragon Medical One.</p>
+
+            {imgSrc(break2Key) && (
+              <div class="break-image">
+                <img src={imgSrc(break2Key)} alt={imgAlt(break2Key) || "Australian professional using Dragon Professional 16 speech recognition for business dictation"} loading="lazy" decoding="async" />
+              </div>
+            )}
+
+            <h2>When do you actually need Dragon Medical One?</h2>
+            <p>Dragon Medical One earns its higher subscription cost when clinical documentation is the core of your work.</p>
+
+            <p><strong>Dragon Medical One is the right choice if you:</strong></p>
+            <ul>
+              <li>Generate <strong>clinical notes that go into the patient medical record</strong> &mdash; diagnoses, treatment plans, progress notes, discharge summaries</li>
+              <li>Work in a <strong>specialty with dense, evolving terminology</strong> &mdash; oncology, cardiology, radiology, surgery, psychiatry</li>
+              <li><strong>Move between locations or devices</strong> &mdash; clinic, hospital, home, multiple consulting rooms</li>
+              <li>Need your dictation to <strong>integrate with your EMR</strong> as part of a designed workflow rather than as raw text input</li>
+              <li>Work in a <strong>multi-clinician practice</strong> where standardised dictation, shared templates and centralised management matter</li>
+              <li>Need <strong>ongoing access to current medical content updates</strong> as new drugs, procedures and terminology emerge</li>
+            </ul>
+
+            <p>For these clinicians, Dragon Professional 16 isn't a money-saver &mdash; it's a slow leak. The hours spent building vocabularies, the accuracy compromises on specialist terms, the friction of moving between devices, and the absence of EMR workflow features add up to a real cost that exceeds the subscription price of the right tool within months.</p>
+
+            <h2>A common shortcut that costs doctors more in the long run</h2>
+            <p>In 25 years of deploying speech recognition across Australian medical practices &mdash; including the original launch of Dragon products in Australia and a national training role on behalf of Nuance in 2017 &mdash; Voice Recognition Australia has watched the same buyer journey play out repeatedly.</p>
+
+            <p>A doctor sees Dragon Medical One at $1,290 per year and Dragon Professional 16 at $994 one-time. The math looks obvious. They buy Pro 16, install it, start dictating into their clinical software, and within a few weeks they notice the friction: medication names misrecognised, specialty terms missing from the vocabulary, no way to take their profile to the hospital, accuracy that doesn't quite match what colleagues using Dragon Medical One are getting. They spend evenings adding custom words. They tolerate it. Eventually &mdash; usually within six to twelve months &mdash; they call us and ask whether they can move to Dragon Medical One after all.</p>
+
+            <p>That move is straightforward, and we're happy to help when it happens. But the underlying lesson is consistent: <strong>for clinical work, the cheaper product is rarely the cheaper product</strong>. The right question isn't "which is cheaper" but "which tool fits the job I actually do."</p>
+
+            <p>If your work is genuinely clinical &mdash; notes that enter the medical record, specialty terminology, EMR-integrated workflows &mdash; start with Dragon Medical One. If your work is professional dictation that happens to be in a medical context &mdash; correspondence, research, administrative work &mdash; Dragon Professional 16 is excellent and very good value.</p>
+
+            <h2>Is there a different cloud option for clinical dictation?</h2>
+            <p>There is a third product in the Australian market worth knowing about: <strong>Speech Recognition Cloud Medical</strong>, an Australian-built cloud dictation tool with a dedicated medical tier.</p>
+
+            <p>Speech Recognition Cloud Medical takes a deliberately different design approach to Dragon Medical One. Where Dragon Medical One is a full clinical platform with deep EMR integration and enterprise-scale management features, Speech Recognition Cloud Medical is lightweight, fast, and built around ease of use &mdash; install in two minutes, no voice training required, no integration project, no IT involvement needed. It is designed for clinicians who want clinical-vocabulary dictation that just works, without the complexity (or cost profile) of an enterprise platform.</p>
+
+            <p>Key characteristics of Speech Recognition Cloud Medical:</p>
+
+            <ul>
+              <li><strong>Lightweight and fast</strong> &mdash; small install, minimal setup, runs immediately on any modern Windows PC</li>
+              <li><strong>No integration required</strong> &mdash; works in any Windows application, including EMR text fields, Word, Outlook, Chrome and Teams, without configuration projects</li>
+              <li><strong>Specialised medical vocabularies</strong> with ULTRA Accuracy Medical Mode</li>
+              <li><strong>English-language support across seven localisations</strong> &mdash; Australia, US, UK, New Zealand, Canada, Ireland and India</li>
+              <li><strong>No voice training</strong> &mdash; designed to work the moment you install it</li>
+              <li><strong>Mobile companion app</strong> &mdash; turn your iPhone or Android into a wireless microphone for your PC, or capture voice notes on the go and send them to your active session</li>
+              <li><strong>AI generative modes excluded from the Medical tier</strong> to keep clinical dictation focused and avoid unnecessary outbound data flows</li>
+              <li><strong>Continuously evolving</strong> &mdash; the platform is actively developed, with regular updates added throughout the year</li>
+              <li><strong>Dedicated remote support and one-on-one training</strong> included with the Medical tier</li>
+              <li><strong>Single licence per clinician</strong>, usable across multiple PCs one at a time, on an annual subscription</li>
+            </ul>
+
+            <p>Speech Recognition Cloud Medical is not a feature-for-feature replacement for Dragon Medical One. Dragon Medical One remains the established clinical platform with the deepest EMR integration pathway and the largest installed base in Australian healthcare. Speech Recognition Cloud Medical occupies a different position: a lighter, faster, lower-cost product for clinicians who want straightforward clinical dictation without an enterprise deployment.</p>
+
+            <p>Review <a href="https://speechrecognition.cloud" target="_blank" rel="noopener">medical speech to text</a> on the Speech Recognition Cloud website.</p>
+
+            <h2>Frequently asked questions</h2>
+
+            {faqs.map((f) => (
+              <>
+                <h3>{f.q}</h3>
+                <p>{f.a}</p>
+              </>
+            ))}
+
+            <h2>Which path is right for you?</h2>
+
+            <div class="pathway-grid">
+              <div class="pathway-card">
+                <h3>Clinical dictation, EMR integration, established platform</h3>
+                <p>Dragon Medical One is the right choice for clinical documentation, multi-site work, and specialty practice.</p>
+                <a href="https://www.voicerecognition.com.au" target="_blank" rel="noopener" class="pathway-arrow">Buy Dragon Medical One from Voice Recognition Australia &rarr;</a>
+              </div>
+              <div class="pathway-card">
+                <h3>Professional dictation that isn't primarily clinical</h3>
+                <p>Dragon Professional 16 is excellent value for correspondence, research, and non-clinical professional work.</p>
+                <a href="/#compare" class="pathway-arrow">Compare the five Dragon Professional 16 versions &rarr;</a>
+              </div>
+              <div class="pathway-card">
+                <h3>Lightweight cloud alternative for clinical dictation</h3>
+                <p>Speech Recognition Cloud Medical is an Australian-built cloud option focused on fast, simple clinical dictation.</p>
+                <a href="https://speechrecognition.cloud" target="_blank" rel="noopener" class="pathway-arrow">Low-cost cloud dictation with medical vocabulary, installs in minutes &rarr;</a>
+              </div>
+            </div>
+
+            <p style="margin-top:24px">Whichever path you take, Voice Recognition Australia provides Australian support, onboarding, and 25 years of speech recognition deployment experience across general practice, specialist clinics, and hospital environments.</p>
+
+          </div>
+        </div>
+      </section>
+
+      <section id="final-cta" class="dark-bg">
+        <div class="wrap-wide">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start">
+            <div>
+              <h2 style="color:white;font-size:28px;margin:0 0 12px;letter-spacing:-0.02em">Not sure which product fits your practice?</h2>
+              <p style="color:#94a3b8;margin:0 0 20px;line-height:1.7">Our team has been deploying Dragon Professional and Dragon Medical One across Australian medical practices for 25 years. Tell us about your situation and we'll recommend the right option &mdash; including whether Dragon Professional 16, Dragon Medical One, or a different cloud product is the right fit for the work you actually do.</p>
+              <ul style="color:#cbd5e1;padding-left:20px;line-height:1.8;margin:0 0 20px;font-size:15px">
+                <li>What type of clinical work you do</li>
+                <li>How many clinicians and locations</li>
+                <li>Which EMR you use</li>
+                <li>Your budget and procurement preferences</li>
+              </ul>
+            </div>
+            <div>
+              <ACForm />
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <div class="wrap-wide">
+        <div class="footer-inner">
+          <div>&copy; {year} {site.siteName}</div>
+          <div class="footer-links">
+            {site.footerLinks?.map((l) => <a href={homeUrl(l.url)}>{l.label}</a>)}
+          </div>
+        </div>
+        <div class="footer-disclaimer">{site.branding.footerDisclaimer}</div>
+      </div>
+    </footer>
+
+  </body>
+</html>

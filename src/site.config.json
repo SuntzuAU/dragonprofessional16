@@ -50,7 +50,8 @@
       { "label": "Upgrade from v15", "url": "/dragon-professional-16-upgrade" },
       { "label": "Annual Subscription", "url": "/dragon-professional-16-subscription" },
       { "label": "Student / Education", "url": "/dragon-professional-16-student" },
-      { "label": "Enterprise (Group)", "url": "/dragon-professional-group" }
+      { "label": "Enterprise (Group)", "url": "/dragon-professional-group" },
+      { "label": "Dragon Medical One", "url": "/dragon-medical-1" }
     ]
   },
   "primaryCTA": { "text": "Get in Touch", "url": "#final-cta" },

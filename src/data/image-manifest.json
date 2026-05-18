@@ -127,5 +127,35 @@
     "altText": "Enterprise Dragon Professional Group centralised management Nuance Management Centre",
     "generatedAt": "2026-03-09T06:21:49.786Z",
     "site": "dragonprofessional16"
+  },
+  "dragon-medical-1-hero": {
+    "key": "dragon-medical-1-hero",
+    "r2Key": "",
+    "filename": "",
+    "contentType": "image/png",
+    "altText": "Australian doctor comparing Dragon Professional 16 and Dragon Medical One speech recognition options at desk",
+    "manual": true,
+    "site": "dragonprofessional16",
+    "aspectRatio": "16:9"
+  },
+  "dragon-medical-1-break1": {
+    "key": "dragon-medical-1-break1",
+    "r2Key": "",
+    "filename": "",
+    "contentType": "image/png",
+    "altText": "Australian GP using cloud-based clinical dictation software in consultation room with mobile companion app",
+    "manual": true,
+    "site": "dragonprofessional16",
+    "aspectRatio": "21:9"
+  },
+  "dragon-medical-1-break2": {
+    "key": "dragon-medical-1-break2",
+    "r2Key": "",
+    "filename": "",
+    "contentType": "image/png",
+    "altText": "Australian professional using Dragon Professional 16 speech recognition for business dictation in office environment",
+    "manual": true,
+    "site": "dragonprofessional16",
+    "aspectRatio": "21:9"
   }
 }
