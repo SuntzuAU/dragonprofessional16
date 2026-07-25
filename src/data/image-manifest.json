@@ -165,5 +165,25 @@
     "scene": "custom",
     "generatedAt": "2026-07-25T06:57:32.677Z",
     "site": "dragonprofessional16"
+  },
+  "news-student-licence-hero": {
+    "key": "news-student-licence-hero",
+    "r2Key": "general/2026/07/25/images-dragonprofessional16-news-student-licence-hero-57c97f-aee90cc8.jpg",
+    "altText": "",
+    "scene": "custom",
+    "aspectRatio": "16:9",
+    "imageSize": "2K",
+    "generatedAt": "2026-07-25T07:11:59.528Z",
+    "site": "dragonprofessional16"
+  },
+  "news-student-licence-break1": {
+    "key": "news-student-licence-break1",
+    "r2Key": "general/2026/07/25/images-dragonprofessional16-break1-d472a26c-jpg-0f1e5409.jpg",
+    "altText": "",
+    "scene": "custom",
+    "aspectRatio": "21:9",
+    "imageSize": "2K",
+    "generatedAt": "2026-07-25T07:12:23.643Z",
+    "site": "dragonprofessional16"
   }
 }
