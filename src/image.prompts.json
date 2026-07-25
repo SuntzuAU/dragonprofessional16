@@ -59,6 +59,21 @@
       "key": "product-enterprise-feature",
       "name": "dragon-professional-group-centralised-management-nmc",
       "prompt": "IT administrator managing centralised Dragon Professional licences across a large Australian organisation, dashboard and reporting on screen, enterprise control and compliance theme"
+    },
+    {
+      "key": "news-student-licence-hero",
+      "type": "hero",
+      "aspectRatio": "16:9",
+      "name": "dp16-student-licence-hero",
+      "prompt": "An Australian parent in their forties and a secondary student of about sixteen sitting together at a kitchen table with a laptop open between them, mid-conversation and relaxed, working something out together. Warm domestic evening light, candid and unposed, both faces clearly visible and in focus."
+    },
+    {
+      "key": "news-student-licence-break1",
+      "type": "break",
+      "role": "break1",
+      "aspectRatio": "21:9",
+      "name": "dp16-student-licence-break1",
+      "prompt": "An Australian university student of about twenty at a desk in a study space, wearing a slim discreet boom headset, dictating an assignment into a laptop, mid-sentence and focused. Books and notes beside the laptop, warm natural light through a window, natural and unposed, composition centred vertically for a wide cinematic strip."
     }
   ]
 }
