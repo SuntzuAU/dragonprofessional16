@@ -3,10 +3,10 @@ title: "Dragon Professional 16 for Students: Is the Educational Licence Worth It
 date: "2026-07-25"
 metaDescription: "The A$545 educational licence for Dragon Professional 16 explained: what you get, how it compares to subscriptions, NDIS and school funding, and when a cheaper option is the better buy."
 context: "descriptive"
-imagesPending: true
-heroImage: ""
+imagesPending: false
+heroImage: "general/2026/07/25/images-dragonprofessional16-news-student-licence-hero-57c97f-aee90cc8.jpg"
 heroImageAlt: "A parent and secondary student at a kitchen table looking at a laptop together, working out what dictation software to buy"
-breakImage1: ""
+breakImage1: "general/2026/07/25/images-dragonprofessional16-break1-d472a26c-jpg-0f1e5409.jpg"
 breakImage1Alt: "A university student dictating an assignment into a laptop with a slim headset in a study space"
 breakImage2: ""
 breakImage2Alt: ""
