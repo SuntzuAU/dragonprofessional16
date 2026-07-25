@@ -157,5 +157,13 @@
     "site": "dragonprofessional16",
     "aspectRatio": "21:9",
     "generatedAt": "2026-05-18T02:26:00Z"
+  },
+  "about": {
+    "key": "about",
+    "r2Key": "general/2026/07/25/images-dragonprofessional16-about-b109ea81-jpg-2350866d.jpg",
+    "altText": "",
+    "scene": "custom",
+    "generatedAt": "2026-07-25T06:57:32.677Z",
+    "site": "dragonprofessional16"
   }
 }
