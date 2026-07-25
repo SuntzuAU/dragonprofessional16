@@ -25,6 +25,23 @@ const WORKER_URL = process.env.IMAGE_WORKER_URL ||
 const WORKER_TOKEN = process.env.ADMIN_TOKEN || '';
 const SITE = process.env.SITE_ID || 'default';
 
+// Aspect ratios per role. Values MUST be in Gemini 3 Pro Image's supported set:
+// "1:1","1:4","1:8","2:3","3:2","3:4","4:1","4:3","4:5","5:4","8:1","9:16","16:9","21:9"
+// Break strips map to 21:9 (cinema scope, ~2.33:1) - closest supported ratio to the
+// IMAGE-STANDARDS.md 3:1 cinematic spec. The Astro layout crops breaks to 3.3:1 anyway,
+// so 21:9 fits better than 3:1 ever would have.
+const DEFAULT_ASPECT_RATIOS = {
+  hero: '16:9',
+  break1: '21:9',
+  break2: '21:9',
+  feat1: '16:9',
+  feat2: '16:9',
+};
+
+// Image resolution - passed through to Gemini's imageConfig.imageSize. 2K is a meaningful
+// quality bump over the 1K default at modest extra cost. Values: "512", "1K", "2K", "4K".
+const DEFAULT_IMAGE_SIZE = '2K';
+
 const cwd = process.cwd();
 const dataDir = path.join(cwd, 'src', 'data');
 const manifestPath = path.join(dataDir, 'image-manifest.json');
@@ -69,12 +86,15 @@ function resolveAltText(entry, sceneName, type) {
   return (type === 'hero' ? scene.altHero : scene.altBreak) || '';
 }
 
-async function callWorker(prompt, r2Key) {
+async function callWorker(prompt, r2Key, aspectRatio, imageSize) {
   const headers = { 'Content-Type': 'application/json' };
   if (WORKER_TOKEN) headers['Authorization'] = `Bearer ${WORKER_TOKEN}`;
+  const payload = { prompt, name: r2Key, site: SITE };
+  if (aspectRatio) payload.aspectRatio = aspectRatio;
+  if (imageSize) payload.imageSize = imageSize;
   const res = await fetch(WORKER_URL, {
     method: 'POST', headers,
-    body: JSON.stringify({ prompt, name: r2Key, site: SITE }),
+    body: JSON.stringify(payload),
   });
   const json = await res.json().catch(() => null);
   if (!res.ok || !json?.ok) throw new Error(`Worker error ${res.status}: ${JSON.stringify(json)}`);
@@ -95,10 +115,12 @@ async function phase1() {
     if (!prompt) { console.warn(`Skip ${key}: no prompt.`); continue; }
     const r2Key = `images/${SITE}/${role || key}-${shortId()}.jpg`;
     const altText = resolveAltText(img, img.scene, type);
-    console.log(`Generating: ${key} -> ${r2Key}`);
+    const aspectRatio = img.aspectRatio || DEFAULT_ASPECT_RATIOS[role] || DEFAULT_ASPECT_RATIOS[type] || '16:9';
+    const imageSize = img.imageSize || DEFAULT_IMAGE_SIZE;
+    console.log(`Generating: ${key} -> ${r2Key} (${aspectRatio}, ${imageSize})`);
     try {
-      const result = await callWorker(prompt, r2Key);
-      manifest[key] = { key, r2Key: result.r2?.key || r2Key, altText, scene: img.scene || 'custom', generatedAt: new Date().toISOString(), site: SITE };
+      const result = await callWorker(prompt, r2Key, aspectRatio, imageSize);
+      manifest[key] = { key, r2Key: result.r2?.key || r2Key, altText, scene: img.scene || 'custom', aspectRatio, imageSize, generatedAt: new Date().toISOString(), site: SITE };
       count++;
     } catch (e) { console.error(`  FAILED: ${e.message}`); }
   }
@@ -141,6 +163,24 @@ function resolvePostPrompt(fm, role) {
   return null;
 }
 
+function resolvePostAspectRatio(fm, role) {
+  // Per-role frontmatter override: heroAspectRatio, breakAspectRatio1, breakAspectRatio2
+  const frontmatterField = role === 'hero' ? 'heroAspectRatio'
+    : role === 'break1' ? 'breakAspectRatio1'
+    : 'breakAspectRatio2';
+  if (fm[frontmatterField]) return fm[frontmatterField];
+  return DEFAULT_ASPECT_RATIOS[role] || '16:9';
+}
+
+function resolvePostImageSize(fm, role) {
+  // Per-role frontmatter override: heroImageSize, breakImageSize1, breakImageSize2
+  const frontmatterField = role === 'hero' ? 'heroImageSize'
+    : role === 'break1' ? 'breakImageSize1'
+    : 'breakImageSize2';
+  if (fm[frontmatterField]) return fm[frontmatterField];
+  return DEFAULT_IMAGE_SIZE;
+}
+
 async function processPost(file) {
   const filePath = path.join(newsDir, file);
   if (!fs.existsSync(filePath)) { console.error(`Not found: ${filePath}`); return 0; }
@@ -164,9 +204,12 @@ async function processPost(file) {
     if (!needs) continue;
     const resolved = resolvePostPrompt(fm, role);
     if (!resolved) continue;
+    const aspectRatio = resolvePostAspectRatio(fm, role);
+    const imageSize = resolvePostImageSize(fm, role);
     const r2Key = `images/${SITE}/${slug}-${role}-${shortId()}.jpg`;
+    console.log(`  Generating ${role} (${aspectRatio}, ${imageSize}) -> ${r2Key}`);
     try {
-      const result = await callWorker(resolved.prompt, r2Key);
+      const result = await callWorker(resolved.prompt, r2Key, aspectRatio, imageSize);
       const finalKey = result.r2?.key || r2Key;
       updated = setFrontmatterField(updated, field, finalKey);
       if (resolved.altText) updated = setFrontmatterField(updated, altField, resolved.altText);
