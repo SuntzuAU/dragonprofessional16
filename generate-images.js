@@ -20,8 +20,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 
-const WORKER_URL = process.env.IMAGE_WORKER_URL ||
-  'https://master-image-generator.speech-recognition-cloud.workers.dev/generate';
+const WORKER_URL = 'https://master-image-generator.speech-recognition-cloud.workers.dev/generate';
 const WORKER_TOKEN = process.env.ADMIN_TOKEN || '';
 const SITE = process.env.SITE_ID || 'default';
 
