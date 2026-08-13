@@ -1,7 +1,11 @@
-node_modules
-dist
+*.log
 .astro
+.astro/
 .env
 .env.local
-*.log
+dist
+dist/
+node_modules
+node_modules/
+package-lock.json
 public/generated
