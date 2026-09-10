@@ -87,7 +87,7 @@ And the honest counter-case: **do not buy Dragon if the student has not tried di
 
 ## Why We Give That Advice
 
-Voice Recognition Australia has been supplying speech recognition to Australian schools, universities, students and families since 1999 — through every version of Dragon released in this country, alongside the teachers, learning support staff and occupational therapists who implement it. Russell Bewsell, who founded the business, has 28 years of experience in the speech recognition industry, and a great deal of that has gone into this exact question: whether a particular student should be spending this money at all.
+Voice Recognition Australia has been supplying speech recognition to Australian schools, universities, students and families since 2003 — through every version of Dragon released in this country, alongside the teachers, learning support staff and occupational therapists who implement it. Russell Bewsell, who founded the business, has 28 years of experience in the speech recognition industry, and a great deal of that has gone into this exact question: whether a particular student should be spending this money at all.
 
 That is why this page tells you when not to buy. A licence sold to the wrong student does not just waste the money — it usually convinces a family that dictation "did not work", when what actually failed was the fit and the setup. We would rather sell you the correct thing, or nothing, than the expensive thing.
 
