@@ -114,6 +114,6 @@ If you are on Dragon Professional Anywhere or Dragon Legal Anywhere, three pract
 
 **Third, sort out your microphone before you judge any software.** More apparent accuracy problems come from a poor microphone in a noisy room than from the recognition engine. If you are running a laptop's built-in microphone, you are not testing the software, you are testing the microphone.
 
-For advice on [Dragon licensing in Australia](https://www.voicerecognition.com.au), including what remains available and for how long, Voice Recognition Australia has been reselling Dragon in this market for over 25 years and can give you a straight answer about your specific licence position.
+For advice on [Dragon licensing in Australia](https://www.voicerecognition.com.au), including what remains available and for how long, Voice Recognition Australia has been reselling Dragon in this market since 2003 and can give you a straight answer about your specific licence position.
 
 The end-of-life date is more than a year away. That is a comfortable amount of time to make an unhurried decision, and very little time at all to make a rushed one.
