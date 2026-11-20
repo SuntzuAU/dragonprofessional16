@@ -49,6 +49,8 @@ const productSchema = product.schemaPrice ? {
   "@type": "Product",
   "name": product.schemaName || product.title,
   "description": product.schemaDescription || product.subheadline,
+  "image": imgSrc(heroKey) || `${site.domain}/logo.png`,
+  "url": `${site.domain}/${product.slug}`,
   "category": product.schemaCategory,
   "brand": { "@type": "Brand", "name": product.schemaBrand || "Nuance / Microsoft" },
   "offers": {
